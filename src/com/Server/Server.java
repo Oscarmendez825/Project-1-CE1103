@@ -4,16 +4,17 @@ package com.Server;
 
 
 
+import com.Lista.Enlazada.ListaEnlazada;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
+
 
 
 public class Server {//clase
     private final int genport =1201;//Set the port that comunicates clients and server----encapsulamiento--atributo
     private final int userscant=4;//Set the max quantity of users that will be connected at the same time----encapsulamiento--atributo
 
-    private LinkedList<Socket> users = new LinkedList<Socket>();//make a list with the active users----encapsulamiento
+    private ListaEnlazada<Socket> users = new ListaEnlazada<Socket>();//make a list with the active users----encapsulamiento
    
     
     /**

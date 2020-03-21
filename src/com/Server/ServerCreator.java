@@ -1,11 +1,12 @@
 package com.Server;
 
 
+import com.Lista.Enlazada.ListaEnlazada;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.LinkedList;
+
 
 /**
  * This class is in charge to receive the information and comunicate it to the other clients
@@ -17,14 +18,14 @@ public class ServerCreator implements Runnable {//clase
     private DataInputStream datain;//input data----encapsulamiento--atributo
     private DataOutputStream dataout;//output data----encapsulamiento--atributo
 
-    private LinkedList<Socket> users = new LinkedList<Socket>();//active users list--encapsulamiento
+    private ListaEnlazada<Socket> users = new ListaEnlazada<Socket>();//active users list--encapsulamiento
     
     /**
      * 
      * @param port socket port
      * @param users list
      */
-    public ServerCreator(Socket port,LinkedList users){//Costructor that manage the socket and the users list--metodo
+    public ServerCreator(Socket port,ListaEnlazada users){//Costructor that manage the socket and the users list--metodo
         this.port = port;
         this.users = users;
     }
