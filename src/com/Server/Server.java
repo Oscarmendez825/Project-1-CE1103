@@ -1,52 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.Server;
 
-
-
-
-
-import com.Lista.Enlazada.ListaEnlazada;
+import ListaEnlazadaSimple.ListaEnlazada;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 
 
-public class Server {//clase
-    private final int genport =1201;//Set the port that comunicates clients and server----encapsulamiento--atributo
-    private final int userscant=4;//Set the max quantity of users that will be connected at the same time----encapsulamiento--atributo
-
-    private ListaEnlazada<Socket> users = new ListaEnlazada<Socket>();//make a list with the active users----encapsulamiento
-   
+public class Server {
+    private final int puerto = 2027;
+    private final int noUsers = 4;
+    private ListaEnlazada<Socket> users = new ListaEnlazada<Socket>(); 
+    private boolean turno;
     
-    /**
-     * This method accept the client connection and add the new client into a list
-     */
-    public void startserver(){//metodo
-        try {
-            ServerSocket server = new ServerSocket(genport,userscant);//Set the port and the limit of users
-            //Make the connection Server-Client
+    
+    
+    public void listen(){
+        try{
+            ServerSocket servidor = new ServerSocket(puerto,noUsers);
+            System.out.println("Esperando jugadores.....");
             while(true){
-                System.out.println("Server Started....");
-                System.out.println("Waiting for users...");
+                Socket cliente = servidor.accept();
+                users.add(cliente);
+                System.out.println("Nuevo cliente conectado...");
                 
-                
-                Socket client = server.accept();//accept the client connection
-                users.add(client);//add the user into the users list
-                
-                Runnable  run = new ServerCreator(client,users);//make a new thread to execute the new client
+                Runnable  run = new ServerThread(cliente,users);
                 Thread thread = new Thread(run);
-                thread.start();//start the thread
+                thread.start();
+            
             }
-        } catch (Exception e) {
+        
+        
+        }catch(Exception e){
             e.printStackTrace();
         }
     
-    } 
-    /**
-     * Main method of the Server class
-     * @param args 
-     */
-    public static void main(String[] args) {//metodo
+    }
+    public static void main(String[] args){
         Server server = new Server();
-        server.startserver();
+        server.listen();
+    
     }
 }
