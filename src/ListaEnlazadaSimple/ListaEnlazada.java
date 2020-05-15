@@ -3,32 +3,29 @@ package ListaEnlazadaSimple;
 
 
 public class ListaEnlazada<Type> {
-    public Nodo first;
-    public Nodo last;
-    public int size = 0;
+    private Nodo first;
+    private Nodo last;
+    private int size = 0;
     
     public ListaEnlazada(){
-        first = null;
-        last = null; 
+        this.first = null;
+        this.last = null; 
     }
     
     public boolean isEmpty() {
-        if(first == null && last == null) {
-            return true;
-        } else 
-            return false;
+       return this.first == null;
     }
     
     public void add(Type data) {
-        Nodo nuevo = new Nodo();
-        nuevo.data = data;
+        Nodo<Type> nuevo = new Nodo<Type>();
+        nuevo.setData(data);
         if (isEmpty()){
             first = nuevo;
-            first.next = null;
+            first.setNext(null);
             last = first;
         }else{
-            last.next = nuevo;
-            nuevo.next = null;
+            last.setNext(nuevo);
+            nuevo.setNext(null);
             last = nuevo;
         
         }
@@ -39,10 +36,10 @@ public class ListaEnlazada<Type> {
         Nodo nodo;
         nodo = first;
         do{
-            if (nodo.data.equals(data)){
+            if (nodo.getData().equals(data)){
                 return true; 
             }
-            nodo = nodo.next;
+            nodo = nodo.getNext();
         }while(nodo != last);
         return false;
     }    
@@ -51,11 +48,11 @@ public class ListaEnlazada<Type> {
         int cont = 0;
         Nodo aux = first;
         while (cont < pos-1){
-            aux = aux.next;
+            aux = aux.getNext();
             cont++;
         
         }
-        aux.next = null;
+        aux.setNext(null);
         size = pos;
     
     }
@@ -63,8 +60,8 @@ public class ListaEnlazada<Type> {
     public void show(){
         Nodo c = first;
         for(int i = 0; i < size; i++){
-            System.out.println(c.data);
-            c = c.next;
+            System.out.println(c.getData());
+            c = c.getNext();
         }
         
     }
@@ -75,7 +72,7 @@ public class ListaEnlazada<Type> {
             
         }else{
             if (pos == 0){
-               first.data = data;
+               first.setData(data);
             
             }else{
                 if(pos > 0 && pos < size){
@@ -84,10 +81,10 @@ public class ListaEnlazada<Type> {
                     int cont = 0;
                     while(true){
                         if (cont == pos){
-                            aux.data = data;
+                            aux.setData(data);
                             break;
                         }else{
-                        aux = aux.next;
+                        aux = aux.getNext();
                         cont++;
                         }
                     
@@ -104,19 +101,29 @@ public class ListaEnlazada<Type> {
         Nodo temp = first;
         Nodo aux = null;
         if (pos == 0){
-            first = first.next;
+            first = first.getNext();
         
+        }else if(pos == this.size-1){
+            int cont = 0;
+            while(cont != this.size-1 ){
+                cont++;
+                aux = temp;
+                temp = temp.getNext();
+
+            }
+            last = aux;
+            aux.setNext(null);
         }else{
             int cont = 0;
             while(true){
                 if (cont == pos){
-                    aux.next = temp.next;
+                    aux.setNext(temp.getNext());
                     break;
                     
                 }else{
                     cont++;
                     aux = temp;
-                    temp = temp.next;
+                    temp = temp.getNext();
                 }
             
             }
@@ -130,24 +137,32 @@ public class ListaEnlazada<Type> {
         int cont = 0;
         Nodo temp = first;
         while(cont < pos){
-            temp = temp.next;
+            temp = temp.getNext();
             cont++;
         }
-            return (Type) temp.data;
+            return (Type) temp.getData();
         }
     
 
 
     public Type getCabeza() {
-        return (Type) first.data;
+        return (Type) first.getData();
     }
     
     public Type getCola() {
-        return (Type) last.data;
+        return (Type) last.getData();
     }
 
     public int getSize() {
         return size;
+    }
+    
+    public void addCabeza(Type data){
+        Nodo <Type> nuevo = new Nodo<Type>(data);
+        nuevo.setNext(this.first);
+        this.first = nuevo;
+        size++;
+        
     }
     
 }
