@@ -6,6 +6,7 @@
 package com.Player;
 
 import ListaEnlazadaSimple.ListaEnlazada;
+import com.ListaCircular.ListaCircular;
 
 import com.ListaCircularDoblementeEnlazada.ListCircDobEn;
 import com.ListaDobleE.ListaDoble;
@@ -19,25 +20,24 @@ import javax.swing.JOptionPane;
 
 
 public class MapTablero extends javax.swing.JFrame {
-    boolean turnoA = true;
-    boolean turnoB = false;
-    boolean turnoC = false;
-    boolean turnoD = false;
+    private boolean turnoA = true;
+    private boolean turnoB = false;
+    private boolean turnoC = false;
+    private boolean turnoD = false;
     
-    boolean tiro = false;
-    int valor;
+    private boolean tiro = false;
+    private int valor;
     ImageIcon imageValor;
-    int valordado;
+    private int valordado;
     ImageIcon imageGif;
-    ListCircDobEn<JLabel> tablerop;
+    ListaCircular<JLabel> tablerop;
     JLabel jugador1 = new JLabel();
   
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
     ListaDoble<JLabel> faseC;
     ListCircDobEn<JLabel> faseD;
-    static int monedas = 50;
-    static int estrellas = 10;
+
     GameUser jugadores;
     public MapTablero() {
         initComponents();
@@ -47,14 +47,14 @@ public class MapTablero extends javax.swing.JFrame {
 //        Icon icono = new ImageIcon(fondo.getImage().getScaledInstance(fondogame.getWidth(), fondogame.getHeight(), Image.SCALE_DEFAULT));
 //        fondogame.setIcon(icono);
 //        this.repaint();
-        jname1.setText(GameUser.name1);
-        jname2.setText(GameUser.name2);
-        jname3.setText(GameUser.name3);
-        jname4.setText(GameUser.name4);
+        jname1.setText(GameUser.getName1());
+        jname2.setText(GameUser.getName2());
+        jname3.setText(GameUser.getName3());
+        jname4.setText(GameUser.getName4());
         
         setIconImage(new ImageIcon(getClass().getResource("/com/ImagesSelec/gamelogo.png")).getImage());
         cuadrovalor.setEditable(false);
-        tablerop = new ListCircDobEn<JLabel>();
+        tablerop = new ListaCircular<JLabel>();
         tablerop.add(t1);
         tablerop.add(t2);
         tablerop.add(t3);

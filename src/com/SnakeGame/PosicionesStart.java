@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 
 
 public class PosicionesStart extends javax.swing.JFrame {
-    int playersCant = 0;
+    private int playersCant = 0;
     static JLabel label;
     static int hora = 0;
     static int min = 0;
@@ -35,10 +35,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         butC.setEnabled(false);
         butD.setEnabled(false);
         continuar.setEnabled(false);
-        jugA.setText(GameUser.name1);
-        jugB.setText(GameUser.name2);
-        jugC.setText(GameUser.name3);
-        jugD.setText(GameUser.name4);
+        jugA.setText(GameUser.getName1());
+        jugB.setText(GameUser.getName2());
+        jugC.setText(GameUser.getName3());
+        jugD.setText(GameUser.getName4());
         setLocationRelativeTo(this);
         
         
@@ -191,7 +191,7 @@ public class PosicionesStart extends javax.swing.JFrame {
                 break;
         }
     }
-    public static void iniciarCrono() {
+    private static void iniciarCrono() {
         if (iniciarHilo == true){
             Crono crono = new Crono(label);
             crono.start();
@@ -199,7 +199,7 @@ public class PosicionesStart extends javax.swing.JFrame {
         }
     }
     private void verificacion(){
-        if (playersCant == GameUser.cantidad){
+        if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
             butA.setEnabled(false);
             butB.setEnabled(false);

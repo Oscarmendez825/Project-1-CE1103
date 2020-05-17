@@ -240,11 +240,11 @@ public class LobbyRegister extends javax.swing.JFrame {
         switch(cantidadvalor){
             case 2:
                 if (!name1.equals("") && !name2.equals("")){
-                    GameUser.name1 = name1;
-                    GameUser.name2 = name2;
+                    GameUser.setName1(name1);
+                    GameUser.setName2(name2);
                     GameUser.personaje1 = personaje1;
                     GameUser.personaje2 = personaje2;
-                    GameUser.cantidad = cantidadvalor;
+                    GameUser.setCantidad(cantidadvalor);
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();
@@ -256,15 +256,15 @@ public class LobbyRegister extends javax.swing.JFrame {
                 break;
             case 3:
                 if (!name1.equals("") && !name2.equals("") && !name3.equals("")){
-                    GameUser.name1 = name1;
-                    GameUser.name2 = name2;
-                    GameUser.name3 = name3;
+                    GameUser.setName1(name1);
+                    GameUser.setName2(name2);
+                    GameUser.setName3(name3);
                     
                     GameUser.personaje1 = personaje1;
                     GameUser.personaje2 = personaje2;
                     GameUser.personaje3 = personaje3;
                     
-                    GameUser.cantidad = cantidadvalor;
+                    GameUser.setCantidad(cantidadvalor);
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();
@@ -276,17 +276,17 @@ public class LobbyRegister extends javax.swing.JFrame {
                 break;
             case 4:
                 if (!name1.equals("") && !name2.equals("") && !name3.equals("") && !name4.equals("")){
-                    GameUser.name1 = name1;
-                    GameUser.name2 = name2;
-                    GameUser.name3 = name3;
-                    GameUser.name4 = name4;
+                    GameUser.setName1(name1);
+                    GameUser.setName2(name2);
+                    GameUser.setName3(name3);
+                    GameUser.setName4(name4);
 
                     GameUser.personaje1 = personaje1;
                     GameUser.personaje2 = personaje2;
                     GameUser.personaje3 = personaje3;
                     GameUser.personaje4 = personaje4;
                     
-                    GameUser.cantidad = cantidadvalor;
+                    GameUser.setCantidad(cantidadvalor);
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();

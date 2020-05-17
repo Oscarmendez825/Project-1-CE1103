@@ -35,14 +35,16 @@ public class ListaEnlazada<Type> {
     public boolean search(Type data){
         Nodo nodo;
         nodo = first;
-        do{
-            if (nodo.getData().equals(data)){
-                return true; 
-            }
-            nodo = nodo.getNext();
-        }while(nodo != last);
+        while(nodo != null){
+           if(nodo.getData().equals(data)){ 
+            return true;
+           }else {
+               nodo = nodo.getNext();
+           }  
+        
+        }
         return false;
-    }    
+    }
 
     public void cut(int pos){
         int cont = 0;
@@ -58,8 +60,8 @@ public class ListaEnlazada<Type> {
     }
     
     public void show(){
-        Nodo c = first;
-        for(int i = 0; i < size; i++){
+        Nodo c = this.first;
+        while(c != null){
             System.out.println(c.getData());
             c = c.getNext();
         }
@@ -132,7 +134,28 @@ public class ListaEnlazada<Type> {
         size--;
     
     }
-    
+    public Nodo removebyValue(Type data){
+        Nodo temp = this.first;
+        Nodo previous = this.first;
+        while(temp!=null){
+            if(temp.getData().equals(data)){
+                if (temp == this.first){
+                    this.first = this.first.getNext();
+                   
+                }else{
+                    previous.setNext(temp.getNext());
+                }
+                return temp;
+                
+            
+            }else{
+                previous = temp;
+                temp = temp.getNext();
+            }
+        
+        }
+        return null;
+    }
     public Type get(int pos) {
         int cont = 0;
         Nodo temp = first;
@@ -159,9 +182,13 @@ public class ListaEnlazada<Type> {
     
     public void addCabeza(Type data){
         Nodo <Type> nuevo = new Nodo<Type>(data);
-        nuevo.setNext(this.first);
-        this.first = nuevo;
-        size++;
+        if(isEmpty()){
+            this.first = this.last = nuevo;
+                    
+        }else{
+            nuevo.setNext(this.first);
+            this.first = nuevo;
+        }
         
     }
     

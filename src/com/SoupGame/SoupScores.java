@@ -24,10 +24,10 @@ public class SoupScores extends javax.swing.JFrame {
         butC.setEnabled(false);
         butD.setEnabled(false);
         continuar.setEnabled(false);
-        jugA.setText(GameUser.name1);
-        jugB.setText(GameUser.name2);
-        jugC.setText(GameUser.name3);
-        jugD.setText(GameUser.name4);
+        jugA.setText(GameUser.getName1());
+        jugB.setText(GameUser.getName2());
+        jugC.setText(GameUser.getName3());
+        jugD.setText(GameUser.getName4());
         setLocationRelativeTo(this);
         
         
@@ -171,7 +171,7 @@ public class SoupScores extends javax.swing.JFrame {
     }
 
     private void verificacion(){
-        if (playersCant == GameUser.cantidad){
+        if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
             butA.setEnabled(false);
             butB.setEnabled(false);

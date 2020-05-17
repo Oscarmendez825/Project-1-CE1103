@@ -6,9 +6,9 @@ package com.ListaDobleE;
 
 public class ListaDoble <Type> {
     
-    NodoLD first;
-    NodoLD last;
-    int size = 0;
+    private NodoLD first;
+    private NodoLD last;
+    private int size = 0;
     public ListaDoble(){
         first = null;
         last = null;
@@ -23,10 +23,10 @@ public class ListaDoble <Type> {
         NodoLD nodo;
         nodo = last;
         do{
-            if (nodo.data.equals(data)){
+            if (nodo.getData().equals(data)){
                 return true; 
             }
-            nodo = nodo.nodePrevious;
+            nodo = nodo.getNodePrevious();
         }while(nodo != null);
         return false;
     }
@@ -38,7 +38,7 @@ public class ListaDoble <Type> {
             
         }else{
             if (pos == 0){
-               first.data = data;
+               first.setData(data);
             
             }else{
                 if(pos > 0 && pos < size){
@@ -47,10 +47,10 @@ public class ListaDoble <Type> {
                     int cont = 0;
                     while(true){
                         if (cont == pos){
-                            aux.data = data;
+                            aux.setData(data);
                             break;
                         }else{
-                        aux = aux.nodeNext;
+                        aux = aux.getNodeNext();
                         cont++;
                         }
                     
@@ -64,47 +64,65 @@ public class ListaDoble <Type> {
         }
     
     public void remove(int pos){
-        NodoLD temp = first;
-        NodoLD aux = null;
-        int cont = 0;
-        if (pos == 0){
-            System.out.println("siiu");
-            first = first.nodeNext;
-            first.nodePrevious = null;
+         if (isEmpty()) {
+            System.out.println("La lista es vacia...");
+        } else {
+            NodoLD aux = first;
+            if (pos == size-1) {
+                removeLast();
+            } else if (pos == 0) {
+                removeFirst();
+            } else {
+                for (int i = 0; i < pos; i++) {
+                    aux = aux.getNodeNext();
+                }
+                aux.getNodeNext().setNodePrevious(aux.getNodePrevious());
+                aux.getNodeNext().setNodeNext(aux.getNodeNext());
+            }
             
-        }else if (pos == size-1){
-            last = last.nodePrevious;
-            last.nodeNext = null;
-        
-        }else{
-            while (true){
-                if (cont == pos){
-                    aux.nodeNext = temp.nodeNext;
-                    temp.nodeNext.nodePrevious = temp.nodePrevious;
-                    break;
-                
-                }else{
-                    aux = temp;
-                    temp = temp.nodeNext;
-                    cont++;
-                    }
+        }size--;
+    }   
+    public void removeFirst(){
+        if (!isEmpty()) {
+            NodoLD head = first.getNodeNext();
+            if (head == null) {
+                first = null;
+                last = null;
+            }else {
+                head.setNodePrevious(null);
+                first = head;
+            }
+            size--;
         }
-    }   size--;
+    }
+    public void removeLast(){
+       if (!isEmpty()) {
+        NodoLD aux = last.getNodePrevious();
+        if (aux == null) {
+            first = null;
+            last = null;
+        } else {
+            aux.setNodeNext(null);
+            last = aux;
+        }
+        size--;
+    }
+    
     }
     public void add(Type data){
         NodoLD nodo = new NodoLD();
-        nodo.data = data;
+        nodo.setData(data);
         
         if (isEmpty()){
             first = nodo;
-            first.nodeNext = null;
-            first.nodePrevious = null;
+            first.setNodeNext(null);
+            first.setNodePrevious(null);
             last = first;   
         
         }else{
-            last.nodeNext = nodo;
-            nodo.nodePrevious = last;
-            nodo.nodeNext = null;
+            last.setNodeNext(nodo);
+            nodo.setNodePrevious(last);
+            nodo.setNodeNext(null);
             last = nodo;
         
         }
@@ -119,10 +137,10 @@ public class ListaDoble <Type> {
     
     public void show(){
         NodoLD temp;
-        temp = first;
+        temp = last;
         while(temp != null){
-            System.out.println(temp.data);
-            temp = temp.nodeNext;
+            System.out.println(temp.getData());
+            temp = temp.getNodePrevious();
         
         }
     }
@@ -132,10 +150,10 @@ public class ListaDoble <Type> {
         int cont = 0;
         NodoLD temp = first;
         while(cont < pos){
-            temp = temp.nodeNext;
+            temp = temp.getNodeNext();
             cont++;
         }
-            return (Type) temp.data;
+            return (Type) temp.getData();
         }
     
     

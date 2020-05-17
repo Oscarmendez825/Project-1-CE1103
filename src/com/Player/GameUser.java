@@ -9,11 +9,11 @@ import javax.swing.JLabel;
 
 public class GameUser {
     
-    public static String name1;
-    public static String name2;
-    public static String name3;
-    public static String name4;
-    public static int cantidad;
+    private static String name1;
+    private static String name2;
+    private static String name3;
+    private static String name4;
+    private static int cantidad;
     public static String personaje1;
     public static String personaje2;
     public static String personaje3;
@@ -32,7 +32,7 @@ public class GameUser {
         personajeIcon();
     }
 
-    public void personajeIcon(){
+    private void personajeIcon(){
         switch (cantidad) {
             case 2:
                 switch (personaje1) {
@@ -330,6 +330,47 @@ public class GameUser {
                 break;
         }
     }
+
+    public static String getName1() {
+        return name1;
+    }
+
+    public static void setName1(String name1) {
+        GameUser.name1 = name1;
+    }
+
+    public static String getName2() {
+        return name2;
+    }
+
+    public static void setName2(String name2) {
+        GameUser.name2 = name2;
+    }
+
+    public static String getName3() {
+        return name3;
+    }
+
+    public static void setName3(String name3) {
+        GameUser.name3 = name3;
+    }
+
+    public static String getName4() {
+        return name4;
+    }
+
+    public static void setName4(String name4) {
+        GameUser.name4 = name4;
+    }
+
+    public static int getCantidad() {
+        return cantidad;
+    }
+
+    public static void setCantidad(int cantidad) {
+        GameUser.cantidad = cantidad;
+    }
+    
 }
     
     

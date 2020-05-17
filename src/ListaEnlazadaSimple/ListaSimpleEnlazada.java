@@ -18,10 +18,12 @@ public class ListaSimpleEnlazada {
         l.add(16);
         l.add(17);
         l.add(18);
-        
+
         l.show();
+        System.out.println("");
+        System.out.println("");
         System.out.println(l.search(119));
-        //l.modify(3,115);
+        l.modify(3,115);
         l.remove(5);
         l.show();
 
