@@ -19,8 +19,8 @@ public class SopaGame extends javax.swing.JFrame{
     private int[] starty;
     private boolean iwin; 
     private boolean[] direction;
-    JLabel[][] letters;
-    JLabel[] word;
+    private JLabel[][] letters;
+    private JLabel[] word;
     public static JFrame ventana;
     public static boolean iniciarHilo = true;
     public static int puntaje = 0;
@@ -263,7 +263,7 @@ public class SopaGame extends javax.swing.JFrame{
     }
 
     
-    public void putwords() {
+    private void putwords() {
         String[] word = {word1.getText(),word2.getText(),word3.getText(),word4.getText(),word5.getText(),
                          word6.getText(),word7.getText(),word8.getText(),word9.getText(),word10.getText()};
         Random random = new Random();
@@ -297,7 +297,7 @@ public class SopaGame extends javax.swing.JFrame{
         }
     }
     
-    public void letterspace() {
+    private void letterspace() {
         letters = new JLabel[10][14];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 14; j++) {
@@ -320,7 +320,7 @@ public class SopaGame extends javax.swing.JFrame{
         }
     }
     
-    public void clicked(java.awt.event.MouseEvent evt) {
+    private void clicked(java.awt.event.MouseEvent evt) {
         if (!iwin) {
             if (evt.getComponent().getBackground().equals(Color.LIGHT_GRAY)) {
                 evt.getComponent().setBackground(Color.YELLOW);
@@ -333,7 +333,7 @@ public class SopaGame extends javax.swing.JFrame{
     
     
 
-    public void emptyspaces() {
+    private void emptyspaces() {
         
         String[] abecedary = {"A","B","C","D","E","F","G","H","I","J","K","L",
                               "M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
@@ -346,7 +346,7 @@ public class SopaGame extends javax.swing.JFrame{
             }
         }
     }
-    public boolean  eliminateword(int x,int y,int size,boolean direction) {
+    private boolean  eliminateword(int x,int y,int size,boolean direction) {
         boolean answer = true;
         if (direction) {
             for (int i = y; i < size+y; i++) {
@@ -367,7 +367,7 @@ public class SopaGame extends javax.swing.JFrame{
         return answer;
     }
     
-    public int[] noRepetitions(int repetitions) {
+    private int[] noRepetitions(int repetitions) {
         int[] numbers = new int[repetitions];
         for (int i = 0; i < repetitions; i++) {
             numbers[i] =-1;
@@ -392,7 +392,7 @@ public class SopaGame extends javax.swing.JFrame{
         return numbers;
     }
     
-    public void eliminate() {
+    private void eliminate() {
         for (int i = 0; i < 10; i++) {
             if (!word[i].getText().substring(0, 1).equals("<")) {
                 if (eliminateword(startx[i],starty[i],word[i].getText().length(),direction[i])){
@@ -418,7 +418,7 @@ public class SopaGame extends javax.swing.JFrame{
         }
         
     }
-    public void update(){
+    private void update(){
         direction = new boolean[10];
         iwin = false;
         starty = new int[10];

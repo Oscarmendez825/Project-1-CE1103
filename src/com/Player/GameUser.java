@@ -19,10 +19,10 @@ public class GameUser {
     public static String personaje3;
     public static String personaje4;
 
-    JLabel p1;
-    JLabel p2;
-    JLabel p3;
-    JLabel p4;
+    private JLabel p1;
+    private JLabel p2;
+    private JLabel p3;
+    private JLabel p4;
 
     public GameUser(JLabel p1, JLabel p2, JLabel p3, JLabel p4) {
         this.p1 = p1;

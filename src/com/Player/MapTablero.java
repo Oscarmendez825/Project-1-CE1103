@@ -5,11 +5,13 @@
  */
 package com.Player;
 
-import ListaEnlazadaSimple.ListaEnlazada;
+import com.ListaEnlazadaSimple.ListaEnlazada;
 import com.ListaCircular.ListaCircular;
 
 import com.ListaCircularDoblementeEnlazada.ListCircDobEn;
 import com.ListaDobleE.ListaDoble;
+import com.SoupGame.SoupScores;
+import java.awt.Component;
 
 
 import java.util.Random;
@@ -24,21 +26,23 @@ public class MapTablero extends javax.swing.JFrame {
     private boolean turnoB = false;
     private boolean turnoC = false;
     private boolean turnoD = false;
-    
+    private int vueltas = 1;
     private boolean tiro = false;
     private int valor;
     ImageIcon imageValor;
     private int valordado;
     ImageIcon imageGif;
     ListaCircular<JLabel> tablerop;
-    JLabel jugador1 = new JLabel();
-  
+    private int valorA = 0;
+    private int valorB = 0;
+    private int valorC = 0;
+    private int valorD = 0;
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
     ListaDoble<JLabel> faseC;
     ListCircDobEn<JLabel> faseD;
-
     GameUser jugadores;
+    
     public MapTablero() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -118,12 +122,12 @@ public class MapTablero extends javax.swing.JFrame {
         
         
         
-        
         getContentPane().setComponentZOrder(this.L1, 0);
         getContentPane().setComponentZOrder(this.L2, 0);
         getContentPane().setComponentZOrder(this.L3, 0);
         getContentPane().setComponentZOrder(this.L4, 0);
         jugadores = new GameUser(L1,L2,L3,L4);
+        
         //System.out.println(tablerop.getSize());
     }
     
@@ -132,8 +136,6 @@ public class MapTablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        L3 = new javax.swing.JLabel();
-        L4 = new javax.swing.JLabel();
         L1 = new javax.swing.JLabel();
         L2 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -271,23 +273,31 @@ public class MapTablero extends javax.swing.JFrame {
         jLabel117 = new javax.swing.JLabel();
         jLabel118 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        monedaLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        estrellalabel = new javax.swing.JLabel();
         jname2 = new javax.swing.JLabel();
         jname4 = new javax.swing.JLabel();
         jname3 = new javax.swing.JLabel();
         jname1 = new javax.swing.JLabel();
+        L3 = new javax.swing.JLabel();
+        L4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        estrella2 = new javax.swing.JLabel();
+        estrella3 = new javax.swing.JLabel();
+        estrella4 = new javax.swing.JLabel();
+        moneda1 = new javax.swing.JLabel();
+        moneda2 = new javax.swing.JLabel();
+        moneda3 = new javax.swing.JLabel();
+        moneda4 = new javax.swing.JLabel();
+        estrella1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        L3.setBackground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(L3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 30, 30));
-
-        L4.setBackground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(L4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 30, 30));
 
         L1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 30, 30));
@@ -296,7 +306,7 @@ public class MapTablero extends javax.swing.JFrame {
         getContentPane().add(L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 30, 30));
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/logo.png"))); // NOI18N
-        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 160, 184, 150));
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 184, 150));
 
         t7.setBackground(new java.awt.Color(0, 0, 204));
         t7.setOpaque(true);
@@ -356,7 +366,7 @@ public class MapTablero extends javax.swing.JFrame {
 
         d1.setBackground(new java.awt.Color(255, 255, 0));
         d1.setOpaque(true);
-        getContentPane().add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 330, 60, 50));
+        getContentPane().add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 370, 60, 50));
 
         a5.setBackground(new java.awt.Color(0, 0, 204));
         a5.setOpaque(true);
@@ -456,7 +466,7 @@ public class MapTablero extends javax.swing.JFrame {
         getContentPane().add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, 40));
 
         jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/der.png"))); // NOI18N
-        getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 340, 30, 20));
+        getContentPane().add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 380, 30, 20));
 
         jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         getContentPane().add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 30, 20));
@@ -471,7 +481,7 @@ public class MapTablero extends javax.swing.JFrame {
         getContentPane().add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 650, 30, 20));
 
         jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
-        getContentPane().add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 630, 30, 20));
+        getContentPane().add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 670, 30, 20));
 
         jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         getContentPane().add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 650, 30, 20));
@@ -541,13 +551,13 @@ public class MapTablero extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Orbitron", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FASE C");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, 80, 50));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 80, 50));
 
         jLabel70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
         getContentPane().add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 480, 20, 40));
 
         jLabel71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 380, 20, 40));
+        getContentPane().add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 420, 20, 40));
 
         jLabel72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         getContentPane().add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 540, 30, 20));
@@ -580,7 +590,7 @@ public class MapTablero extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Orbitron", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("FASE D");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 280, 80, 50));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 320, 80, 50));
 
         t13.setBackground(new java.awt.Color(255, 255, 0));
         t13.setOpaque(true);
@@ -670,27 +680,27 @@ public class MapTablero extends javax.swing.JFrame {
 
         d2.setBackground(new java.awt.Color(255, 255, 0));
         d2.setOpaque(true);
-        getContentPane().add(d2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 330, 60, 50));
+        getContentPane().add(d2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 370, 60, 50));
 
         d8.setBackground(new java.awt.Color(255, 255, 0));
         d8.setOpaque(true);
-        getContentPane().add(d8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 420, 60, 50));
+        getContentPane().add(d8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 460, 60, 50));
 
         d3.setBackground(new java.awt.Color(255, 255, 0));
         d3.setOpaque(true);
-        getContentPane().add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 420, 60, 50));
+        getContentPane().add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 460, 60, 50));
 
         d7.setBackground(new java.awt.Color(255, 255, 0));
         d7.setOpaque(true);
-        getContentPane().add(d7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 510, 60, 50));
+        getContentPane().add(d7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, 60, 50));
 
         d4.setBackground(new java.awt.Color(255, 255, 0));
         d4.setOpaque(true);
-        getContentPane().add(d4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 510, 60, 50));
+        getContentPane().add(d4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 550, 60, 50));
 
         d5.setBackground(new java.awt.Color(255, 255, 0));
         d5.setOpaque(true);
-        getContentPane().add(d5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 600, 60, 50));
+        getContentPane().add(d5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 640, 60, 50));
 
         t15.setBackground(new java.awt.Color(0, 255, 51));
         t15.setOpaque(true);
@@ -698,55 +708,55 @@ public class MapTablero extends javax.swing.JFrame {
 
         d6.setBackground(new java.awt.Color(255, 255, 0));
         d6.setOpaque(true);
-        getContentPane().add(d6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 600, 60, 50));
+        getContentPane().add(d6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 640, 60, 50));
 
         jLabel91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 470, 20, 40));
+        getContentPane().add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 510, 20, 40));
 
         jLabel92.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 560, 20, 40));
+        getContentPane().add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 600, 20, 40));
 
         jLabel93.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 380, 20, 40));
+        getContentPane().add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 420, 20, 40));
 
         jLabel94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 470, 20, 40));
+        getContentPane().add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 510, 20, 40));
 
         jLabel95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        getContentPane().add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 560, 20, 40));
+        getContentPane().add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 600, 20, 40));
 
         jLabel100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
         getContentPane().add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 20, 40));
 
         jLabel98.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 560, 20, 40));
+        getContentPane().add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 600, 20, 40));
 
         jLabel99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 470, 20, 40));
+        getContentPane().add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 510, 20, 40));
 
         jLabel101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 380, 20, 40));
+        getContentPane().add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 420, 20, 40));
 
         jLabel102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 380, 20, 40));
+        getContentPane().add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 420, 20, 40));
 
         jLabel103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 470, 20, 40));
+        getContentPane().add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 510, 20, 40));
 
         jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        getContentPane().add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 560, 20, 40));
+        getContentPane().add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 600, 20, 40));
 
         jLabel106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
         getContentPane().add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 480, 20, 40));
 
         jLabel111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
-        getContentPane().add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 360, 30, 20));
+        getContentPane().add(jLabel111, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 400, 30, 20));
 
         jLabel112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         getContentPane().add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 30, 20));
 
         jLabel117.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/der.png"))); // NOI18N
-        getContentPane().add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 610, 30, 20));
+        getContentPane().add(jLabel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 650, 30, 20));
 
         jLabel118.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/der.png"))); // NOI18N
         getContentPane().add(jLabel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 30, 20));
@@ -756,42 +766,103 @@ public class MapTablero extends javax.swing.JFrame {
         jLabel4.setText("FASE A");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 470, 80, 50));
 
-        monedaLabel.setFont(new java.awt.Font("Orbitron", 0, 18)); // NOI18N
-        monedaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        monedaLabel.setText("50");
-        getContentPane().add(monedaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 50, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella1.gif"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 40, 40));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/moneda.gif"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 40));
-
-        estrellalabel.setBackground(new java.awt.Color(255, 255, 255));
-        estrellalabel.setFont(new java.awt.Font("Orbitron", 1, 18)); // NOI18N
-        estrellalabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        estrellalabel.setText("10");
-        getContentPane().add(estrellalabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 30, 20));
-
         jname2.setBackground(new java.awt.Color(255, 204, 102));
         jname2.setFont(new java.awt.Font("Orbitron", 0, 11)); // NOI18N
         jname2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 160, 50, 30));
+        getContentPane().add(jname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 150, 50, 30));
 
         jname4.setBackground(new java.awt.Color(255, 204, 102));
         jname4.setFont(new java.awt.Font("Orbitron", 0, 11)); // NOI18N
         jname4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jname4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 160, 50, 30));
+        getContentPane().add(jname4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 150, 50, 30));
 
         jname3.setBackground(new java.awt.Color(255, 204, 102));
         jname3.setFont(new java.awt.Font("Orbitron", 0, 11)); // NOI18N
         jname3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jname3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 160, 50, 30));
+        getContentPane().add(jname3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 150, 50, 30));
 
         jname1.setBackground(new java.awt.Color(255, 204, 102));
         jname1.setFont(new java.awt.Font("Orbitron", 0, 11)); // NOI18N
         jname1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 160, 50, 30));
+        getContentPane().add(jname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 150, 50, 30));
+
+        L3.setBackground(new java.awt.Color(0, 102, 102));
+        getContentPane().add(L3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 30, 30));
+
+        L4.setBackground(new java.awt.Color(0, 102, 102));
+        getContentPane().add(L4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 30, 30));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 180, 30, 30));
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 180, 30, 30));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 180, 30, 30));
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/moneda.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 240, 30, 30));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 180, 30, 30));
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/moneda.png"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 240, 30, 30));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/moneda.png"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 240, 30, 30));
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/moneda.png"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 240, 30, 30));
+
+        estrella2.setFont(new java.awt.Font("Orbitron", 0, 14)); // NOI18N
+        estrella2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrella2.setText("10");
+        getContentPane().add(estrella2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 210, 50, 30));
+
+        estrella3.setFont(new java.awt.Font("Orbitron", 0, 14)); // NOI18N
+        estrella3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrella3.setText("10");
+        getContentPane().add(estrella3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 210, 50, 30));
+
+        estrella4.setFont(new java.awt.Font("Orbitron", 0, 14)); // NOI18N
+        estrella4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrella4.setText("10");
+        getContentPane().add(estrella4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 210, 50, 30));
+
+        moneda1.setFont(new java.awt.Font("Orbitron", 0, 12)); // NOI18N
+        moneda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneda1.setText("20");
+        getContentPane().add(moneda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 270, 50, 30));
+
+        moneda2.setFont(new java.awt.Font("Orbitron", 0, 12)); // NOI18N
+        moneda2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneda2.setText("20");
+        getContentPane().add(moneda2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 270, 50, 30));
+
+        moneda3.setFont(new java.awt.Font("Orbitron", 0, 12)); // NOI18N
+        moneda3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneda3.setText("20");
+        getContentPane().add(moneda3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 270, 50, 30));
+
+        moneda4.setFont(new java.awt.Font("Orbitron", 0, 12)); // NOI18N
+        moneda4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneda4.setText("20");
+        getContentPane().add(moneda4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 270, 50, 30));
+
+        estrella1.setFont(new java.awt.Font("Orbitron", 0, 14)); // NOI18N
+        estrella1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrella1.setText("10");
+        getContentPane().add(estrella1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 210, 50, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -803,6 +874,14 @@ public class MapTablero extends javax.swing.JFrame {
     private void cuadrovalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuadrovalorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cuadrovalorActionPerformed
+
+
+
+    
+
+    
+
+
 
     private void botontirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botontirarActionPerformed
         if(tiro == false){
@@ -822,7 +901,8 @@ public class MapTablero extends javax.swing.JFrame {
                 valor+=total;
             }
             if (valor>tablerop.getSize()){
-                valor =  valor - tablerop.getSize();
+                valor =  (valor - tablerop.getSize())/vueltas;
+                vueltas++;
             
         }
          
@@ -835,45 +915,123 @@ public class MapTablero extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botontirarActionPerformed
 
+    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        
-//        if (turnoA == true && tiro == true){
-//            L1.setBounds(tablerop.get(valor).getX(),tablerop.get(valor).getY(),L1.getWidth(),L1.getHeight());
-//            L1.setBackground(tablerop.get(valor).getBackground());
-//            tiro = false;
-//            turnoA = false;
-//            turnoB = true;
-//            System.out.println(L1.getLocation());
-//            
-//        }else if(turnoB == true && tiro == true){
-//            L2.setLocation(tablerop.get(valor).getX(),tablerop.get(valor).getY());
-//            L2.setBackground(tablerop.get(valor).getBackground());
-//            tiro = false;
-//            turnoB = false;
-//            turnoC = true;
-//            System.out.println(L2.getLocation());
-//        }else if(turnoC == true && tiro == true){
-//            L3.setLocation(tablerop.get(valor).getX(),tablerop.get(valor).getY());
-//            L3.setBackground(tablerop.get(valor).getBackground());
-//            tiro = false;
-//            turnoC = false;
-//            turnoD = true;
-//            System.out.println(L2.getLocation());
-//        }else if(turnoD == true && tiro == true){
-//            L4.setLocation(tablerop.get(valor).getX(),tablerop.get(valor).getY());
-//            L4.setBackground(tablerop.get(valor).getBackground());
-//            tiro = false;
-//            turnoD = false;
-//            turnoA = true;
-//            System.out.println(L2.getLocation());
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "No ha tirado los dados aún");
-//        
-//        }
+        switch (GameUser.getCantidad()) {
+            case 2:
+                if (tiro == true){
+                    if (turnoA == true){
+                        L1.setLocation(tablerop.get(valor).getLocation());
+                        L1.setBackground(tablerop.get(valor).getBackground());
+                        valorA = valor;
+                        
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+                        
+                    }else{
+                        L2.setLocation(tablerop.get(valor).getLocation());
+                        L2.setBackground(tablerop.get(valor).getBackground());
+                        valorB = valor;
+                        
+                        turnoB = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        
+                    }
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tirar los dados antes");
+                    
+                }   break;
+            case 3:
+                if (tiro == true){
+                    if (turnoA == true){
+                        L1.setLocation(tablerop.get(valor).getLocation());
+                        L1.setBackground(tablerop.get(valor).getBackground());
+                        valorA = valor;
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+
+                    }else if (turnoB == true){
+                        L2.setLocation(tablerop.get(valor).getLocation());
+                        L2.setBackground(tablerop.get(valor).getBackground());
+                        valorB = valor;
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+                    }else{
+                        L3.setLocation(tablerop.get(valor).getLocation());
+                        L3.setBackground(tablerop.get(valor).getBackground());
+                        valorC = valor;
+                        turnoC = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tirar los dados antes");
+                }
+                break;
+            case 4:
+                if (tiro == true){
+                    if (turnoA == true){
+                        L1.setLocation(tablerop.get(valor).getLocation());
+                        L1.setBackground(tablerop.get(valor).getBackground());
+                        valorA = valor;
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+
+                    }else if (turnoB == true){
+                        L2.setLocation(tablerop.get(valor).getLocation());
+                        L2.setBackground(tablerop.get(valor).getBackground());
+                        valorB = valor;
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+
+                    }else if (turnoC == true){
+                        L3.setLocation(tablerop.get(valor).getLocation());
+                        L3.setBackground(tablerop.get(valor).getBackground());
+                        valorC = valor;
+                        turnoC = false;
+                        turnoD = true;
+                        tiro = false;
+                        valor = valorD;
+                        
+                        
+                    }else{
+                        L4.setLocation(tablerop.get(valor).getLocation());
+                        L4.setBackground(tablerop.get(valor).getBackground());
+                        valorD = valor;
+                        turnoD = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                    
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Debe tirar los dados antes");
+                }
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     
     public ImageIcon dadoGif(){
+        
         imageGif = new ImageIcon("dadogif.gif");
         return imageGif;
     
@@ -977,7 +1135,10 @@ public class MapTablero extends javax.swing.JFrame {
     private javax.swing.JLabel d8;
     private javax.swing.JLabel dadoLabel1;
     private javax.swing.JLabel dadoLabel2;
-    private javax.swing.JLabel estrellalabel;
+    private javax.swing.JLabel estrella1;
+    private javax.swing.JLabel estrella2;
+    private javax.swing.JLabel estrella3;
+    private javax.swing.JLabel estrella4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -992,6 +1153,10 @@ public class MapTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
@@ -1022,6 +1187,7 @@ public class MapTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -1031,6 +1197,7 @@ public class MapTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
@@ -1065,7 +1232,10 @@ public class MapTablero extends javax.swing.JFrame {
     private javax.swing.JLabel jname2;
     private javax.swing.JLabel jname3;
     private javax.swing.JLabel jname4;
-    private javax.swing.JLabel monedaLabel;
+    private javax.swing.JLabel moneda1;
+    private javax.swing.JLabel moneda2;
+    private javax.swing.JLabel moneda3;
+    private javax.swing.JLabel moneda4;
     private javax.swing.JLabel t1;
     private javax.swing.JLabel t10;
     private javax.swing.JLabel t11;

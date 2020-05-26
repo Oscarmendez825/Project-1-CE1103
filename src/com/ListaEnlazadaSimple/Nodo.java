@@ -1,5 +1,5 @@
 
-package ListaEnlazadaSimple;
+package com.ListaEnlazadaSimple;
 
 
 public class Nodo<Type> {

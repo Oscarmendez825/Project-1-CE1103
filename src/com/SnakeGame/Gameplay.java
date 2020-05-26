@@ -74,16 +74,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
         }
 
-        //show the logo image
+
         logoImage = new ImageIcon("logoSnakeGame.png");
         logoImage.paintIcon(this, g, 360,0);
-        
-        // draw the gamearea border
+
         
         g.setColor(Color.WHITE);
         g.drawRect(24, 74, 851, 577);
         
-        //draw the game field
         g.setColor(Color.BLACK);
         g.fillRect(25, 75, 850, 575);
         
