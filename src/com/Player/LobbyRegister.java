@@ -248,7 +248,7 @@ public class LobbyRegister extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();
-                    new MapTablero().setVisible(true);
+                    new Tablero().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "No se han escrito todos los nombres de los jugadores");
@@ -268,7 +268,7 @@ public class LobbyRegister extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();
-                    new MapTablero().setVisible(true);
+                    new Tablero().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "No se han escrito todos los nombres de los jugadores");
@@ -290,7 +290,7 @@ public class LobbyRegister extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Bienvenidos");
                     this.setVisible(false);
                     sonido.stop();
-                    new MapTablero().setVisible(true);
+                    new Tablero().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "No se han escrito todos los nombres de los jugadores");
