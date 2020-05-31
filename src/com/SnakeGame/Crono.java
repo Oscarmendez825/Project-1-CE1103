@@ -18,7 +18,7 @@ public class Crono extends Thread {
         try{
             
             while (PosicionesStart.iniciarHilo==true){
-                Thread.sleep(100);
+                Thread.sleep(1000);
                 ejecutarcrono();
                 
             }

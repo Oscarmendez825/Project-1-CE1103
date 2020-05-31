@@ -21,7 +21,7 @@ public class Casilla {
         
 
     }
-    public static void casilla(String color,JLabel monedalbl){
+    public static void casilla(String color,JLabel monedalbl, int jugador){
         int monedas = Integer.parseInt(monedalbl.getText());
         switch (color) {
                 //azul
@@ -39,7 +39,9 @@ public class Casilla {
                 break;
             case "java.awt.Color[r=255,g=255,b=0]":
                 //amarillo
-                JOptionPane.showMessageDialog(null, "NUEVO EVENTO!!!");
+                
+                Evento evento = new Evento(jugador);
+                evento.eventos();
                 break;
             default:
                 break;

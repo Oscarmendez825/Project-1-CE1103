@@ -1003,7 +1003,7 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(L4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 320, 30, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/start.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 40, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 40, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesSelec/gamelogo.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 200, 180));
@@ -1107,7 +1107,7 @@ public class Tablero extends javax.swing.JFrame {
                         
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         valorA = valor;
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
@@ -1119,7 +1119,7 @@ public class Tablero extends javax.swing.JFrame {
                         
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         valorB = valor;
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
@@ -1137,7 +1137,7 @@ public class Tablero extends javax.swing.JFrame {
                     if (turnoA == true){
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         valorA = valor;
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
@@ -1148,7 +1148,7 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         valorB = valor;
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
@@ -1159,7 +1159,7 @@ public class Tablero extends javax.swing.JFrame {
                     }else{
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
                         valorC = valor;
                         System.out.println("valor C: " +valorC);
                         turnoC = false;
@@ -1178,7 +1178,7 @@ public class Tablero extends javax.swing.JFrame {
                     if (turnoA == true){
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         valorA = valor;
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
@@ -1190,7 +1190,7 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         valorB = valor;
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
@@ -1202,7 +1202,7 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoC == true){
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
                         valorC = valor;
                         System.out.println("valor C: " +valorC);
                         turnoC = false;
@@ -1214,7 +1214,7 @@ public class Tablero extends javax.swing.JFrame {
                     }else{
                         L4.setLocation(tablero.get(valor).getLocation());
                         L4.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda4);
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda4,4);
                         valorD = valor;
                         System.out.println("valor D: " +valorD);
                         turnoD = false;
@@ -1234,6 +1234,40 @@ public class Tablero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_moverbuttonActionPerformed
 
+    public static JLabel getMoneda1() {
+        return moneda1;
+    }
+
+    public static JLabel getMoneda2() {
+        return moneda2;
+    }
+
+    public static JLabel getMoneda3() {
+        return moneda3;
+    }
+
+    public static JLabel getMoneda4() {
+        return moneda4;
+    }
+
+    public static JLabel getEstrella1() {
+        return estrella1;
+    }
+
+    public static JLabel getEstrella2() {
+        return estrella2;
+    }
+
+    public static JLabel getEstrella3() {
+        return estrella3;
+    }
+
+    public static JLabel getEstrella4() {
+        return estrella4;
+    }
+
+
+    
     /**
      * @param args the command line arguments
      */
@@ -1306,10 +1340,10 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel d9;
     private javax.swing.JLabel dadoLabel1;
     private javax.swing.JLabel dadoLabel2;
-    private javax.swing.JLabel estrella1;
-    private javax.swing.JLabel estrella2;
-    private javax.swing.JLabel estrella3;
-    private javax.swing.JLabel estrella4;
+    private static javax.swing.JLabel estrella1;
+    private static javax.swing.JLabel estrella2;
+    private static javax.swing.JLabel estrella3;
+    private static javax.swing.JLabel estrella4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -1411,10 +1445,10 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jname2;
     private javax.swing.JLabel jname3;
     private javax.swing.JLabel jname4;
-    private javax.swing.JLabel moneda1;
-    private javax.swing.JLabel moneda2;
-    private javax.swing.JLabel moneda3;
-    private javax.swing.JLabel moneda4;
+    private static javax.swing.JLabel moneda1;
+    private static javax.swing.JLabel moneda2;
+    private static javax.swing.JLabel moneda3;
+    private static javax.swing.JLabel moneda4;
     private javax.swing.JButton moverbutton;
     private javax.swing.JLabel t1;
     private javax.swing.JLabel t10;

@@ -24,7 +24,7 @@ public class PosicionesStart extends javax.swing.JFrame {
     static boolean iniciarHilo = true;
     boolean corriendo = false;
     static JFrame obj;
-    static int contador = 0;
+    static int contador = 1;
     public PosicionesStart() {
         initComponents();
         ImageIcon fondo = new ImageIcon("fondogamescore.jpg");
@@ -170,11 +170,14 @@ public class PosicionesStart extends javax.swing.JFrame {
             case 1:
                 puntA.setText(""+Gameplay.puntaje);
                 contador++;
+                System.out.println("E"+Gameplay.puntaje);
                 Gameplay.puntaje = 0;
+                
                 break;
             case 2:
                 puntB.setText(""+Gameplay.puntaje);
                 contador++;
+                System.out.println("E+x"+Gameplay.puntaje);
                 Gameplay.puntaje = 0;
                 break;
             case 3:

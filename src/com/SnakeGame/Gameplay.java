@@ -119,6 +119,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
             posX = random.nextInt(33);
             posY = random.nextInt(21);
             puntaje++;
+            System.out.println(puntaje);
         }
         //System.out.println(comidaX[posX]+","+posX+";"+comidaY[posY]+","+posY);
         food.paintIcon(this, g, comidaX[posX], comidaY[posY]);
