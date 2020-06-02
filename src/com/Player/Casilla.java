@@ -5,9 +5,9 @@
  */
 package com.Player;
 
-import com.ListaCircular.ListaCircular;
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -23,6 +23,7 @@ public class Casilla {
     }
     public static void casilla(String color,JLabel monedalbl, int jugador){
         int monedas = Integer.parseInt(monedalbl.getText());
+        
         switch (color) {
                 //azul
             case "\"java.awt.Color[r=0,g=0,b=204]\"":
@@ -39,7 +40,6 @@ public class Casilla {
                 break;
             case "java.awt.Color[r=255,g=255,b=0]":
                 //amarillo
-                
                 Evento evento = new Evento(jugador);
                 evento.eventos();
                 break;

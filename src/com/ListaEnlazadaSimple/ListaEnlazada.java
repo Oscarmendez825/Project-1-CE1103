@@ -191,5 +191,14 @@ public class ListaEnlazada<Type> {
         }
         
     }
-    
+    public Nodo removeFirst(){
+        if (this.first != null) {
+        Nodo temp = this.first;
+        this.first = this.first.getNext();
+        this.size--;
+        return  temp;
+        } else {
+        return null;
+}
+    }
 }

@@ -34,15 +34,15 @@ public class Tablero extends javax.swing.JFrame {
     private int vueltas = 1;
     private int monedasvalor;
     private boolean tiro = false;
-    private int valor;
+    private static int valor;
     ImageIcon imageValor;
     private int valordado;
     ImageIcon imageGif;
-    ListaCircular<JLabel> tablero;
-    private int valorA = 0;
-    private int valorB = 0;
-    private int valorC = 0;
-    private int valorD = 0;
+    private static ListaCircular<JLabel> tablero;
+    private static int valorA = 0;
+    private static int valorB = 0;
+    private static int valorC = 0;
+    private static int valorD = 0;
 //    JLabel jugador1;
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
@@ -252,7 +252,6 @@ public class Tablero extends javax.swing.JFrame {
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
         jLabel96 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
@@ -329,6 +328,9 @@ public class Tablero extends javax.swing.JFrame {
         L4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel136 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -573,7 +575,7 @@ public class Tablero extends javax.swing.JFrame {
 
         d1.setBackground(new java.awt.Color(255, 255, 0));
         d1.setOpaque(true);
-        jPanel1.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 60, 50));
+        jPanel1.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 60, 50));
 
         a1.setBackground(new java.awt.Color(0, 0, 255));
         a1.setOpaque(true);
@@ -590,7 +592,7 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 20, 40));
 
         jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        jPanel1.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 20, 40));
+        jPanel1.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 20, 40));
 
         jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
         jPanel1.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 20, 40));
@@ -623,15 +625,15 @@ public class Tablero extends javax.swing.JFrame {
 
         d2.setBackground(new java.awt.Color(255, 255, 0));
         d2.setOpaque(true);
-        jPanel1.add(d2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 60, 50));
+        jPanel1.add(d2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 60, 50));
 
         d3.setBackground(new java.awt.Color(255, 255, 0));
         d3.setOpaque(true);
-        jPanel1.add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 60, 50));
+        jPanel1.add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 60, 50));
 
         d4.setBackground(new java.awt.Color(255, 255, 0));
         d4.setOpaque(true);
-        jPanel1.add(d4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 60, 50));
+        jPanel1.add(d4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 60, 50));
 
         b2.setBackground(new java.awt.Color(255, 255, 0));
         b2.setOpaque(true);
@@ -639,11 +641,11 @@ public class Tablero extends javax.swing.JFrame {
 
         d5.setBackground(new java.awt.Color(255, 255, 0));
         d5.setOpaque(true);
-        jPanel1.add(d5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 60, 50));
+        jPanel1.add(d5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 60, 50));
 
         d6.setBackground(new java.awt.Color(255, 255, 0));
         d6.setOpaque(true);
-        jPanel1.add(d6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 60, 50));
+        jPanel1.add(d6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 60, 50));
 
         b4.setBackground(new java.awt.Color(255, 255, 0));
         b4.setOpaque(true);
@@ -695,16 +697,13 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 90, 20, 40));
 
         jLabel78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        jPanel1.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 20, 40));
+        jPanel1.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 20, 40));
 
         jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        jPanel1.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 20, 40));
+        jPanel1.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 20, 40));
 
         jLabel80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        jPanel1.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 20, 40));
-
-        jLabel94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        jPanel1.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 20, 40));
+        jPanel1.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 20, 40));
 
         jLabel95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
         jPanel1.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 20, 40));
@@ -716,7 +715,7 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 20, 40));
 
         jLabel98.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
-        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 20, 40));
+        jPanel1.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 20, 40));
 
         jLabel99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
         jPanel1.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 20, 40));
@@ -728,19 +727,19 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 20, 40));
 
         jLabel102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 20, 40));
+        jPanel1.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 20, 40));
 
         jLabel103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        jPanel1.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 20, 40));
+        jPanel1.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 20, 40));
 
         jLabel104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        jPanel1.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 20, 40));
+        jPanel1.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 20, 40));
 
         jLabel105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
         jPanel1.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 20, 40));
 
         jLabel106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
-        jPanel1.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 20, 40));
+        jPanel1.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 20, 40));
 
         jLabel107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         jPanel1.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, 30, 20));
@@ -800,10 +799,10 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.add(jLabel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, 30, 20));
 
         jLabel126.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
-        jPanel1.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 30, 20));
+        jPanel1.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 30, 20));
 
         jLabel127.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/der.png"))); // NOI18N
-        jPanel1.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 30, 20));
+        jPanel1.add(jLabel127, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 30, 20));
 
         jLabel128.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/izq.png"))); // NOI18N
         jPanel1.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 510, 30, 20));
@@ -845,7 +844,7 @@ public class Tablero extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("FASE D");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 140, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, 30));
 
         jLabel4.setFont(new java.awt.Font("Orbitron", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -1008,6 +1007,15 @@ public class Tablero extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesSelec/gamelogo.png"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 430, 200, 180));
 
+        jLabel136.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
+        jPanel1.add(jLabel136, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 20, 40));
+
+        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
+        jPanel1.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 20, 40));
+
+        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
+        jPanel1.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, 20, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1104,11 +1112,11 @@ public class Tablero extends javax.swing.JFrame {
             case 2:
                 if (tiro == true){
                     if (turnoA == true){
-                        
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
+                        
                         valorA = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
                         turnoB = true;
@@ -1119,8 +1127,9 @@ public class Tablero extends javax.swing.JFrame {
                         
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
+                        
                         valorB = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
                         turnoA = true;
@@ -1137,8 +1146,8 @@ public class Tablero extends javax.swing.JFrame {
                     if (turnoA == true){
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         valorA = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
                         turnoB = true;
@@ -1148,8 +1157,8 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         valorB = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
                         turnoC = true;
@@ -1159,8 +1168,9 @@ public class Tablero extends javax.swing.JFrame {
                     }else{
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
+                        
                         valorC = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
                         System.out.println("valor C: " +valorC);
                         turnoC = false;
                         turnoA = true;
@@ -1178,8 +1188,9 @@ public class Tablero extends javax.swing.JFrame {
                     if (turnoA == true){
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
+                        
                         valorA = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         System.out.println("valor A: " +valorA);
                         turnoA = false;
                         turnoB = true;
@@ -1190,8 +1201,9 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
+                        
                         valorB = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda2,2);
                         System.out.println("valor B: " +valorB);
                         turnoB = false;
                         turnoC = true;
@@ -1202,8 +1214,9 @@ public class Tablero extends javax.swing.JFrame {
                     }else if (turnoC == true){
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
+                        
                         valorC = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda3,3);
                         System.out.println("valor C: " +valorC);
                         turnoC = false;
                         turnoD = true;
@@ -1214,8 +1227,9 @@ public class Tablero extends javax.swing.JFrame {
                     }else{
                         L4.setLocation(tablero.get(valor).getLocation());
                         L4.setBackground(tablero.get(valor).getBackground());
-                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda4,4);
+                        
                         valorD = valor;
+                        Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda4,4);
                         System.out.println("valor D: " +valorD);
                         turnoD = false;
                         turnoA = true;
@@ -1233,7 +1247,88 @@ public class Tablero extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_moverbuttonActionPerformed
-
+    public static void teletransporte(int usuario, int lugar){
+        JOptionPane.showMessageDialog(null, "SERÁS TELESTRANSPORTADO A UN NUEVO LUGAR");
+        switch (usuario) {
+            case 1:
+                L1.setLocation(tablero.get(lugar).getLocation());
+                L1.setBackground(tablero.get(lugar).getBackground());
+                valorA = lugar;
+                System.out.println("cambiotp");
+                break;
+            case 2:
+                L2.setLocation(tablero.get(lugar).getLocation());
+                L2.setBackground(tablero.get(lugar).getBackground());
+                valorB = lugar;
+                System.out.println("cambiotp");
+                break;
+            case 3:
+                L3.setLocation(tablero.get(lugar).getLocation());
+                L3.setBackground(tablero.get(lugar).getBackground());
+                valorC = lugar;
+                break;
+            case 4:
+                L4.setLocation(tablero.get(lugar).getLocation());
+                L4.setBackground(tablero.get(lugar).getBackground());
+                valorD = lugar;
+                break;
+            default:
+                break;
+        }
+    }
+    public static void cambioLugar(int jugador1, int jugador2){
+        JOptionPane.showMessageDialog(null, "UN AMIGO Y VOS CAMBIARÁN DE LUGAR SIMULTANEAMENTE!!!!!");
+        if ((jugador1 == 1 && jugador2 == 2) || (jugador1 == 2 && jugador2 == 1)){
+            System.out.println("cambiolugar1,2");
+            int temp = valorB;
+             L1.setLocation(tablero.get(valorB).getLocation());
+             L1.setBackground(tablero.get(valorB).getBackground());
+             L2.setLocation(tablero.get(valorA).getLocation());
+             L2.setBackground(tablero.get(valorA).getBackground());
+             valorB = valorA;
+             valorA = temp; 
+        }else if ((jugador1 == 1 && jugador2 == 3) || (jugador1 == 3 && jugador2 == 1)){
+            int temp = valorC;
+            L1.setLocation(tablero.get(valorC).getLocation());
+            L1.setBackground(tablero.get(valorC).getBackground());
+            L3.setLocation(tablero.get(valorA).getLocation());
+            L3.setBackground(tablero.get(valorA).getBackground());
+            valorC = valorA;
+            valorA = temp; 
+        }else if ((jugador1 == 1 && jugador2 == 4) || (jugador1 == 4 && jugador2 == 1)){
+            int temp = valorD;
+            L1.setLocation(tablero.get(valorD).getLocation());
+            L1.setBackground(tablero.get(valorD).getBackground());
+            L4.setLocation(tablero.get(valorA).getLocation());
+            L4.setBackground(tablero.get(valorA).getBackground());
+            valorD = valorA;
+            valorA = temp; 
+        }else if ((jugador1 == 2 && jugador2 == 3) || (jugador1 == 3 && jugador2 == 2)){
+            int temp = valorC;
+            L2.setLocation(tablero.get(valorC).getLocation());
+            L2.setBackground(tablero.get(valorC).getBackground());
+            L3.setLocation(tablero.get(valorB).getLocation());
+            L3.setBackground(tablero.get(valorB).getBackground());
+            valorC = valorB;
+            valorB = temp; 
+        }else if ((jugador1 == 2 && jugador2 == 4) || (jugador1 == 4 && jugador2 == 2)){
+            int temp = valorD;
+            L2.setLocation(tablero.get(valorD).getLocation());
+            L2.setBackground(tablero.get(valorD).getBackground());
+            L4.setLocation(tablero.get(valorB).getLocation());
+            L4.setBackground(tablero.get(valorB).getBackground());
+            valorD = valorB;
+            valorB = temp; 
+        }else if ((jugador1 == 3 && jugador2 == 4) || (jugador1 == 4 && jugador2 == 3)){
+            int temp = valorD;
+            L3.setLocation(tablero.get(valorD).getLocation());
+            L3.setBackground(tablero.get(valorD).getBackground());
+            L4.setLocation(tablero.get(valorC).getLocation());
+            L4.setBackground(tablero.get(valorC).getBackground());
+            valorD = valorC;
+            valorC = temp; 
+        }
+    }
     public static JLabel getMoneda1() {
         return moneda1;
     }
@@ -1305,10 +1400,10 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel L1;
-    private javax.swing.JLabel L2;
-    private javax.swing.JLabel L3;
-    private javax.swing.JLabel L4;
+    private static javax.swing.JLabel L1;
+    private static javax.swing.JLabel L2;
+    private static javax.swing.JLabel L3;
+    private static javax.swing.JLabel L4;
     private javax.swing.JLabel a1;
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
@@ -1384,6 +1479,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel135;
+    private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -1396,6 +1492,8 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -1434,7 +1532,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;

@@ -7,21 +7,22 @@ package com.Player;
 
 import com.SnakeGame.PosicionesStart;
 import com.SoupGame.SoupScores;
+import com.StackPackage.Stack;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
 
 
-public class Evento {
+public class Evento{
     private static int cantidadDuelo = 10;
     private static int cantidadRobo = 10;
     private static int ganar2Estrellas = 3;
-    private static int ganar1Estrella = 1;
+    private static int ganar5Estrellas = 1;
     private static int robarEstrella = 3;
     private static int tp = 10;
     private static int jugador;
-    
-    
+    private static int cambio = 5; 
+    private static Stack stack = new Stack();
     
     
     public Evento(int jugador) {
@@ -41,19 +42,98 @@ public class Evento {
     }
     
     public void eventos(){
-        int evento = getNumero(8)+1;
-        if (evento == 1 && cantidadDuelo != 0){//DUELO
-            duelo();
-        }else if(evento == 2 && cantidadRobo!=0){//ROBO MONEDAS
-            roboMonedas();
-        }else if (evento == 3){
-            perderMonedas();        
-        }else if (evento == 4){
-            perderEstrella();
+        if (stack.isEmpty() == true){
+            cantidadDuelo = 10;
+            cantidadRobo = 10;
+            ganar2Estrellas = 3;
+            ganar5Estrellas = 1;
+            robarEstrella = 3;
+            tp = 10;
+            cambio = 5;
+            crearStack();
+            ejecutarEvento();
+        }else{
+            ejecutarEvento();
+        }
+        
 
+        
+    }
+    private void crearStack(){
+        stack = new Stack();
+        while(cantidadDuelo!=0){
+            if (cantidadDuelo != 0){
+                stack.push("duelo");
+                cantidadDuelo--;
+            }else if(cantidadRobo!=0){
+                stack.push("roboMonedas");
+                cantidadRobo--;
+            }else if (ganar2Estrellas != 0 ){
+                stack.push("ganarDosEstrellas");
+                ganar2Estrellas--;
+            }else if (ganar5Estrellas!=0){
+                stack.push("ganarCincoEstrellas");
+                ganar5Estrellas--;
+            }else if (tp!=0){
+                stack.push("teletransporte");
+                tp--;
+            }else if (cambio!=0){
+                stack.push("cambioLugares");
+                cambio--;
+            }else if (robarEstrella != 0){
+                stack.push("robar1Estrella");
+                robarEstrella--;
+            }
+            stack.push("regalarMonedas");
+            stack.push("perderEstrella");
         }
     }
-
+    private void ejecutarEvento(){
+//        String valor = stack.pop().toString();
+        switch (stack.peek()) {
+            case "duelo":
+                stack.pop();
+                duelo();
+                break;
+            case "roboMonedas":
+                stack.pop();
+                roboMonedas();
+                break;
+            case "ganarDosEstrellas":
+                stack.pop();
+                ganar2Estrellas();
+                break;
+            case "ganarCincoEstrellas":
+                stack.pop();
+                ganar5Estrellas();
+                break;
+            case "teletransporte":
+                stack.pop();
+                break;
+            case "cambioLugares":
+                stack.pop();
+                int jugador2 = getNumero(GameUser.getCantidad());
+                while(jugador == jugador2){
+                    jugador2 = getNumero(GameUser.getCantidad());
+                }   System.out.println("cambiolugar"+jugador2);
+                Tablero.cambioLugar(jugador, jugador2);
+                break;
+            case "robar1Estrella":
+                stack.pop();
+                roboEstrella();
+                break;
+            case "regalarMonedas":
+                stack.pop();
+                perderMonedas();
+                break;
+            case "perderEstrella":
+                stack.pop();
+                perderEstrella();
+                break;
+            default:
+                break;
+        }
+    }
     private void darEstrella(int ganador) {
         switch (ganador) {
                 case 1:
@@ -171,10 +251,10 @@ public class Evento {
     
     public void perderEstrella(){
         JOptionPane.showMessageDialog(null, "LO SIENTO PERO LAMENTABLEMENTE PERDERÁS UNA ESTRELLA :C \n Y SE LA DAREMOS A OTRO");
-        int robo = getNumero(GameUser.getCantidad())+1;
+        int robo = getNumero(GameUser.getCantidad());
         while(true){
             if (robo == jugador){
-                robo = getNumero(GameUser.getCantidad())+1;    
+                robo = getNumero(GameUser.getCantidad());    
             }else{
                 break;
             }
@@ -201,4 +281,86 @@ public class Evento {
         }
     
     }
+    
+    public void ganar2Estrellas(){
+        JOptionPane.showMessageDialog(null, "FELICIDADES ACABAS DE GANAR 2 ESTRELLAS \n DEBERÍAS SENTIRTE MUY COOL!!!!");
+        switch (jugador) {
+            case 1:
+                Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+2));
+                break;
+            case 2:
+                Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+2));
+                break;
+            case 3:
+                Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+2));               
+                break;
+            case 4:
+                Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+2));
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+    public void ganar5Estrellas(){
+        JOptionPane.showMessageDialog(null, "FELICIDADES ACABAS DE GANAR 5 ESTRELLAS Y SERÁS EL ÚNICO C: \n DEBERÍAS SENTIRTE DEMASIADO COOL!!!!");
+        switch (jugador) {
+            case 1:
+                Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+5));
+                break;
+            case 2:
+                Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+5));
+                break;
+            case 3:
+                Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+5));
+                break;
+            case 4:
+                Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+5));
+                break;
+            default:
+                break;
+        }
+    }
+    public void roboEstrella(){
+        JOptionPane.showMessageDialog(null, "GANARÁS UNA ESTRELLA Y UN COMPAÑERO TUYO PERDERÁ UNA SUYA!!!! ");
+        robarEstrella--;
+        int perdedor = getNumero(GameUser.getCantidad());
+        while(perdedor==jugador){
+            perdedor = getNumero(GameUser.getCantidad());
+        }
+        switch (perdedor) {
+            case 1:
+                Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())-1));
+                break;
+            case 2:
+                Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())-1));
+                break;
+            case 3:
+                Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())-1));
+                break;
+            case 4:
+                Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())-1));
+                break;
+            default:
+                break;
+        }switch (jugador) {
+            case 1:
+                Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+1));
+                break;
+            case 2:
+                Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+1));
+                break;
+            case 3:
+                Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+1));
+                break;
+            case 4:
+                Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+1));
+                break;
+            default:
+                break;
+        }
+    }
+
+
 }

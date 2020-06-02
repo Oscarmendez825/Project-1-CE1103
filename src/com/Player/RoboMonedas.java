@@ -182,10 +182,9 @@ public class RoboMonedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
-        int monedas = Integer.parseInt(Tablero.getMoneda1().getText());
+        
         int cantidad = Evento.getNumero(5);
-        monedas = monedas-cantidad;
-        Tablero.getMoneda1().setText(""+monedas);
+        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())-cantidad));
         switch (Evento.getJugador()) {
             case 1:
                 {
@@ -222,10 +221,10 @@ public class RoboMonedas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton1ActionPerformed
 
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
-        int monedas = Integer.parseInt(Tablero.getMoneda2().getText());
+        
         int cantidad = Evento.getNumero(5);
-        monedas = monedas-cantidad;
-        Tablero.getMoneda1().setText(""+monedas);
+        
+        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())-cantidad));
         switch (Evento.getJugador()) {
             case 1:
                 {
@@ -262,10 +261,9 @@ public class RoboMonedas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton2ActionPerformed
 
     private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
-        int monedas = Integer.parseInt(Tablero.getMoneda3().getText());
+        
         int cantidad = Evento.getNumero(5);
-        monedas = monedas-cantidad;
-        Tablero.getMoneda1().setText(""+monedas);
+        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())-cantidad));
         switch (Evento.getJugador()) {
             case 1:
                 {
@@ -304,8 +302,7 @@ public class RoboMonedas extends javax.swing.JFrame {
     private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
         int monedas = Integer.parseInt(Tablero.getMoneda4().getText());
         int cantidad = Evento.getNumero(5);
-        monedas = monedas-cantidad;
-        Tablero.getMoneda1().setText(""+monedas);
+        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())-cantidad));
         switch (Evento.getJugador()) {
             case 1:
                 {
