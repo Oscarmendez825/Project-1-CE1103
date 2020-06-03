@@ -28,6 +28,9 @@ public class Evento{
     public Evento(int jugador) {
         Evento.jugador = jugador;
     }
+
+    public Evento() {
+    }
     
     
     public static int getNumero(int num){
@@ -109,6 +112,8 @@ public class Evento{
                 break;
             case "teletransporte":
                 stack.pop();
+                int posicion = getNumero(33);
+                Tablero.teletransporte(jugador, posicion);
                 break;
             case "cambioLugares":
                 stack.pop();
@@ -159,27 +164,27 @@ public class Evento{
             JOptionPane.showMessageDialog(null, "ESTÁN APUNTO DE ENFRENTARSE EN UN DUELO!!!");
             switch (juego) {
                 case 1:
-                    new PosicionesStart().setVisible(true);
-                    cantidadDuelo--;
+//                    new PosicionesStart().setVisible(true);
+                    
                     break;
                 case 2:
-                    new SoupScores().setVisible(true);
-                    cantidadDuelo--;
+//                    new SoupScores().setVisible(true);
+                    
                     break;
                 case 3:
-                    cantidadDuelo--;
+                    
                     break;
                 case 4:
-                    cantidadDuelo--;
+                    
                     break;
                 case 5:
-                    cantidadDuelo--;
+                    
                     break;
                 case 6:
-                    cantidadDuelo--;
+                    
                     break;
                 case 7:
-                    cantidadDuelo--;
+                    
                     break;
                 default:
                     break;

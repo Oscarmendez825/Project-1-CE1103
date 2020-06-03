@@ -6,6 +6,7 @@
 package com.SnakeGame;
 
 import com.Player.GameUser;
+import com.Player.Tablero;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -13,6 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class PosicionesStart extends javax.swing.JFrame {
@@ -249,6 +251,49 @@ public class PosicionesStart extends javax.swing.JFrame {
     }//GEN-LAST:event_butDActionPerformed
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
+        int valor1 = Integer.parseInt(puntA.getText());
+        int valor2 = Integer.parseInt(puntA.getText());
+        int valor3 = Integer.parseInt(puntA.getText());
+        int valor4 = Integer.parseInt(puntA.getText());
+        switch (GameUser.getCantidad()) {
+            case 2:
+                if (valor1>valor2){
+                    JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                    Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                    Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+                    
+                }   break;
+            case 3:
+                if (valor1 > valor2 && valor1 > valor3){
+                    JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                    Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+                }else if(valor2 > valor1 && valor2 > valor3){
+                    JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                    Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+                }else if(valor3 > valor2 && valor3 > valor1){
+                    JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
+                    Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
+                }   break;
+            case 4:
+                if (valor1 > valor2 && valor1 > valor3 && valor1 > valor4){
+                    JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                    Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+                }else if(valor2 > valor1 && valor2 > valor3 && valor2 > valor4){
+                    JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                    Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+                }else if(valor3 > valor2 && valor3 > valor1 && valor3 > valor4){
+                    JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
+                    Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
+                }else if(valor4 > valor2 && valor4 > valor1 && valor4 > valor3){
+                    JOptionPane.showMessageDialog(null,GameUser.getName4()+" GANA!!!");
+                    Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+3));
+                }   break;
+            default:
+                break;
+        }
         this.setVisible(false);
     }//GEN-LAST:event_continuarActionPerformed
     

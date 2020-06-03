@@ -1,0 +1,24 @@
+
+ DATOS PARTY PUNTUACIONES
+Oscsr---->ESTRELLAS----->10---->MONEDAS----->20
+kjehka2---->ESTRELLAS----->10---->MONEDAS----->20
+
+DATOS PARTY PUNTUACIONES
+as---->ESTRELLAS----->10---->MONEDAS----->20
+as---->ESTRELLAS----->10---->MONEDAS----->20
+as---->ESTRELLAS----->10---->MONEDAS----->20
+as---->ESTRELLAS----->10---->MONEDAS----->20
+
+DATOS PARTY PUNTUACIONES
+ds---->ESTRELLAS----->12---->MONEDAS----->12
+sd---->ESTRELLAS----->8---->MONEDAS----->28
+
+DATOS PARTY PUNTUACIONES
+a---->ESTRELLAS----->7---->MONEDAS----->32
+s---->ESTRELLAS----->13---->MONEDAS----->20
+
+DATOS PARTY PUNTUACIONES
+zsd---->ESTRELLAS----->10---->MONEDAS----->42
+szd---->ESTRELLAS----->10---->MONEDAS----->22
+sad---->ESTRELLAS----->11---->MONEDAS----->44
+sda---->ESTRELLAS----->9---->MONEDAS----->66

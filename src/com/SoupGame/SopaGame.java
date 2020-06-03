@@ -306,7 +306,6 @@ public class SopaGame extends javax.swing.JFrame{
                 letters[i][j].setBackground(Color.LIGHT_GRAY);
                 letters[i][j].setFont(new java.awt.Font("arial", 1, 15)); 
                 letters[i][j].setForeground(Color.BLACK);
-                letters[i][j].setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 letters[i][j].setOpaque(true);
                 letters[i][j].setBorder(new javax.swing.border.LineBorder(Color.RED, 3));
                 letters[i][j].addMouseListener(new java.awt.event.MouseAdapter() {
@@ -394,9 +393,9 @@ public class SopaGame extends javax.swing.JFrame{
     
     private void eliminate() {
         for (int i = 0; i < 10; i++) {
-            if (!word[i].getText().substring(0, 1).equals("<")) {
+            if (!word[i].getBackground().equals(Color.black)) {
                 if (eliminateword(startx[i],starty[i],word[i].getText().length(),direction[i])){
-                    word[i].setText("<html><body><s>"+word[i].getText()+"</s></body></html>");
+                    word[i].setBackground(Color.black);                
                     puntaje++;
                     break;
                     
@@ -405,10 +404,11 @@ public class SopaGame extends javax.swing.JFrame{
         }
         boolean aux = true;
         for (int i = 0; i < letters.length; i++){
-            if (!word[i].getText().substring(0, 1).equals("<")) {
+            if (!word[i].getBackground().equals(Color.black)){
                 aux=false;
                 break;
             }
+        
         }
         if (aux == true) {
             iwin=true;

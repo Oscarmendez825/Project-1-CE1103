@@ -9,6 +9,9 @@ import com.ListaCircular.ListaCircular;
 import com.ListaCircularDoblementeEnlazada.ListCircDobEn;
 import com.ListaDobleE.ListaDoble;
 import com.ListaEnlazadaSimple.ListaEnlazada;
+import com.ObserverPattern.ContentCreatorSubject;
+import com.ObserverPattern.SubscriberConcreteObserver;
+import java.awt.Color;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,12 +30,8 @@ public class Tablero extends javax.swing.JFrame {
     private boolean turnoB = false;
     private boolean turnoC = false;
     private boolean turnoD = false;
-    private int vueltaA = 1;
-    private int vueltaB = 1;
-    private int vueltaC = 1;
-    private int vueltaD = 1;
-    private int vueltas = 1;
-    private int monedasvalor;
+
+    private int pasadas = 0;
     private boolean tiro = false;
     private static int valor;
     ImageIcon imageValor;
@@ -43,12 +42,16 @@ public class Tablero extends javax.swing.JFrame {
     private static int valorB = 0;
     private static int valorC = 0;
     private static int valorD = 0;
+    private int vueltasGen;
+    private boolean hayDuelo = false;
 //    JLabel jugador1;
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
     ListaDoble<JLabel> faseC;
     ListCircDobEn<JLabel> faseD;
     GameUser jugadores;
+    SubscriberConcreteObserver subscriber1 = new SubscriberConcreteObserver();
+    ContentCreatorSubject contentcreator = new ContentCreatorSubject();
 //    Casilla casillas;
     public Tablero() {
         initComponents();
@@ -136,8 +139,12 @@ public class Tablero extends javax.swing.JFrame {
         getContentPane().setComponentZOrder(this.L2, 0);
         getContentPane().setComponentZOrder(this.L3, 0);
         getContentPane().setComponentZOrder(this.L4, 0);
+        getContentPane().setComponentZOrder(this.estrellaLabel, 0);
+        getContentPane().setComponentZOrder(this.unoLabel, 0);
+        estrellaLabel.setOpaque(true);
+        estrellaLabel.setBackground(Color.BLACK);
         jugadores = new GameUser(L1,L2,L3,L4);
-        
+        contentcreator.linkObserver(subscriber1);
     }
 
     /**
@@ -303,8 +310,8 @@ public class Tablero extends javax.swing.JFrame {
         jname4 = new javax.swing.JLabel();
         jname3 = new javax.swing.JLabel();
         jname1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        unoLabel = new javax.swing.JLabel();
+        estrellaLabel = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -331,6 +338,8 @@ public class Tablero extends javax.swing.JFrame {
         jLabel136 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -882,13 +891,13 @@ public class Tablero extends javax.swing.JFrame {
         jname1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 150, 50, 30));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 180, 30, 30));
+        unoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        unoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesSelec/UNO.png"))); // NOI18N
+        jPanel1.add(unoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 600, 30, 30));
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 180, 30, 30));
+        estrellaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        estrellaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        jPanel1.add(estrellaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 30, 30));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
@@ -1016,6 +1025,14 @@ public class Tablero extends javax.swing.JFrame {
         jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/abajo.png"))); // NOI18N
         jPanel1.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, 20, 40));
 
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 180, 30, 30));
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/estrella.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 180, 30, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1042,7 +1059,7 @@ public class Tablero extends javax.swing.JFrame {
     }
     public int gennumero(){
         Random random = new Random();
-        valordado = random.nextInt(6)+1;
+        valordado = random.nextInt(6);
         return valordado;
     
     }
@@ -1076,16 +1093,25 @@ public class Tablero extends javax.swing.JFrame {
  
     
     }
+    public void colocarCarta(){
+        int posicion = Evento.getNumero(33);
+        estrellaLabel.setLocation(tablero.get(posicion).getLocation());
+    }
+    public void colocarEstrella(){
+        int posicion = Evento.getNumero(33);
+        estrellaLabel.setLocation(tablero.get(posicion).getLocation());
+        
+    }
     private void tirarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirarbuttonActionPerformed
         if(tiro == false){
             
-            int valor1 = gennumero();
-            int valor2 = gennumero();
+            int valor1 = gennumero()+1;
+            int valor2 = gennumero()+1;
 
             dadoLabel1.setIcon(setImage(valor1));
             dadoLabel2.setIcon(setImage(valor2));
-            int total = +valor1+valor2;
-
+            int total =+valor1+valor2;
+            System.out.println("total:"+(valor1+valor2));
 
             cuadrovalor.setText(""+total);
             if(valor == 0){
@@ -1093,10 +1119,18 @@ public class Tablero extends javax.swing.JFrame {
             }else{
                 valor+=total;
             }
-            if (valor>tablero.getSize()){
+            if (valor>=tablero.getSize()){
                 
-                valor =  (valor - tablero.getSize());
-  
+                valor =  Math.abs((valor - tablero.getSize()));
+                if (pasadas == GameUser.getCantidad()){
+                    vueltasGen++;
+                    pasadas = 0;
+                }else if (vueltasGen == 4){
+                    controlObserver(vueltasGen,false);
+                    
+                }else{
+                    pasadas++;
+                }
         }
          
 
@@ -1135,6 +1169,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        verificar();
                     }
                     
                 }else{
@@ -1153,7 +1188,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
-
+                        
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
@@ -1164,7 +1199,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoC = true;
                         tiro = false;
                         valor = valorC;
-
+                        
                     }else{
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
@@ -1176,7 +1211,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
-
+                        verificar();
                     }
 
                 }else{
@@ -1196,7 +1231,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
-
+                        System.out.println("valor: " +valor);
 
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
@@ -1209,7 +1244,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoC = true;
                         tiro = false;
                         valor = valorC;
-
+                        System.out.println("valor: " +valor);
 
                     }else if (turnoC == true){
                         L3.setLocation(tablero.get(valor).getLocation());
@@ -1222,9 +1257,9 @@ public class Tablero extends javax.swing.JFrame {
                         turnoD = true;
                         tiro = false;
                         valor = valorD;
-
+                        System.out.println("valor: " +valor);
                         
-                    }else{
+                    }else if (turnoD==true){
                         L4.setLocation(tablero.get(valor).getLocation());
                         L4.setBackground(tablero.get(valor).getBackground());
                         
@@ -1235,16 +1270,18 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
-
+                        System.out.println("valor: " +valor);
+                        verificar();
                     
                     }
-
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "Debe tirar los dados antes");
                 }
                 break;
             default:
                 break;
+             
         }
     }//GEN-LAST:event_moverbuttonActionPerformed
     public static void teletransporte(int usuario, int lugar){
@@ -1360,8 +1397,36 @@ public class Tablero extends javax.swing.JFrame {
     public static JLabel getEstrella4() {
         return estrella4;
     }
-
-
+    private void verificar(){
+        if ((valorA==valorB)&&(valorA!=0&&valorB!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }else if ((valorA==valorC)&&(valorA!=0&&valorC!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }else if ((valorA==valorD)&&(valorA!=0&&valorD!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }else if ((valorC==valorB)&&(valorC!=0&&valorB!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }else if ((valorD==valorB)&&(valorD!=0&&valorB!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }if ((valorC==valorD)&&(valorC!=0&&valorD!=0)){
+            hayDuelo = true;
+            controlObserver(vueltasGen,hayDuelo);
+            hayDuelo = false;
+        }
+    }
+    private void controlObserver(int vueltasT, boolean dueloActivator){
+        contentcreator.avisar(vueltasGen,hayDuelo);
+    }
     
     /**
      * @param args the command line arguments
@@ -1439,6 +1504,7 @@ public class Tablero extends javax.swing.JFrame {
     private static javax.swing.JLabel estrella2;
     private static javax.swing.JLabel estrella3;
     private static javax.swing.JLabel estrella4;
+    private javax.swing.JLabel estrellaLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -1451,6 +1517,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
@@ -1494,7 +1561,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -1582,5 +1648,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JLabel t8;
     private javax.swing.JLabel t9;
     private javax.swing.JButton tirarbutton;
+    private javax.swing.JLabel unoLabel;
     // End of variables declaration//GEN-END:variables
 }
