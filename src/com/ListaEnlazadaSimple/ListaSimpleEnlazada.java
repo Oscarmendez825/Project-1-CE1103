@@ -2,6 +2,7 @@
 package com.ListaEnlazadaSimple;
 
 import com.StackPackage.Stack;
+import javax.swing.JOptionPane;
 
 
 
@@ -30,15 +31,16 @@ public class ListaSimpleEnlazada {
 //        l.removeFirst();
 //        l.show();
         
-        Stack stack = new Stack();
-        stack.push("HOLA");
-        stack.push("HOLA2");
-        stack.push("HOLA3");
-        stack.push("HOLA4");
-        stack.push("HOLA5");
-        while(stack.isEmpty()!=true){
-            System.out.println(stack.pop());
+//        Stack stack = new Stack();
+//        stack.push("HOLA");
+//        stack.push("HOLA2");
+//        stack.push("HOLA3");
+//        stack.push("HOLA4");
+//        stack.push("HOLA5");
+//        while(stack.isEmpty()!=true){
+//            System.out.println(stack.pop());
+
     }
     
 }
-}
+

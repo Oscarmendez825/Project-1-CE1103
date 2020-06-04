@@ -23,14 +23,10 @@ import javax.swing.JOptionPane;
  */
 public class Tablero extends javax.swing.JFrame {
 
-    /**
-     * Creates new form sa
-     */
     private boolean turnoA = true;
     private boolean turnoB = false;
     private boolean turnoC = false;
     private boolean turnoD = false;
-
     private int pasadas = 0;
     private boolean tiro = false;
     private static int valor;
@@ -44,7 +40,8 @@ public class Tablero extends javax.swing.JFrame {
     private static int valorD = 0;
     private int vueltasGen;
     private boolean hayDuelo = false;
-//    JLabel jugador1;
+    private int posicionCarta = 15;
+    
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
     ListaDoble<JLabel> faseC;
@@ -52,7 +49,7 @@ public class Tablero extends javax.swing.JFrame {
     GameUser jugadores;
     SubscriberConcreteObserver subscriber1 = new SubscriberConcreteObserver();
     ContentCreatorSubject contentcreator = new ContentCreatorSubject();
-//    Casilla casillas;
+    
     public Tablero() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -145,6 +142,7 @@ public class Tablero extends javax.swing.JFrame {
         estrellaLabel.setBackground(Color.BLACK);
         jugadores = new GameUser(L1,L2,L3,L4);
         contentcreator.linkObserver(subscriber1);
+        unoLabel.setLocation(tablero.get(15).getLocation());
     }
 
     /**
@@ -366,7 +364,7 @@ public class Tablero extends javax.swing.JFrame {
         t5.setOpaque(true);
         jPanel1.add(t5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 60, 50));
 
-        t6.setBackground(new java.awt.Color(0, 255, 0));
+        t6.setBackground(new java.awt.Color(0, 0, 204));
         t6.setOpaque(true);
         jPanel1.add(t6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 60, 50));
 
@@ -406,7 +404,7 @@ public class Tablero extends javax.swing.JFrame {
         d8.setOpaque(true);
         jPanel1.add(d8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 60, 50));
 
-        t23.setBackground(new java.awt.Color(0, 0, 204));
+        t23.setBackground(new java.awt.Color(0, 255, 0));
         t23.setOpaque(true);
         jPanel1.add(t23, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 590, 60, 50));
 
@@ -434,11 +432,11 @@ public class Tablero extends javax.swing.JFrame {
         t14.setOpaque(true);
         jPanel1.add(t14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 220, 60, 50));
 
-        t25.setBackground(new java.awt.Color(0, 0, 204));
+        t25.setBackground(new java.awt.Color(255, 0, 0));
         t25.setOpaque(true);
         jPanel1.add(t25, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 60, 50));
 
-        t24.setBackground(new java.awt.Color(255, 255, 0));
+        t24.setBackground(new java.awt.Color(0, 0, 204));
         t24.setOpaque(true);
         jPanel1.add(t24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, 60, 50));
 
@@ -446,11 +444,11 @@ public class Tablero extends javax.swing.JFrame {
         t19.setOpaque(true);
         jPanel1.add(t19, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 590, 60, 50));
 
-        t18.setBackground(new java.awt.Color(0, 0, 204));
+        t18.setBackground(new java.awt.Color(0, 255, 0));
         t18.setOpaque(true);
         jPanel1.add(t18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 590, 60, 50));
 
-        t17.setBackground(new java.awt.Color(0, 255, 0));
+        t17.setBackground(new java.awt.Color(0, 0, 204));
         t17.setOpaque(true);
         jPanel1.add(t17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 500, 60, 50));
 
@@ -586,7 +584,7 @@ public class Tablero extends javax.swing.JFrame {
         d1.setOpaque(true);
         jPanel1.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 60, 50));
 
-        a1.setBackground(new java.awt.Color(0, 0, 255));
+        a1.setBackground(new java.awt.Color(0, 0, 204));
         a1.setOpaque(true);
         jPanel1.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 60, 50));
 
@@ -612,7 +610,7 @@ public class Tablero extends javax.swing.JFrame {
         jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ImagesDado/arriba.png"))); // NOI18N
         jPanel1.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 20, 40));
 
-        a3.setBackground(new java.awt.Color(0, 0, 255));
+        a3.setBackground(new java.awt.Color(0, 0, 204));
         a3.setOpaque(true);
         jPanel1.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 240, 60, 50));
 
@@ -624,7 +622,7 @@ public class Tablero extends javax.swing.JFrame {
         a4.setOpaque(true);
         jPanel1.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 60, 50));
 
-        a5.setBackground(new java.awt.Color(0, 0, 255));
+        a5.setBackground(new java.awt.Color(0, 0, 204));
         a5.setOpaque(true);
         jPanel1.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 240, 60, 50));
 
@@ -680,7 +678,7 @@ public class Tablero extends javax.swing.JFrame {
         c2.setOpaque(true);
         jPanel1.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, 60, 50));
 
-        c3.setBackground(new java.awt.Color(0, 0, 255));
+        c3.setBackground(new java.awt.Color(0, 0, 204));
         c3.setOpaque(true);
         jPanel1.add(c3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 60, 50));
 
@@ -1093,21 +1091,17 @@ public class Tablero extends javax.swing.JFrame {
  
     
     }
-    public void colocarCarta(){
-        int posicion = Evento.getNumero(33);
-        estrellaLabel.setLocation(tablero.get(posicion).getLocation());
-    }
+
     public void colocarEstrella(){
         int posicion = Evento.getNumero(33);
         estrellaLabel.setLocation(tablero.get(posicion).getLocation());
         
     }
     private void tirarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirarbuttonActionPerformed
-        if(tiro == false){
-            
+        if(tiro == false){  
             int valor1 = gennumero()+1;
             int valor2 = gennumero()+1;
-
+            
             dadoLabel1.setIcon(setImage(valor1));
             dadoLabel2.setIcon(setImage(valor2));
             int total =+valor1+valor2;
@@ -1133,7 +1127,7 @@ public class Tablero extends javax.swing.JFrame {
                 }
         }
          
-
+        
         tiro = true;
         
         }else{
@@ -1148,7 +1142,6 @@ public class Tablero extends javax.swing.JFrame {
                     if (turnoA == true){
                         L1.setLocation(tablero.get(valor).getLocation());
                         L1.setBackground(tablero.get(valor).getBackground());
-                        
                         valorA = valor;
                         Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda1,1);
                         System.out.println("valor A: " +valorA);
@@ -1156,8 +1149,8 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
-                        
-                    }else{
+                        carta();
+                    }else if (turnoB == true){
                         
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
@@ -1170,6 +1163,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         verificar();
+                        carta();
                     }
                     
                 }else{
@@ -1188,7 +1182,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
-                        
+                        carta();
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
@@ -1199,8 +1193,8 @@ public class Tablero extends javax.swing.JFrame {
                         turnoC = true;
                         tiro = false;
                         valor = valorC;
-                        
-                    }else{
+                        carta();
+                    }else if (turnoC == true){
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
                         
@@ -1212,6 +1206,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         verificar();
+                        carta();
                     }
 
                 }else{
@@ -1232,7 +1227,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorB;
                         System.out.println("valor: " +valor);
-
+                        carta();
                     }else if (turnoB == true){
                         L2.setLocation(tablero.get(valor).getLocation());
                         L2.setBackground(tablero.get(valor).getBackground());
@@ -1245,7 +1240,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorC;
                         System.out.println("valor: " +valor);
-
+                        carta();
                     }else if (turnoC == true){
                         L3.setLocation(tablero.get(valor).getLocation());
                         L3.setBackground(tablero.get(valor).getBackground());
@@ -1258,7 +1253,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorD;
                         System.out.println("valor: " +valor);
-                        
+                        carta();
                     }else if (turnoD==true){
                         L4.setLocation(tablero.get(valor).getLocation());
                         L4.setBackground(tablero.get(valor).getBackground());
@@ -1272,7 +1267,7 @@ public class Tablero extends javax.swing.JFrame {
                         valor = valorA;
                         System.out.println("valor: " +valor);
                         verificar();
-                    
+                        carta();
                     }
                     
                 }else{
@@ -1397,6 +1392,8 @@ public class Tablero extends javax.swing.JFrame {
     public static JLabel getEstrella4() {
         return estrella4;
     }
+    
+    
     private void verificar(){
         if ((valorA==valorB)&&(valorA!=0&&valorB!=0)){
             hayDuelo = true;
@@ -1418,16 +1415,109 @@ public class Tablero extends javax.swing.JFrame {
             hayDuelo = true;
             controlObserver(vueltasGen,hayDuelo);
             hayDuelo = false;
-        }if ((valorC==valorD)&&(valorC!=0&&valorD!=0)){
+        }else if ((valorC==valorD)&&(valorC!=0&&valorD!=0)){
             hayDuelo = true;
             controlObserver(vueltasGen,hayDuelo);
             hayDuelo = false;
         }
+        
     }
+    
     private void controlObserver(int vueltasT, boolean dueloActivator){
         contentcreator.avisar(vueltasGen,hayDuelo);
     }
+    private void colocarCarta(){
+        posicionCarta = Evento.getNumero(33);
+        unoLabel.setLocation(tablero.get(posicionCarta).getLocation());
+    }
+    private void carta(){
+        
+        String opciones[] = {"AVANZAR 3 ESPACIOS","GANAR 1 ESTRELLA", "GANAR 3 MONEDAS"};
+        if (valorA == posicionCarta){
+            System.out.println("ENTRARCARTA1");
+            int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
+            switch (x) {
+                case 0:
+                    valorA +=4;
+                    L1.setLocation(tablero.get(valorA).getLocation());
+                    L1.setBackground(tablero.get(valorA).getBackground());
+                    colocarCarta();
+                    break;
+                case 1:
+                    estrella1.setText(""+(Integer.parseInt(estrella1.getText())+1));
+                    colocarCarta();
+                    break;
+                case 2: 
+                    moneda1.setText(""+(Integer.parseInt(moneda1.getText())+3));
+                    colocarCarta();
+                    break;
+                default:
+                    break;
+            }
+        }else if (valorB == posicionCarta){
+            System.out.println("ENTRARCARTA1");
+            int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
+            switch (x) {
+                case 0:
+                    valorB +=4;
+                    L2.setLocation(tablero.get(valorB).getLocation());
+                    L2.setBackground(tablero.get(valorB).getBackground());
+                    colocarCarta();
+                    break;
+                case 1:
+                    estrella2.setText(""+(Integer.parseInt(estrella2.getText())+1));
+                    colocarCarta();
+                    break; 
+                case 2:
+                    moneda2.setText(""+(Integer.parseInt(moneda2.getText())+3));
+                    colocarCarta();
+                    break;
+                default:
+                    break;
+            }
+        }else if (valorC == posicionCarta){
+            int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
+            switch (x) {
+                case 0:
+                    valorC +=4;
+                    L3.setLocation(tablero.get(valorC).getLocation());
+                    L3.setBackground(tablero.get(valorC).getBackground());
+                    colocarCarta();
+                    break;
+                case 1:
+                    estrella3.setText(""+(Integer.parseInt(estrella3.getText())+1));
+                    colocarCarta();
+                    break;
+                case 2: 
+                    moneda3.setText(""+(Integer.parseInt(moneda3.getText())+3));
+                    colocarCarta();
+                    break;
+                default:
+                    break;
+            }
+        }else if (valorD == posicionCarta){
+            int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
+            switch (x) {
+                case 0:
+                    valorD +=4;
+                    L4.setLocation(tablero.get(valorD).getLocation());
+                    L4.setBackground(tablero.get(valorD).getBackground());
+                    colocarCarta();
+                    break;
+                case 1:
+                    estrella4.setText(""+(Integer.parseInt(estrella4.getText())+1));
+                    colocarCarta();
+                    break; 
+                case 2:
+                    moneda4.setText(""+(Integer.parseInt(moneda4.getText())+3));
+                    colocarCarta();
+                    break;
+                default:
+                    break;
+            }
+        }
     
+    }
     /**
      * @param args the command line arguments
      */
