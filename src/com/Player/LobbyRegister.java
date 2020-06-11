@@ -233,9 +233,40 @@ public class LobbyRegister extends javax.swing.JFrame {
         personaje2 = (String)barra2.getSelectedItem();
         personaje3 = (String)barra3.getSelectedItem();
         personaje4 = (String)barra4.getSelectedItem();
-        setData();
+        igualdadNombre();
     }//GEN-LAST:event_jButton5ActionPerformed
-    public void setData(){
+    private void igualdadNombre(){
+        switch (cantidadvalor) {
+            case 2:
+                if (name2.equals(name1)||name1.equals(name2)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else{
+                    setData();
+                }   break;
+            case 3:
+                if (name1.equals(name2) || name2.equals(name1) || name1.equals(name3) || name2.equals(name3) || name3.equals(name1)||name3.equals(name2)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else{
+                    setData();
+                }   break;
+            case 4:
+                if (name4.equals(name1)||name4.equals(name2)||name4.equals(name3)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else if (name3.equals(name1)||name3.equals(name2)||name3.equals(name4)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else if (name2.equals(name1)||name2.equals(name4)||name2.equals(name3)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else if (name1.equals(name4)||name1.equals(name2)||name1.equals(name3)){
+                    JOptionPane.showMessageDialog(null, "NO SE PERMITEN NOMBRES IGUALES");
+                }else{
+                    setData();
+                }   break;
+            default:
+                break;
+        }
+        
+    }
+    private void setData(){
         
         switch(cantidadvalor){
             case 2:

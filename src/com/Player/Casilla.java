@@ -40,7 +40,7 @@ public class Casilla {
                 break;
             case "java.awt.Color[r=255,g=255,b=0]":
                 //amarillo
-                Evento evento = new Evento(jugador);
+                Evento evento = Evento.getInstance(jugador);
                 evento.eventos();
                 break;
             default:
@@ -48,7 +48,7 @@ public class Casilla {
         }
     
     }
-    
+           
 
         
     

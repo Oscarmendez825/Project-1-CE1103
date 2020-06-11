@@ -252,9 +252,9 @@ public class PosicionesStart extends javax.swing.JFrame {
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         int valor1 = Integer.parseInt(puntA.getText());
-        int valor2 = Integer.parseInt(puntA.getText());
-        int valor3 = Integer.parseInt(puntA.getText());
-        int valor4 = Integer.parseInt(puntA.getText());
+        int valor2 = Integer.parseInt(puntB.getText());
+        int valor3 = Integer.parseInt(puntC.getText());
+        int valor4 = Integer.parseInt(puntD.getText());
         switch (GameUser.getCantidad()) {
             case 2:
                 if (valor1>valor2){

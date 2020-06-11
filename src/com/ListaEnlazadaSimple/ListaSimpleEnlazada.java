@@ -12,15 +12,16 @@ public class ListaSimpleEnlazada {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        ListaEnlazada<Integer> l = new ListaEnlazada<Integer>();
-//        
-//        l.add(12);
-//        l.add(13);
-//        l.add(14);
-//        l.add(15);
-//        l.add(16);
-//        l.add(17);
-//        l.add(18);
+        ListaEnlazada<Integer> l = new ListaEnlazada<Integer>();
+        
+        l.add(12);
+        l.add(13);
+        l.add(14);
+        l.add(15);
+        l.add(16);
+        l.add(17);
+        l.add(18);
+        System.out.println(l.get(-4));
 //
 //        l.show();
 //        System.out.println("");

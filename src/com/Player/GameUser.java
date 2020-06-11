@@ -295,7 +295,7 @@ public class GameUser {
                     default:
                         break;
                 }
-                switch (personaje3) {
+                switch (personaje4) {
                     case "Halo":
                     {
                         ImageIcon j4 = new ImageIcon("halo.png");

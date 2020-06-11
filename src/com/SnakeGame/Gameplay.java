@@ -17,19 +17,18 @@ import javax.swing.Timer;
         
 public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
-    private ImageIcon logoImage;
-    private int[] longitudX = new int[750];
-    private int[] longitudY = new int [750];
+    private int[] longitudX = new int[70];
+    private int[] longitudY = new int [70];
     private boolean izquierda = false;
     private boolean derecha = false;
     private boolean arriba = false;
     private boolean abajo = false;
     
-    private ImageIcon snakeder;
-    private ImageIcon snakearr;
-    private ImageIcon snakeab;
-    private ImageIcon snakeizq;
-    private ImageIcon snakebody;
+    private ImageIcon snakeDerecha;
+    private ImageIcon snakeArriba;
+    private ImageIcon snakeAbajo;
+    private ImageIcon snakeIzquierda;
+    private ImageIcon snakeBody;
     private ImageIcon food;
     
     
@@ -40,15 +39,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     
     
     private int movimientos = 0;
-    private int[] comidaX =  {25,50,100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625,650,
-                             675,700,725,750,775,800,825,850};
-    private int[] comidaY =  {100,125,150,175,200,225,250,275,300,325,350,375,400,425,450,475,500,525,550,575,600,625};
+
     
     
-   private int posX = random.nextInt(34);
-   private int posY = random.nextInt(21);
+   private int posX = getNumber(33);
+   private int posY = getNumber(22);
     
    static int puntaje;
+   
     public Gameplay() {
         
         addKeyListener(this);
@@ -60,7 +58,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     }
     
     @Override
-    public void paint (Graphics g){
+    public void paint (Graphics pantalla){
         
         if (movimientos == 0){
             longitudX[2] = 50;
@@ -74,69 +72,61 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 
         }
 
-
-        logoImage = new ImageIcon("logoSnakeGame.png");
-        logoImage.paintIcon(this, g, 360,0);
-
+        pantalla.setColor(Color.RED);
+        pantalla.drawRect(24, 74, 851, 577);
         
-        g.setColor(Color.WHITE);
-        g.drawRect(24, 74, 851, 577);
-        
-        g.setColor(Color.BLACK);
-        g.fillRect(25, 75, 850, 575);
+        pantalla.setColor(Color.BLACK);
+        pantalla.fillRect(25, 75, 850, 575);
         
         
-        snakeder = new ImageIcon("derecha.png");
-        snakeder.paintIcon(this, g, longitudX[0],longitudY[0]);
+        snakeDerecha = new ImageIcon("derecha.png");
+        snakeDerecha.paintIcon(this, pantalla, longitudX[0],longitudY[0]);
         
         for (int i = 0; i<longitudinicial; i++){
             
             if (i == 0 && derecha){
-                snakeder = new ImageIcon("derecha.png");
-                snakeder.paintIcon(this, g, longitudX[i],longitudY[i]);
+                snakeDerecha = new ImageIcon("derecha.png");
+                snakeDerecha.paintIcon(this, pantalla, longitudX[i],longitudY[i]);
             }
             if (i == 0 && izquierda){
-                snakeizq = new ImageIcon("izquierda.png");
-                snakeizq.paintIcon(this, g, longitudX[i],longitudY[i]);
+                snakeIzquierda = new ImageIcon("izquierda.png");
+                snakeIzquierda.paintIcon(this, pantalla, longitudX[i],longitudY[i]);
             }
             if (i == 0 && arriba){
-                snakearr = new ImageIcon("arriba.png");
-                snakearr.paintIcon(this, g, longitudX[i],longitudY[i]);
+                snakeArriba = new ImageIcon("arriba.png");
+                snakeArriba.paintIcon(this, pantalla, longitudX[i],longitudY[i]);
             }
             if (i == 0 && abajo){
-                snakeab = new ImageIcon("abajo.png");
-                snakeab.paintIcon(this, g, longitudX[i],longitudY[i]);
+                snakeAbajo = new ImageIcon("abajo.png");
+                snakeAbajo.paintIcon(this, pantalla, longitudX[i],longitudY[i]);
             }
             if (i!=0){
-                snakebody = new ImageIcon("cuerpo.png");
-                snakebody.paintIcon(this, g, longitudX[i],longitudY[i]);
+                snakeBody = new ImageIcon("cuerpo.png");
+                snakeBody.paintIcon(this, pantalla, longitudX[i],longitudY[i]);
             }
         }
         
         food = new ImageIcon("comida.png");
-        if (comidaX[posX]==longitudX[0] && comidaY[posY]==longitudY[0]){
+        if (posX==longitudX[0] && posY==longitudY[0]){
             longitudinicial+=1;
-            posX = random.nextInt(33);
-            posY = random.nextInt(21);
+            posX = getNumber(33);
+            posY = getNumber(22);
             puntaje++;
             System.out.println(puntaje);
         }
-        //System.out.println(comidaX[posX]+","+posX+";"+comidaY[posY]+","+posY);
-        food.paintIcon(this, g, comidaX[posX], comidaY[posY]);
+
+        food.paintIcon(this, pantalla, posX, posY);
         
-        g.dispose();
+        pantalla.dispose();
         
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        
-    }
+
 
     @Override
     public void keyPressed(KeyEvent e) {
         
-       if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+       if (e.getKeyCode() == KeyEvent.VK_D){
           
            movimientos++;
            derecha = true;
@@ -151,7 +141,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
            abajo = false;
            
        }
-       if (e.getKeyCode() == KeyEvent.VK_LEFT){
+       if (e.getKeyCode() == KeyEvent.VK_A){
           
            movimientos++;
            izquierda = true;
@@ -166,7 +156,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
            abajo = false;
            
        }
-       if (e.getKeyCode() == KeyEvent.VK_UP){
+       if (e.getKeyCode() == KeyEvent.VK_W){
           
            movimientos++;
            arriba = true;
@@ -181,7 +171,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
            derecha = false;
            
        }
-       if (e.getKeyCode() == KeyEvent.VK_DOWN){
+       if (e.getKeyCode() == KeyEvent.VK_S){
           
            movimientos++;
            abajo = true;
@@ -198,10 +188,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
        }
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-       
-    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -310,5 +297,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         
     }
 
-
+    @Override
+    public void keyReleased(KeyEvent e) {
+       
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+    private int getNumber(int num) {
+	Random r = new Random();
+        int valor = r.nextInt(num);
+        while (valor == 0){
+            valor = r.nextInt(num);
+        }
+	return 25 * valor;
+}
 }

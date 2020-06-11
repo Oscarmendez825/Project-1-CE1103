@@ -188,30 +188,22 @@ public class RoboMonedas extends javax.swing.JFrame {
         switch (Evento.getJugador()) {
             case 1:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda1().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda1().setText(""+monedas2);
+                    Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
                     break;
                 }
             case 2:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda2().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda2().setText(""+monedas2);
+                    Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
                     break;
                 }
             case 3:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda3().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda3().setText(""+monedas2);
+                    Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
                     break;
                 }
             case 4:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda4().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda4().setText(""+monedas2);
+                    Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
                     break;
                 }
             default:
@@ -228,30 +220,22 @@ public class RoboMonedas extends javax.swing.JFrame {
         switch (Evento.getJugador()) {
             case 1:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda1().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda1().setText(""+monedas2);
+                    Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
                     break;
                 }
             case 2:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda2().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda2().setText(""+monedas2);
+                    Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
                     break;
                 }
             case 3:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda3().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda3().setText(""+monedas2);
+                    Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
                     break;
                 }
             case 4:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda4().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda4().setText(""+monedas2);
+                    Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
                     break;
                 }
             default:
@@ -267,30 +251,22 @@ public class RoboMonedas extends javax.swing.JFrame {
         switch (Evento.getJugador()) {
             case 1:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda1().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda1().setText(""+monedas2);
+                    Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
                     break;
                 }
             case 2:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda2().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda2().setText(""+monedas2);
+                    Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
                     break;
                 }
             case 3:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda3().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda3().setText(""+monedas2);
+                    Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
                     break;
                 }
             case 4:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda4().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda4().setText(""+monedas2);
+                    Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
                     break;
                 }
             default:
@@ -300,36 +276,27 @@ public class RoboMonedas extends javax.swing.JFrame {
     }//GEN-LAST:event_boton3ActionPerformed
 
     private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
-        int monedas = Integer.parseInt(Tablero.getMoneda4().getText());
         int cantidad = Evento.getNumero(5);
         Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())-cantidad));
         switch (Evento.getJugador()) {
             case 1:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda1().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda1().setText(""+monedas2);
+                    Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
                     break;
                 }
             case 2:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda2().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda2().setText(""+monedas2);
+                    Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
                     break;
                 }
             case 3:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda3().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda3().setText(""+monedas2);
+                    Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
                     break;
                 }
             case 4:
                 {
-                    int monedas2 = Integer.parseInt(Tablero.getMoneda4().getText());
-                    monedas2 = monedas2 + cantidad;
-                    Tablero.getMoneda4().setText(""+monedas2);
+                    Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
                     break;
                 }
             default:

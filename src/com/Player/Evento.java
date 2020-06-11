@@ -23,20 +23,25 @@ public class Evento{
     private static int jugador;
     private static int cambio = 5; 
     private static Stack stack = new Stack();
+    private static Evento evento;
     
-    
-    public Evento(int jugador) {
+    private Evento(int jugador) {
         Evento.jugador = jugador;
     }
 
-    public Evento() {
+
+    public static Evento getInstance(int jugador){
+        if (evento == null){
+            evento = new Evento(jugador);
+        
+        }
+        return evento;
     }
-    
     
     public static int getNumero(int num){
         Random random = new Random();
-        int evento = random.nextInt(num)+1;
-        return evento;
+        int eventoNum = random.nextInt(num)+1;
+        return eventoNum;
     
     }
 
@@ -112,8 +117,14 @@ public class Evento{
                 break;
             case "teletransporte":
                 stack.pop();
-                int posicion = getNumero(33);
-                Tablero.teletransporte(jugador, posicion);
+                
+                int eleccion = getNumero(2)+1;
+                if(eleccion == 1){
+                    Tablero.crearFase(jugador, 100);
+                }else{
+                    int posicion = getNumero(33);
+                    Tablero.teletransporte(jugador, posicion);
+                }
                 break;
             case "cambioLugares":
                 stack.pop();
@@ -201,20 +212,20 @@ public class Evento{
     
     public void perderMonedas(){
         JOptionPane.showMessageDialog(null, "LO SIENTO, ESTÁS PERO PERDERÁS ALGUNAS MONEDAS :C \n Y SERÁ REPARTIDAS ENTRE TUS AMIGOS");
-        int cantidad = getNumero(5)+1;
-        while(cantidad%2!=0){
-           cantidad = getNumero(5)+1;
+        int cantidad = getNumero(10)+1;
+        while(cantidad%GameUser.getCantidad()!=0){
+           cantidad = getNumero(10)+1;
         }            
-        if (cantidad%2 == 0){
+        if (cantidad%GameUser.getCantidad() == 0){
             switch (jugador) {
                 case 1:
                     {
                         int monedas = Integer.parseInt(Tablero.getMoneda1().getText());
                         monedas = monedas-cantidad;
                         Tablero.getMoneda1().setText(""+monedas);
-                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
-                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
-                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
+                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad/GameUser.getCantidad()));
                         break;
                     }
                 case 2:
@@ -222,9 +233,9 @@ public class Evento{
                         int monedas = Integer.parseInt(Tablero.getMoneda2().getText());
                         monedas = monedas-cantidad;
                         Tablero.getMoneda2().setText(""+monedas);
-                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
-                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
-                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
+                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad/GameUser.getCantidad()));
                         break;
                     }
                 case 3:
@@ -232,9 +243,9 @@ public class Evento{
                         int monedas = Integer.parseInt(Tablero.getMoneda3().getText());
                         monedas = monedas-cantidad;
                         Tablero.getMoneda3().setText(""+monedas);
-                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
-                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
-                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad));
+                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())+cantidad/GameUser.getCantidad()));
                         break;
                     }
                 case 4:
@@ -242,9 +253,9 @@ public class Evento{
                         int monedas = Integer.parseInt(Tablero.getMoneda4().getText());
                         monedas = monedas-cantidad;
                         Tablero.getMoneda4().setText(""+monedas);
-                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad));
-                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad));
-                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad));
+                        Tablero.getMoneda1().setText(""+(Integer.parseInt(Tablero.getMoneda1().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda3().setText(""+(Integer.parseInt(Tablero.getMoneda3().getText())+cantidad/GameUser.getCantidad()));
+                        Tablero.getMoneda2().setText(""+(Integer.parseInt(Tablero.getMoneda2().getText())+cantidad/GameUser.getCantidad()));
                         break;
                     }
                 default:

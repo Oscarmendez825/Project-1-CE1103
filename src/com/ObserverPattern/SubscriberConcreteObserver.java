@@ -31,8 +31,7 @@ public class SubscriberConcreteObserver implements ObserverInterface {
             new FinJuego().setVisible(true);
         }
         if (posicion == true){
-            JOptionPane.showMessageDialog(null, "POR ESTAR DOS JUGADORES EN LA MISMA CASILLA SE ACTIVARÁ UN NUEVO DUELO, A JUGAR!!!");
-            Evento evento = new Evento();
+            Evento evento = Evento.getInstance(1);
             evento.duelo();
         }
     }
