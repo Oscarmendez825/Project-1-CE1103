@@ -18,17 +18,20 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author oscar
+ *  Tablero Class
+ * @author Oscar Méndez
+ * @author Marco Picado
+ * @author Hansel Hampton
+ * @author Keyner Gómez
+ * @version 1.1
+ * @since 2020
  */
 public class Tablero extends javax.swing.JFrame {
-
+    //ATRIBUTOS E INSTANCIAS//
     private boolean turnoA = true;
     private boolean turnoB = false;
     private boolean turnoC = false;
     private boolean turnoD = false;
-
-
     private int pasadas = 0;
     private static boolean tiro = false;
     private static int valor;
@@ -43,17 +46,12 @@ public class Tablero extends javax.swing.JFrame {
     private int vueltasGen;
     private boolean hayDuelo = false;
     private int posicionCarta = 20;
-    private int posicionEstrella = 25;
-    
-    private static int valorFase;
-
-    
-    
+    private int posicionEstrella = 25;  
+    private static int valorFase;   
     private static int FaseInd1;
     private static int FaseInd2;
     private static int FaseInd3;
     private static int FaseInd4;
-    
     private static int posicion1 = -1;
     private static int posicion2 = -1;
     private static int posicion3 = -1;
@@ -62,15 +60,19 @@ public class Tablero extends javax.swing.JFrame {
     private static boolean FaseJug2 = false;
     private static boolean FaseJug3 = false;
     private static boolean FaseJug4 = false;
-    
     ListaEnlazada<JLabel> faseA;
     ListaEnlazada<JLabel> faseB;
     static ListaDoble<JLabel> faseC;
-    ListCircDobEn<JLabel> faseD;
+    static ListCircDobEn<JLabel> faseD;
     GameUser jugadores;
     SubscriberConcreteObserver subscriber1 = new SubscriberConcreteObserver();
     ContentCreatorSubject contentcreator = new ContentCreatorSubject();
+    //FIN ATRIBUTOS E INSTANCIAS//
     
+    
+    /***
+     * Método Constructor
+     */
     public Tablero() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -151,7 +153,6 @@ public class Tablero extends javax.swing.JFrame {
         faseA.add(a4);
         faseA.add(a5);
         //FIN FASE A//
-
         getContentPane().setComponentZOrder(this.L1, 0);
         getContentPane().setComponentZOrder(this.L2, 0);
         getContentPane().setComponentZOrder(this.L3, 0);
@@ -159,16 +160,14 @@ public class Tablero extends javax.swing.JFrame {
         getContentPane().setComponentZOrder(this.estrellaLabel, 0);
         getContentPane().setComponentZOrder(this.unoLabel, 0);
         getContentPane().setComponentZOrder(this.exitlbl, 0);
-        getContentPane().setComponentZOrder(this.exitlbl2, 0);
-        
+        getContentPane().setComponentZOrder(this.exitlbl2, 0);       
         estrellaLabel.setOpaque(true);
         estrellaLabel.setBackground(Color.BLACK);
         jugadores = new GameUser(L1,L2,L3,L4);
         contentcreator.linkObserver(subscriber1);
         unoLabel.setLocation(tablero.get(20).getLocation());
         cuadroFase.setEditable(false);
-        estrellaLabel.setLocation(tablero.get(25).getLocation());
-        
+        estrellaLabel.setLocation(tablero.get(25).getLocation());     
     }
 
     /**
@@ -1108,18 +1107,31 @@ public class Tablero extends javax.swing.JFrame {
 
     private void cuadrovalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuadrovalorActionPerformed
     }//GEN-LAST:event_cuadrovalorActionPerformed
+    /***
+     * Método ImageIcon
+     * @return image
+     */
     public ImageIcon dadoGif(){
         
         imageGif = new ImageIcon("dadogif.gif");
         return imageGif;
     
     }
+    /***
+     * Método gennumero
+     * @return Integer
+     */
     public int gennumero(){
         Random random = new Random();
         valordado = random.nextInt(6);
         return valordado;
     
     }
+    /***
+     * 
+     * @param valor Integer
+     * @return ImageIcon
+     */
     public ImageIcon setImage(int valor){
         switch (valor) {
             case 1:
@@ -1150,6 +1162,9 @@ public class Tablero extends javax.swing.JFrame {
  
     
     }
+    /***
+     * Método colocarEstrella 
+     */
 
     public void colocarEstrella(){
         int posicion = Evento.getNumero(33);
@@ -1157,8 +1172,12 @@ public class Tablero extends javax.swing.JFrame {
         posicionEstrella = posicion;
         
     }
+    /***
+     * Método tirarDado
+     * @param evt 
+     */
     private void tirarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tirarbuttonActionPerformed
-        
+ 
         if(tiro == false){  
             if ((FaseJug1 == true && turnoA == true)||(FaseJug2 == true && turnoB == true)||(FaseJug3 == true && turnoC == true)||(FaseJug4 == true && turnoD == true)){
                 JOptionPane.showMessageDialog(null, "DEBE LANZAR EL DADO CORRESPONDIENTE A LOS EVENTOS");
@@ -1199,9 +1218,11 @@ public class Tablero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No puede tirar 2 veces los dados");
         }
     }//GEN-LAST:event_tirarbuttonActionPerformed
-
+/***
+ * Método Mover
+ * @param evt 
+ */
     private void moverbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moverbuttonActionPerformed
-        
         if (tiro == true){
         switch (GameUser.getCantidad()) {
             
@@ -1349,12 +1370,12 @@ public class Tablero extends javax.swing.JFrame {
                         
                         valorD = valor;
                         Casilla.casilla(tablero.get(valor).getBackground().toString(), moneda4,4);
-                        System.out.println("valor D: " +valorD);
+                        
                         turnoD = false;
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
-                        System.out.println("valor: " +valor);
+                        
                         crearFase(4, valorD);
                         verificar();
                         carta();
@@ -1371,10 +1392,13 @@ public class Tablero extends javax.swing.JFrame {
                 break;
              
         }}
-        System.out.println("TIRO AL SALIR DE MOVER: "+tiro);
+        
         
     }//GEN-LAST:event_moverbuttonActionPerformed
-
+/***
+ * Método moverenFases
+ * @param evt 
+ */
     private void moverFaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moverFaseActionPerformed
         if ((FaseJug1 == true && turnoA == true)||(FaseJug2 == true && turnoB == true)||(FaseJug3 == true && turnoC == true)||(FaseJug4 == true && turnoD == true)){
             if ((FaseInd1 == 1 && turnoA == true)||(FaseInd2 == 1 && turnoB == true)||(FaseInd3 == 1 && turnoC == true)||(FaseInd4 == 1&& turnoD == true)){
@@ -1387,6 +1411,8 @@ public class Tablero extends javax.swing.JFrame {
                 movimientoCTras();
             }else if ((FaseInd1 == 5 && turnoA == true)||(FaseInd2 == 5 && turnoB == true)||(FaseInd3 == 5 && turnoC == true)||(FaseInd4 == 5 && turnoD == true)){
                 movimientoFaseDD();
+            }else if ((FaseInd1 == 6 && turnoA == true)||(FaseInd2 == 6 && turnoB == true)||(FaseInd3 == 6 && turnoC == true)||(FaseInd4 == 6 && turnoD == true)){
+                faseDReversa();
             }
         }else{
             JOptionPane.showMessageDialog(null,"NO ES POSIBLE MOVER AÚN");
@@ -1394,6 +1420,11 @@ public class Tablero extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_moverFaseActionPerformed
+    /***
+     * Método crearFase
+     * @param jugador Integer
+     * @param posicion Integer
+     */
     public static void crearFase(int jugador,int posicion){
         if (jugador == 1 && FaseJug1 == false){
             switch (posicion) {
@@ -1421,6 +1452,12 @@ public class Tablero extends javax.swing.JFrame {
                 case 100:
                     tiro = false;
                     FaseInd1 = 5;
+                    FaseJug1 = true;
+                    break;
+                case 59:
+                    posicion1 = faseD.getSize();
+                    tiro = false;
+                    FaseInd1 = 6;
                     FaseJug1 = true;
                     break;
                 default:
@@ -1451,6 +1488,12 @@ public class Tablero extends javax.swing.JFrame {
                 case 100:
                     tiro = false;
                     FaseInd2 = 5;
+                    FaseJug2 = true;
+                    break;
+                case 59:
+                    posicion2 = faseD.getSize();
+                    tiro = false;
+                    FaseInd2 = 6;
                     FaseJug2 = true;
                     break;
                 default:
@@ -1484,6 +1527,12 @@ public class Tablero extends javax.swing.JFrame {
                     FaseInd3 = 5;
                     FaseJug3 = true;
                     break;
+                case 59:
+                    posicion3 = faseD.getSize();
+                    tiro = false;
+                    FaseInd3 = 6;
+                    FaseJug3 = true;
+                    break;
                 default:
                     break;
             }
@@ -1515,21 +1564,30 @@ public class Tablero extends javax.swing.JFrame {
                     FaseInd4 = 5;
                     FaseJug4 = true;
                     break;
+                case 59:
+                    posicion4 = faseD.getSize();
+                    tiro = false;
+                    FaseInd4 = 6;
+                    FaseJug4 = true;
+                    break;
                 default:
                     break;
             }
         }
     }
-    
+    /***
+     * Método movimientoA 
+     * Movimiento en FaseA
+     */
     private void movimientoA(){
-        System.out.println("ENTRA EN FASE A");
+        
         switch (GameUser.getCantidad()) {
             case 2:
                 if (turnoA == true){
                     posicion1+=valorFase;
                     if(posicion1>=faseA.getSize()){
                         valorA=13+Math.abs(posicion1-faseA.getSize());
-                        System.out.println("VALOR EN FASE A de A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1556,7 +1614,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A de B"+valorB);
+                        
                         turnoB = false;
                         turnoA = true;
                         tiro = false;
@@ -1579,7 +1637,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseA.getSize()){
                         valorA=13+Math.abs(posicion1-faseA.getSize());
-                        System.out.println("VALOR EN FASE A de A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1606,7 +1664,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A de B"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -1630,7 +1688,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A de C"+valorC);
+                        
                         turnoC = false;
                         turnoA = true;
                         tiro = false;
@@ -1653,7 +1711,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseA.getSize()){
                         valorA=13+Math.abs(posicion1-faseA.getSize());
-                        System.out.println("VALOR EN FASE A de A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1680,7 +1738,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A de B"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -1704,7 +1762,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A de C"+valorC);
+                        
                         turnoC = false;
                         turnoD = true;
                         tiro = false;
@@ -1728,7 +1786,7 @@ public class Tablero extends javax.swing.JFrame {
                         L4.setLocation(tablero.get(valorD).getLocation());
                         L4.setBackground(tablero.get(valorD).getBackground());
                         Casilla.casilla(tablero.get(valorD).getBackground().toString(), moneda4,4);
-                        System.out.println("VALOR EN FASE A de D"+valorD);
+                        
                         turnoD = false;
                         turnoA = true;
                         tiro = false;
@@ -1751,15 +1809,19 @@ public class Tablero extends javax.swing.JFrame {
                 break;
         }
     }
+    /***
+     * Método manejoFaseB
+     * Se encarga el movimiento de los personajes en la fase B
+     */
     private void manejoFaseB(){
-        System.out.println("ENTRA EN FASE B");
+        
         switch (GameUser.getCantidad()) {
             case 2:
                 if (turnoA == true){
                     posicion1+=valorFase;
                     if(posicion1>=faseB.getSize()){
                         valorA=14+Math.abs(posicion1-faseB.getSize());
-                        System.out.println("VALOR EN FASE B de A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1786,7 +1848,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE B de B"+valorB);
+                        
                         turnoB = false;
                         turnoA = true;
                         tiro = false;
@@ -1809,7 +1871,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseB.getSize()){
                         valorA=14+Math.abs(posicion1-faseB.getSize());
-                        System.out.println("VALOR EN FASE A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1836,7 +1898,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -1860,7 +1922,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A"+valorC);
+                        
                         turnoC = false;
                         turnoA = true;
                         tiro = false;
@@ -1883,7 +1945,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseB.getSize()){
                         valorA=14+Math.abs(posicion1-faseB.getSize());
-                        System.out.println("VALOR EN FASE A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -1910,7 +1972,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -1934,7 +1996,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A"+valorC);
+                        
                         turnoC = false;
                         turnoD = true;
                         tiro = false;
@@ -1958,7 +2020,7 @@ public class Tablero extends javax.swing.JFrame {
                         L4.setLocation(tablero.get(valorD).getLocation());
                         L4.setBackground(tablero.get(valorD).getBackground());
                         Casilla.casilla(tablero.get(valorD).getBackground().toString(), moneda4,4);
-                        System.out.println("VALOR EN FASE A"+valorD);
+                        
                         turnoD = false;
                         turnoA = true;
                         tiro = false;
@@ -1982,9 +2044,12 @@ public class Tablero extends javax.swing.JFrame {
         }
     
     }
-    
+    /***
+     * Método faseCMovimiento
+     * Se encarga del movimiento de los personajes en una dirección en la FaseC
+     */
     private void faseCMovimiento(){
-        System.out.println("ENTRA EN FASE C1");
+        
         switch (GameUser.getCantidad()) {
             
             case 2:
@@ -1992,7 +2057,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseC.getSize()){
                         valorA=23+Math.abs(posicion1-faseC.getSize());
-                        System.out.println("VALOR EN FASE A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2019,7 +2084,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A"+valorB);
+                        
                         turnoB = false;
                         turnoA = true;
                         tiro = false;
@@ -2042,7 +2107,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseC.getSize()){
                         valorA=23+Math.abs(posicion1-faseC.getSize());
-                        System.out.println("VALOR EN FASE A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2069,7 +2134,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -2093,7 +2158,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A"+valorC);
+                        
                         turnoC = false;
                         turnoA = true;
                         tiro = false;
@@ -2116,7 +2181,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1+=valorFase;
                     if(posicion1>=faseC.getSize()){
                         valorA=23+Math.abs(posicion1-faseC.getSize());
-                        System.out.println("VALOR EN FASE A"+valorA);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2143,7 +2208,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE A"+valorB);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -2167,7 +2232,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE A"+valorC);
+                        
                         turnoC = false;
                         turnoD = true;
                         tiro = false;
@@ -2191,7 +2256,7 @@ public class Tablero extends javax.swing.JFrame {
                         L4.setLocation(tablero.get(valorD).getLocation());
                         L4.setBackground(tablero.get(valorD).getBackground());
                         Casilla.casilla(tablero.get(valorD).getBackground().toString(), moneda4,4);
-                        System.out.println("VALOR EN FASE A"+valorD);
+                        
                         turnoD = false;
                         turnoA = true;
                         tiro = false;
@@ -2216,16 +2281,19 @@ public class Tablero extends javax.swing.JFrame {
     
     }
     
-    
+    /***
+     * Método movimientoCTras
+     * Se encarga del movimiento de los personajes en la faseC en la otra dirección
+     */
     private void movimientoCTras(){
-        System.out.println("entras en fase C tras");
+        
         switch (GameUser.getCantidad()) {
             case 2:
                 if (turnoA == true){
                     posicion1 = posicion1 - valorFase;
                     if(posicion1<0){
                         valorA=16+(Math.abs(posicion1)-1);
-                        System.out.println("VALOR EN FASE tars"+valorA+"    "+posicion1);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2253,7 +2321,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion2);
+                        
                         turnoB = false;
                         turnoA = true;
                         tiro = false;
@@ -2276,7 +2344,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1 = posicion1 - valorFase;
                     if(posicion1<0){
                         valorA=16+(Math.abs(posicion1)-1);
-                        System.out.println("VALOR EN FASE tars"+valorA+"    "+posicion1);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2304,7 +2372,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion2);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -2328,7 +2396,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion3);
+                        
                         turnoC = false;
                         turnoA = true;
                         tiro = false;
@@ -2351,7 +2419,7 @@ public class Tablero extends javax.swing.JFrame {
                     posicion1 = posicion1 - valorFase;
                     if(posicion1<0){
                         valorA=16+(Math.abs(posicion1)-1);
-                        System.out.println("VALOR EN FASE tars"+valorA+"    "+posicion1);
+                        
                         L1.setLocation(tablero.get(valorA).getLocation());
                         L1.setBackground(tablero.get(valorA).getBackground());
                         Casilla.casilla(tablero.get(valorA).getBackground().toString(), moneda1,1);
@@ -2379,7 +2447,7 @@ public class Tablero extends javax.swing.JFrame {
                         L2.setLocation(tablero.get(valorB).getLocation());
                         L2.setBackground(tablero.get(valorB).getBackground());
                         Casilla.casilla(tablero.get(valorB).getBackground().toString(), moneda2,2);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion2);
+                        
                         turnoB = false;
                         turnoC = true;
                         tiro = false;
@@ -2403,7 +2471,7 @@ public class Tablero extends javax.swing.JFrame {
                         L3.setLocation(tablero.get(valorC).getLocation());
                         L3.setBackground(tablero.get(valorC).getBackground());
                         Casilla.casilla(tablero.get(valorC).getBackground().toString(), moneda3,3);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion3);
+                        
                         turnoC = false;
                         turnoD = true;
                         tiro = false;
@@ -2427,7 +2495,7 @@ public class Tablero extends javax.swing.JFrame {
                         L4.setLocation(tablero.get(valorD).getLocation());
                         L4.setBackground(tablero.get(valorD).getBackground());
                         Casilla.casilla(tablero.get(valorD).getBackground().toString(), moneda4,4);
-                        System.out.println("VALOR EN FASE tars"+valorB+"    "+posicion4);
+                        
                         turnoD = false;
                         turnoA = true;
                         tiro = false;
@@ -2448,6 +2516,10 @@ public class Tablero extends javax.swing.JFrame {
         }
     
     }
+    /***
+     * Método movimientoFaseDD
+     * Se encarga del movimiento en la fase D en una direccion
+     */
     public void movimientoFaseDD(){
         switch (GameUser.getCantidad()) {
             case 2:
@@ -2669,29 +2741,259 @@ public class Tablero extends javax.swing.JFrame {
     
     
     }
+    /***
+     * Método faseDReversa
+     * Se encarga del movimiento en la fase D en la otra direccion
+     */
+    public void faseDReversa(){
+        switch (GameUser.getCantidad()) {
+            case 2:
+                if (turnoA == true){
+                    posicion1-=valorFase;
+                    if(posicion1<0){
+                        posicion1 = faseD.getSize()-Math.abs(posicion1);
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+                        salirFaseD(1,posicion1);
+                        
+                    }else{
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(1,posicion1);
+                    }
+                }else if (turnoB == true){
+                    posicion2-=valorFase;
+                    if(posicion2<0){
+                        posicion2 = faseD.getSize()-Math.abs(posicion2);
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(2,posicion2);
+                        
+                    }else{
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(2,posicion2);
+                    }
+                }   break;
+            case 3:
+                if (turnoA == true){
+                    posicion1-=valorFase;
+                    if(posicion1<0){
+                        posicion1 = faseD.getSize()-Math.abs(posicion1);
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+                        salirFaseD(1,posicion1);
+                        
+                    }else{
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(1,posicion1);
+                    }
+                }else if (turnoB == true){
+                    posicion2-=valorFase;
+                    if(posicion2<0){
+                        posicion2 = faseD.getSize()-Math.abs(posicion2);
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+                        salirFaseD(2,posicion2);
+                        
+                    }else{
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+                        salirFaseD(2,posicion2);
+                    }
+                }else if (turnoC == true){
+                    posicion3-=valorFase;
+                    if(posicion3<0){
+                        posicion3 = faseD.getSize()-Math.abs(posicion3);
+                        L3.setLocation(faseD.get(posicion3).getLocation());
+                        L3.setBackground(faseD.get(posicion3).getBackground());
+                        Casilla.casilla(faseD.get(posicion3).getBackground().toString(), moneda3,3);
+                        turnoC = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(3,posicion3);
+                        
+                    }else{
+                        L3.setLocation(faseD.get(posicion3).getLocation());
+                        L3.setBackground(faseD.get(posicion3).getBackground());
+                        Casilla.casilla(faseD.get(posicion3).getBackground().toString(), moneda3,3);
+                        turnoC = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(3,posicion3);
+                    }
+                }   break;
+            case 4:
+                if (turnoA == true){
+                    posicion1-=valorFase;
+                    if(posicion1<0){
+                        posicion1 = faseD.getSize()-Math.abs(posicion1);
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorB;
+                        salirFaseD(1,posicion1);
+                        
+                    }else{
+                        L1.setLocation(faseD.get(posicion1).getLocation());
+                        L1.setBackground(faseD.get(posicion1).getBackground());
+                        Casilla.casilla(faseD.get(posicion1).getBackground().toString(), moneda1,1);
+                        turnoA = false;
+                        turnoB = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(1,posicion1);
+                    }
+                }else if (turnoB == true){
+                    posicion2-=valorFase;
+                    if(posicion2<0){
+                        posicion2 = faseD.getSize()-Math.abs(posicion2);
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+                        salirFaseD(2,posicion2);
+                        
+                    }else{
+                        L2.setLocation(faseD.get(posicion2).getLocation());
+                        L2.setBackground(faseD.get(posicion2).getBackground());
+                        Casilla.casilla(faseD.get(posicion2).getBackground().toString(), moneda2,2);
+                        turnoB = false;
+                        turnoC = true;
+                        tiro = false;
+                        valor = valorC;
+                        salirFaseD(2,posicion2);
+                    }
+                }else if (turnoC == true){
+                    posicion3-=valorFase;
+                    if(posicion3<0){
+                        posicion3 = faseD.getSize()-Math.abs(posicion3);
+                        L3.setLocation(faseD.get(posicion3).getLocation());
+                        L3.setBackground(faseD.get(posicion3).getBackground());
+                        Casilla.casilla(faseD.get(posicion3).getBackground().toString(), moneda3,3);
+                        turnoC = false;
+                        turnoD = true;
+                        tiro = false;
+                        valor = valorD;
+                        salirFaseD(3,posicion3);
+                        
+                    }else{
+                        L3.setLocation(faseD.get(posicion3).getLocation());
+                        L3.setBackground(faseD.get(posicion3).getBackground());
+                        Casilla.casilla(faseD.get(posicion3).getBackground().toString(), moneda3,3);
+                        turnoC = false;
+                        turnoD = true;
+                        tiro = false;
+                        valor = valorD;
+                        salirFaseD(3,posicion3);
+                    }
+                }else if (turnoD == true){
+                    posicion4-=valorFase;
+                    if(posicion4<0){
+                        posicion4 = faseD.getSize()-Math.abs(posicion4);
+                        L4.setLocation(faseD.get(posicion4).getLocation());
+                        L4.setBackground(faseD.get(posicion4).getBackground());
+                        Casilla.casilla(faseD.get(posicion4).getBackground().toString(), moneda4,4);
+                        turnoD = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(4,posicion4);
+                        
+                    }else{
+                        L4.setLocation(faseD.get(posicion4).getLocation());
+                        L4.setBackground(faseD.get(posicion4).getBackground());
+                        Casilla.casilla(faseD.get(posicion4).getBackground().toString(), moneda4,4);
+                        turnoD = false;
+                        turnoA = true;
+                        tiro = false;
+                        valor = valorA;
+                        salirFaseD(4,posicion4);
+                    }
+                }   break;
+            default:
+                break;
+        }
+    
+    }
+    /***
+     * Método salirFaseD
+     * se encarga de teletransportar al jugador para que salga de la faseD
+     * @param jugador Integer
+     * @param posicion Integer
+     */
     private void salirFaseD(int jugador, int posicion){
-        if (jugador == 1 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(faseD.getSize()-1) == faseD.get(posicion))){
+        if (jugador == 1 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(5) == faseD.get(posicion))){
             FaseJug1 = false;
             L1.setLocation(tablero.get(1).getLocation());
             L1.setBackground(tablero.get(1).getBackground());
             valorA = 1;
             posicion1 = -1;
             JOptionPane.showMessageDialog(null, "HA LOGRADO SALIR DE LA FASE D");
-        }else if (jugador == 2 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(faseD.getSize()-1) == faseD.get(posicion))){
+        }else if (jugador == 2 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(5) == faseD.get(posicion))){
             FaseJug2 = false;
             L2.setLocation(tablero.get(1).getLocation());
             L2.setBackground(tablero.get(1).getBackground());
             valorB = 1;
             posicion2 = -1;
             JOptionPane.showMessageDialog(null, "HA LOGRADO SALIR DE LA FASE D");
-        }else if (jugador == 3 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(faseD.getSize()-1) == faseD.get(posicion))){
+        }else if (jugador == 3 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(5) == faseD.get(posicion))){
             FaseJug3 = false;
             L3.setLocation(tablero.get(1).getLocation());
             L3.setBackground(tablero.get(1).getBackground());
             valorC = 1;
             posicion3 = -1;
             JOptionPane.showMessageDialog(null, "HA LOGRADO SALIR DE LA FASE D");
-        }else if (jugador == 4 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(faseD.getSize()-1) == faseD.get(posicion))){
+        }else if (jugador == 4 && (faseD.get(0) == faseD.get(posicion)|| faseD.get(5) == faseD.get(posicion))){
             FaseJug4 = false;
             L4.setLocation(tablero.get(1).getLocation());
             L4.setBackground(tablero.get(1).getBackground());
@@ -2700,6 +3002,10 @@ public class Tablero extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "HA LOGRADO SALIR DE LA FASE D");
         }
     }
+    /***
+     * Método Tirar Dado para las fases
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  
         if (((FaseJug1 == true && turnoA == true)||(FaseJug2 == true && turnoB == true)||(FaseJug3 == true && turnoC == true)||(FaseJug4 == true && turnoD == true))&& tiro == false){
@@ -2715,7 +3021,12 @@ public class Tablero extends javax.swing.JFrame {
     
     
     
-    
+    /***
+     * Método Teletransporte
+     * Se encarga de teletransportar a un jugador de un lugar a otro
+     * @param usuario Integer
+     * @param lugar Integer
+     */
     public static void teletransporte(int usuario, int lugar){
         JOptionPane.showMessageDialog(null, "SERÁS TELESTRANSPORTADO A UN NUEVO LUGAR");
         switch (usuario) {
@@ -2723,13 +3034,13 @@ public class Tablero extends javax.swing.JFrame {
                 L1.setLocation(tablero.get(lugar).getLocation());
                 L1.setBackground(tablero.get(lugar).getBackground());
                 valorA = lugar;
-                System.out.println("cambiotp");
+                
                 break;
             case 2:
                 L2.setLocation(tablero.get(lugar).getLocation());
                 L2.setBackground(tablero.get(lugar).getBackground());
                 valorB = lugar;
-                System.out.println("cambiotp");
+                
                 break;
             case 3:
                 L3.setLocation(tablero.get(lugar).getLocation());
@@ -2745,10 +3056,16 @@ public class Tablero extends javax.swing.JFrame {
                 break;
         }
     }
+    /***
+     * Método cambioLugar
+     * Se encarga de cambiar de lugar a dos personajes
+     * @param jugador1 Integer
+     * @param jugador2 Integer
+     */
     public static void cambioLugar(int jugador1, int jugador2){
         JOptionPane.showMessageDialog(null, "UN AMIGO Y VOS CAMBIARÁN DE LUGAR SIMULTANEAMENTE!!!!!");
         if ((jugador1 == 1 && jugador2 == 2) || (jugador1 == 2 && jugador2 == 1)){
-            System.out.println("cambiolugar1,2");
+            
             int temp = valorB;
              L1.setLocation(tablero.get(valorB).getLocation());
              L1.setBackground(tablero.get(valorB).getBackground());
@@ -2798,41 +3115,70 @@ public class Tablero extends javax.swing.JFrame {
             valorC = temp; 
         }
     }
+    /***
+     * Método getMoneda1
+     * @return JLabel 
+     */
     public static JLabel getMoneda1() {
         return moneda1;
     }
-
+    /***
+     * Método getMoneda2
+     * @return JLabel 
+     */
     public static JLabel getMoneda2() {
         return moneda2;
     }
-
+    /***
+     * Método getMoneda3
+     * @return JLabel 
+     */
     public static JLabel getMoneda3() {
         return moneda3;
     }
-
+    /***
+     * Método getMoneda4
+     * @return JLabel 
+     */
     public static JLabel getMoneda4() {
         return moneda4;
     }
-
+    /***
+     * Método getEstrella1
+     * @return JLabel 
+     */
     public static JLabel getEstrella1() {
         return estrella1;
     }
-
+    /***
+     * Método getEstrella1
+     * @return JLabel 
+     */
     public static JLabel getEstrella2() {
         return estrella2;
     }
-
+    /***
+     * Método getEstrella1
+     * @return JLabel 
+     */
     public static JLabel getEstrella3() {
         return estrella3;
     }
-
+    /***
+     * Método getEstrella1
+     * @return JLabel 
+     */
     public static JLabel getEstrella4() {
         return estrella4;
     }
 
 
     
-    
+    /***
+     * Método Verificar
+     * se encarga de ver si dos jugadores están en la misma posicion para activar un duelo y notificar al observer
+     * se encarga de ver si ya se cumplieron el numero de vueltas requeridas para terminar el juego y notificar al observer
+     */
     private void verificar(){
         if ((valorA==valorB)&&(valorA!=0&&valorB!=0)){
             hayDuelo = true;
@@ -2861,14 +3207,27 @@ public class Tablero extends javax.swing.JFrame {
         }
         
     }
-    
+    /***
+     * Método controlObserver
+     * Se encarga de informar al subject si es tiempo de terminar el juego o de si hay 2 jugadores en la misma casilla
+     * @param vueltasT Integer
+     * @param dueloActivator Integer
+     */
     private void controlObserver(int vueltasT, boolean dueloActivator){
         contentcreator.avisar(vueltasGen,hayDuelo);
     }
+    /***
+     * Método colocarCarta 
+     * Se encarga de colocar la carta en una posicion aleatoria del tablero
+     */
     private void colocarCarta(){
         posicionCarta = Evento.getNumero(33);
         unoLabel.setLocation(tablero.get(posicionCarta).getLocation());
     }
+    /***
+     * Método estrella 
+     * A través de este metodo se puede comprar una estrella
+     */
     private void estrella(){
         if (posicionEstrella == valorA){
             int comprar = JOptionPane.showConfirmDialog(null, "QUIERES COMPRAR LA ESTRELLA POR 5 MONEDAS");
@@ -2913,11 +3272,16 @@ public class Tablero extends javax.swing.JFrame {
         }
     
     }
+    /***
+     * Método Carta
+     * Este metodo le brinda a los jugadores la habilidad de aventajarse con respecto a los otros jugadores
+     * ya sea adquiriendo estrella, monedas o avanzando más casillas
+     */
     private void carta(){
         
         String opciones[] = {"AVANZAR 3 ESPACIOS","GANAR 1 ESTRELLA", "GANAR 3 MONEDAS"};
         if (valorA == posicionCarta){
-            System.out.println("ENTRARCARTA1");
+            
             int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
             switch (x) {
                 case 0:
@@ -2938,7 +3302,7 @@ public class Tablero extends javax.swing.JFrame {
                     break;
             }
         }else if (valorB == posicionCarta){
-            System.out.println("ENTRARCARTA1");
+            
             int x = JOptionPane.showOptionDialog(null, "SELECCIONE LO QUE DESEA HACER", "EVENTO CARTA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,null,opciones,opciones[0]);
             switch (x) {
                 case 0:

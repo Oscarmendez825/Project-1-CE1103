@@ -16,8 +16,13 @@ import java.util.logging.Logger;
 
 
 /**
- *
- * @author oscar
+ * FinJuego class
+ * @author Oscar Méndez
+ * @author Marco Picado
+ * @author Keyner Gómez 
+ * @author Hansel Hampton
+ * @version 1.1
+ * @since 2020
  */
 public class FinJuego extends javax.swing.JFrame {
 
@@ -28,6 +33,9 @@ public class FinJuego extends javax.swing.JFrame {
     FileWriter escribir;
     PrintWriter linea;
     
+    /***
+     * Método Constructor
+     */
     public FinJuego() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -205,6 +213,10 @@ public class FinJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método setValores 
+     * Se encarga de desplegar los puntajes finales en pantalla
+     */
     private void setValores(){
         switch (GameUser.getCantidad()) {
             case 2:
@@ -244,10 +256,19 @@ public class FinJuego extends javax.swing.JFrame {
                 break;
         }
     }
+    /***
+     * Método Salir
+     * Se encarga de cerrar el juego y de llamar al método escribirTXT
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         escribirTXT();
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+    /***
+     * Método escribirTXT
+     * Se encarga de escribir todos los puntajes de los jugadores en un TXT
+     */
     public void escribirTXT(){
         archivo = new File("PUNTAJES.txt");
         if (!archivo.exists()){

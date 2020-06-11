@@ -151,7 +151,7 @@ public class PosicionesStart extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void newGame(){
-        Gameplay gameplay = new Gameplay();
+        SnakeGame gameplay = new SnakeGame();
         obj = new JFrame();
         label = new JLabel("00:00:00");
         label.setFont(new Font("Traditional Arabic", Font.PLAIN, 30));
@@ -170,27 +170,27 @@ public class PosicionesStart extends javax.swing.JFrame {
     public static void setPuntaje(){
         switch (contador){
             case 1:
-                puntA.setText(""+Gameplay.puntaje);
+                puntA.setText(""+SnakeGame.puntaje);
                 contador++;
-                System.out.println("E"+Gameplay.puntaje);
-                Gameplay.puntaje = 0;
+                
+                SnakeGame.puntaje = 0;
                 
                 break;
             case 2:
-                puntB.setText(""+Gameplay.puntaje);
+                puntB.setText(""+SnakeGame.puntaje);
                 contador++;
-                System.out.println("E+x"+Gameplay.puntaje);
-                Gameplay.puntaje = 0;
+                
+                SnakeGame.puntaje = 0;
                 break;
             case 3:
-                puntC.setText(""+Gameplay.puntaje);
+                puntC.setText(""+SnakeGame.puntaje);
                 contador++;
-                Gameplay.puntaje = 0;
+                SnakeGame.puntaje = 0;
                 break;
             case 4:
-                puntD.setText(""+Gameplay.puntaje);
+                puntD.setText(""+SnakeGame.puntaje);
                 contador++;
-                Gameplay.puntaje = 0;
+                SnakeGame.puntaje = 0;
                 break;
             default:
                 break;

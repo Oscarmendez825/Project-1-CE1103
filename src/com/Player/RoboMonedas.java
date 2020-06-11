@@ -6,13 +6,19 @@
 package com.Player;
 
 /**
- *
- * @author oscar
+ *  RoboMonedas class
+ * @author Oscar Méndez
+ * @author Marco Picado
+ * @author Keyner Gómez 
+ * @author Hansel Hampton
+ * @version 1.1
+ * @2020
  */
 public class RoboMonedas extends javax.swing.JFrame {
 
     /**
      * Creates new form RoboMonedas
+     * Método Constructor
      */
     public RoboMonedas() {
         initComponents();
@@ -23,6 +29,10 @@ public class RoboMonedas extends javax.swing.JFrame {
         name4.setText(GameUser.getName4());
         activarBotones();
     }
+    /***
+     * Método activarBotones
+     * Se encarga de dejar activos la cantidad de botones correspondiente a el numero de jugadores
+     */
     private void activarBotones(){
         if (GameUser.getCantidad() == 2){
             boton3.setEnabled(false);
@@ -33,6 +43,10 @@ public class RoboMonedas extends javax.swing.JFrame {
         }
         activePlayer();
     }
+    /***
+     * Método activePlayer 
+     * Se encarga de desactivar el boton del jugador que va a robar monedas para que así no se robe él mismo
+     */
     private void activePlayer(){
         switch (Evento.getJugador()) {
             case 1:
@@ -180,7 +194,10 @@ public class RoboMonedas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /***
+     * Se encarga de robarle monedas al primer jugador
+     * @param evt 
+     */
     private void boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton1ActionPerformed
         
         int cantidad = Evento.getNumero(5);
@@ -211,7 +228,10 @@ public class RoboMonedas extends javax.swing.JFrame {
         }
         this.setVisible(false);
     }//GEN-LAST:event_boton1ActionPerformed
-
+    /***
+     * Se encarga de robarle monedas al segundo jugador
+     * @param evt 
+     */
     private void boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton2ActionPerformed
         
         int cantidad = Evento.getNumero(5);
@@ -243,7 +263,10 @@ public class RoboMonedas extends javax.swing.JFrame {
         }
         this.setVisible(false);
     }//GEN-LAST:event_boton2ActionPerformed
-
+    /***
+     * Se encarga de robarle monedas al tercer jugador
+     * @param evt 
+     */
     private void boton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton3ActionPerformed
         
         int cantidad = Evento.getNumero(5);
@@ -274,7 +297,10 @@ public class RoboMonedas extends javax.swing.JFrame {
         }
         this.setVisible(false);
     }//GEN-LAST:event_boton3ActionPerformed
-
+    /***
+     * Se encarga de robarle monedas al cuarto jugador
+     * @param evt 
+     */
     private void boton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton4ActionPerformed
         int cantidad = Evento.getNumero(5);
         Tablero.getMoneda4().setText(""+(Integer.parseInt(Tablero.getMoneda4().getText())-cantidad));

@@ -10,45 +10,42 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.ImageIcon;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-        
-public class Gameplay extends JPanel implements KeyListener, ActionListener{
-
+/***
+ * SnakeGame class
+ * @author Oscar Méndez
+ * @version 1.1
+ * @since 2020
+ */        
+public class SnakeGame extends JPanel implements KeyListener, ActionListener{
+    //ATRIBUTOS E INSTANCIAS//
     private int[] longitudX = new int[70];
     private int[] longitudY = new int [70];
     private boolean izquierda = false;
     private boolean derecha = false;
     private boolean arriba = false;
-    private boolean abajo = false;
-    
+    private boolean abajo = false;   
     private ImageIcon snakeDerecha;
     private ImageIcon snakeArriba;
     private ImageIcon snakeAbajo;
     private ImageIcon snakeIzquierda;
     private ImageIcon snakeBody;
-    private ImageIcon food;
-    
-    
+    private ImageIcon food; 
     private int longitudinicial = 3;
     private Timer timer;
     private int delay = 100;
     private Random random = new Random();
-    
-    
     private int movimientos = 0;
-
-    
-    
-   private int posX = getNumber(33);
-   private int posY = getNumber(22);
-    
-   static int puntaje;
+    private int posX = getNumberX(33);
+    private int posY = getNumberY(22);
+    static int puntaje;
    
-    public Gameplay() {
-        
+    /***
+     * Método Constructor
+     */
+    public SnakeGame() {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -109,10 +106,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
         food = new ImageIcon("comida.png");
         if (posX==longitudX[0] && posY==longitudY[0]){
             longitudinicial+=1;
-            posX = getNumber(33);
-            posY = getNumber(22);
+            posX = getNumberX(33);
+            posY = getNumberY(22);
             puntaje++;
-            System.out.println(puntaje);
+            
         }
 
         food.paintIcon(this, pantalla, posX, posY);
@@ -305,12 +302,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
     public void keyTyped(KeyEvent e) {
         
     }
-    private int getNumber(int num) {
+    private int getNumberX(int num) {
 	Random r = new Random();
         int valor = r.nextInt(num);
         while (valor == 0){
             valor = r.nextInt(num);
         }
 	return 25 * valor;
+}
+    private int getNumberY(int num) {
+	Random r = new Random();
+        int valor = r.nextInt(num);
+        while (valor == 0){
+            valor = r.nextInt(num);
+        }
+	return 100+(25 * valor);
 }
 }

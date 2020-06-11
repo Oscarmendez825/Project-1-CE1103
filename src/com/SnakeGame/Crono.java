@@ -4,15 +4,27 @@ package com.SnakeGame;
 import javax.swing.JLabel;
 
 
-
+/***
+ * Crono class
+ * @author Oscar Méndez
+ * @version 1.1
+ * @since 2020
+ */
 public class Crono extends Thread {
     
     JLabel eti;
-    
+    /***
+     * Método Constructor 
+     * @param label 
+     */
     public Crono(JLabel label){
         this.eti = label;
         
     }
+    /***
+     * Método run
+     * Se encarga de iniciar el hilo correspondiente al cronometro
+     */
     @Override
     public void run(){
         try{
@@ -28,7 +40,10 @@ public class Crono extends Thread {
         }
     
     }
-
+    /***
+     * Método ejecutarcrono
+     * Se encarga de iniciar el crono y de finalizarlo al cumplirse 1 min
+     */
     private void ejecutarcrono() {
        PosicionesStart.seg++;
        if (PosicionesStart.seg>59){
@@ -47,20 +62,9 @@ public class Crono extends Thread {
        }else{
            seg+= PosicionesStart.seg;
        }
-       if (PosicionesStart.min<10){
-           min+="0"+PosicionesStart.min;
-       }
-       else{
-           min+= PosicionesStart.min;
-       }
-       if (PosicionesStart.hora < 10){
-           hora+="0"+PosicionesStart.hora;
        
-       }else{
-            hora+=PosicionesStart.hora;
-       }
        
-       String valor = hora+":"+min+":"+seg;
+       String valor = "00"+":"+"00"+":"+seg;
        eti.setText(valor);
     }
     

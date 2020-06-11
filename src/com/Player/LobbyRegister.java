@@ -8,21 +8,31 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
+/***
+ * LobbyRegister class
+ * @author Oscar Méndez
+ * @author Hansel Hampton
+ * @author Keyner Gómez
+ * @author Marco Picado
+ * @version 1.1
+ * @since 2020
+ */
 public class LobbyRegister extends javax.swing.JFrame {
+    //ATRIBUTOS E INSTANCIAS//
     AudioClip sonido;
     private String personaje1 = "";
     private String personaje2 = "";
     private String personaje3 = "";
     private String personaje4 = "";
-    
     int cantidadvalor = 0;
-    
     private String name1 = "";
     private String name2 = "";
     private String name3 = "";
     private String name4 = "";
-    
+   
+    /***
+     * Método Constructor
+     */
     public LobbyRegister() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -33,7 +43,7 @@ public class LobbyRegister extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/com/ImagesSelec/gamelogo.png")).getImage());
         this.setTitle("DATOS PARTY");
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/com/Songs/startsong.wav"));
-        //sonido.loop();
+        sonido.loop();
         
     }
 
@@ -219,7 +229,11 @@ public class LobbyRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
+    /***
+     * Método tomarDatos
+     * Se encarga de tomar los datos que los usuarios seleccionaron
+     * @param evt 
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         name1 = namebox1.getText();
         name2 = namebox2.getText();
@@ -235,6 +249,10 @@ public class LobbyRegister extends javax.swing.JFrame {
         personaje4 = (String)barra4.getSelectedItem();
         igualdadNombre();
     }//GEN-LAST:event_jButton5ActionPerformed
+    /***
+     * Método igualdadNombre
+     * Este método se encarga de que 2 o más jugadores no tengan el mismo nombre en la partida
+     */
     private void igualdadNombre(){
         switch (cantidadvalor) {
             case 2:
@@ -266,6 +284,10 @@ public class LobbyRegister extends javax.swing.JFrame {
         }
         
     }
+    /***
+     * Método setData
+     * Se encarga de darle los valores a la clase GameUser
+     */
     private void setData(){
         
         switch(cantidadvalor){

@@ -97,7 +97,7 @@ public class Evento{
         }
     }
     private void ejecutarEvento(){
-//        String valor = stack.pop().toString();
+
         switch (stack.peek()) {
             case "duelo":
                 stack.pop();
@@ -119,8 +119,13 @@ public class Evento{
                 stack.pop();
                 
                 int eleccion = getNumero(2)+1;
+                int direccion = getNumero(2)+1;
                 if(eleccion == 1){
-                    Tablero.crearFase(jugador, 100);
+                    if (direccion == 1){
+                        Tablero.crearFase(jugador, 100);
+                    }else if (direccion == 2){
+                        Tablero.crearFase(jugador, 59);
+                    }
                 }else{
                     int posicion = getNumero(33);
                     Tablero.teletransporte(jugador, posicion);
@@ -131,7 +136,7 @@ public class Evento{
                 int jugador2 = getNumero(GameUser.getCantidad());
                 while(jugador == jugador2){
                     jugador2 = getNumero(GameUser.getCantidad());
-                }   System.out.println("cambiolugar"+jugador2);
+                }   
                 Tablero.cambioLugar(jugador, jugador2);
                 break;
             case "robar1Estrella":

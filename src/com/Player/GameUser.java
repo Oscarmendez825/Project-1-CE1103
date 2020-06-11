@@ -6,9 +6,18 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-
+/***
+ * 
+ * GameUser class
+ * @author Oscar Méndez
+ * @author Hansel Hampton
+ * @author Marco Picado
+ * @author Keyner Gómez
+ * @version 1.1
+ * @since 2020
+ */
 public class GameUser {
-    
+    //ATRIBUTOS E INSTANCIAS//
     private static String name1;
     private static String name2;
     private static String name3;
@@ -24,6 +33,13 @@ public class GameUser {
     private JLabel p3;
     private JLabel p4;
 
+    /***
+     * Método Constructor
+     * @param p1 JLabel
+     * @param p2 JLabel
+     * @param p3 JLabel
+     * @param p4 JLabel
+     */
     public GameUser(JLabel p1, JLabel p2, JLabel p3, JLabel p4) {
         this.p1 = p1;
         this.p2 = p2;
@@ -31,7 +47,10 @@ public class GameUser {
         this.p4 = p4;
         personajeIcon();
     }
-
+    /***
+     * Método personajeIcon
+     * Se encarga de establecer un icono a cada uno de los personajes de los jugadores, según su elección
+     */
     private void personajeIcon(){
         switch (cantidad) {
             case 2:
@@ -330,43 +349,73 @@ public class GameUser {
                 break;
         }
     }
-
+    /***
+     * Método getName1
+     * @return name1 String
+     */
     public static String getName1() {
         return name1;
     }
-
+    /***
+     * Método setName1
+     * @param name1 String
+     */
     public static void setName1(String name1) {
         GameUser.name1 = name1;
     }
-
+    /***
+     * Método getName2 
+     * @return name2 String
+     */
     public static String getName2() {
         return name2;
     }
-
+    /***
+     * Método setName2
+     * @param name2 String
+     */
     public static void setName2(String name2) {
         GameUser.name2 = name2;
     }
-
+    /***
+     * Método getName3 
+     * @return name3 String
+     */
     public static String getName3() {
         return name3;
     }
-
+    /***
+     * Método setName3
+     * @param name3 String
+     */
     public static void setName3(String name3) {
         GameUser.name3 = name3;
     }
-
+    /***
+     * Método getName4 
+     * @return name3 String
+     */
     public static String getName4() {
         return name4;
     }
-
+    /***
+     * Método setName4
+     * @param name4 String
+     */
     public static void setName4(String name4) {
         GameUser.name4 = name4;
     }
-
+    /***
+     * Método getCantidad
+     * @return cantidadJugadores Integer
+     */
     public static int getCantidad() {
         return cantidad;
     }
-
+    /***
+     * Método setCantidad
+     * @param cantidad Integer
+     */
     public static void setCantidad(int cantidad) {
         GameUser.cantidad = cantidad;
     }

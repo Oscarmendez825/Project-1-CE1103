@@ -10,17 +10,31 @@ import javax.swing.JLabel;
 
 
 /**
- *
- * @author oscar
+ * Casilla class
+ * @author Oscar Méndez
+ * @author Marco Picado
+ * @author Hansel Hampton
+ * @author Keyner Gómez
+ * @version 1.1
+ * @since 2020
  */
 
 public class Casilla {
 
-    
+    /***
+     * Método Constructor
+     */
     public Casilla() {
         
 
     }
+    /***
+     * Método casilla
+     * Se encarga de realizar acciones según el color de la casilla en la que caiga el jugador
+     * @param color String
+     * @param monedalbl JLabel
+     * @param jugador Integer
+     */
     public static void casilla(String color,JLabel monedalbl, int jugador){
         int monedas = Integer.parseInt(monedalbl.getText());
         
