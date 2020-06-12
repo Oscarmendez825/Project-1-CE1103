@@ -22,7 +22,7 @@ Luis Diego Noguera Mena
 
 # ¿CÓMO EJECUTAR EL JUEGO?
 
-*Abra el proyecto en un IDE
-*En SourcePackages busque un paquete llamado "com.Player"
-*Ejecute la clase llamada "LobbyRegister"
+* Abra el proyecto en un IDE
+* En SourcePackages busque un paquete llamado "com.Player"
+* Ejecute la clase llamada "LobbyRegister"
 
