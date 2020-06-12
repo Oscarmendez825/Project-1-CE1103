@@ -28,7 +28,7 @@ public class Game extends JFrame implements ActionListener {
     private int errorCount = 0;
     private int pairsFound = 0;
     private int maxPairs = 0;
-
+    private static int puntaje;
     /**
      * Game method, builds the previous environment for the game.
      */
@@ -43,24 +43,11 @@ public class Game extends JFrame implements ActionListener {
             }
         };
 
-        JButton restart = new JButton("Restart");
-        JButton quit = new JButton("Quit");
-        timerLabel = new JLabel("Timer: 0");
+
+        timerLabel = new JLabel("Puntaje: 0");
         errorLabel = new JLabel("Errors: 0");
 
-        restart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                restartGame();
-            }
-        });
 
-        quit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
 
         gameTimer.start();
 
@@ -81,8 +68,7 @@ public class Game extends JFrame implements ActionListener {
         board.viewFill(boardView);
 
         labelView.setLayout(new GridLayout(1, 4, 2, 2));
-        labelView.add(quit);
-        labelView.add(restart);
+
         labelView.add(timerLabel);
         labelView.add(errorLabel);
 
@@ -99,6 +85,7 @@ public class Game extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e){
+        
         if(clickCount == 0) {
             clickCount++;
             card1 = (Flipping)e.getSource();
@@ -112,15 +99,21 @@ public class Game extends JFrame implements ActionListener {
 
             if(card1.customName().equals(card2.customName())) {
                 pairsFound++;
+                puntaje++;
+                timerLabel.setText("Puntaje: "+puntaje);
                 if(pairsFound == maxPairs) {
                     gameTimer.stop();
+                    
                 }
             }
             if(!card1.customName().equals(card2.customName())) {
+                verificar();
                 errorCount++;
+                
                 errorLabel.setText("Errors: " + errorCount);
                 Flipping[] cards = board.getCards();
                 for(int i = 0; i < cards.length; i++){
+                    
                     cards[i].lock(true);
                     cards[i].setEnabled(false);
                 }
@@ -133,6 +126,8 @@ public class Game extends JFrame implements ActionListener {
                         card1.setEnabled(true);
                         card2.hideFront();
                         card2.setEnabled(true);
+                        
+                        
                         for(int i = 0; i < cards.length; i++){
                             cards[i].lock(false);
                             cards[i].setEnabled(true);
@@ -147,32 +142,20 @@ public class Game extends JFrame implements ActionListener {
         }
     }
 
-    private void restartGame()
-    {
-        pairsFound = 0;
-        gameTimer.restart();
-        gameTime = 0;
-        clickCount = 0;
-        errorCount = 0;
-        timerLabel.setText("Timer: 0");
-        errorLabel.setText("Errors: 0");
-
-        boardView.removeAll();
-        board.resetBoard();
-        board.viewFill(boardView);
+   
+    private void verificar(){
+        if (errorCount == 10){
+            InicioJuego.setPuntaje(puntaje);
+            puntaje = 0;
+            this.setVisible(false);
+            
+        }
     }
-    
     /**
      *Main method that initialize the whole minigame.
      * @param args
      */
     public static void main(String args[]){
-        Game game = new Game();
-        game.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) { 
-                System.exit(0); 
-            }
-        });
+
     }
 }

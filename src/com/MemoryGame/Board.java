@@ -68,26 +68,7 @@ public class Board {
         }
     }
 
-    /**
-     * Return the game to it initial state.
-     */
-    public void resetBoard() {
-        for(int i = 0; i < cards.length; i++){
-        
-            cards[i].setEnabled(true);
-            cards[i].hideFront();
-        }
 
-        int index;
-        Random random = new Random();
-        Flipping temp = new Flipping();
-        for (int i = cards.length - 1; i > 0; i--) {
-    
-            index = random.nextInt(i + 1);
-            cards[index] = cards[i];
-            cards[i] = temp;
-        }
-    }
 
     /**
      *Get the total of cards in the game.

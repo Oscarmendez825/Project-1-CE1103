@@ -5,11 +5,13 @@
  */
 package com.Player;
 
+import com.MemoryGame.InicioJuego;
 import com.SnakeGame.PosicionesStart;
 import com.SoupGame.SoupScores;
 import com.StackPackage.Stack;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import com.TriviaGame.InicioTrivia;
 
 
 
@@ -180,18 +182,17 @@ public class Evento{
             JOptionPane.showMessageDialog(null, "ESTÁN APUNTO DE ENFRENTARSE EN UN DUELO!!!");
             switch (juego) {
                 case 1:
-//                    new PosicionesStart().setVisible(true);
-                    
+                    new PosicionesStart().setVisible(true);
                     break;
                 case 2:
-//                    new SoupScores().setVisible(true);
+                    new SoupScores().setVisible(true);
                     
                     break;
                 case 3:
-                    
+                    new InicioJuego().setVisible(true);
                     break;
                 case 4:
-                    
+                    new InicioTrivia().setVisible(true);
                     break;
                 case 5:
                     

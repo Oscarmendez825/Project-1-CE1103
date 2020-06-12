@@ -1,25 +1,23 @@
-/**
- * Trivia Game, a minigame for Datos Party, first project of CE1103, IS-2020
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package triviagame;
+package com.TriviaGame;
 
 import javax.swing.JOptionPane;
 
-/**
- * Main and only class, creates and manages the dialog panes used for perform the quiz.
- * @author Hansel Hampton
- * @version 1.4
- */
-public class Game {
 
-    /**
-     *Main method, it handles the main menu and most of its options.
-     * @param args
-     */
-    public static void main (String args []){
-        int opc, acert;
-        String quest[]= new String[30];
-        int corr[]= new int[30];
+/**
+ *
+ * @author oscar
+ */
+public class Trivia {
+    int opc, acert;
+    String quest[]= new String[30];
+    int corr[]= new int[30];
+
+    public Trivia() {
         quest[0]="En la saga Matched de Ally Condie, ¿cómo se llama la protagonista?\n1. Mare Barrow\n2. Cassia Reyes\n3. Sarah Hart";
         quest[1]="¿Còmo se titula la saga màs popular escrita por James Dashner?\n1. Maze Runner\n2. El Juego Infinito\n3. Endgame";
         quest[2]="¿Cuál es el nombre del segundo libro de la saga Shatter Me de Tehereh Mafi?\n1. Restore Me\n2. Destroy Me\n3. Unravel Me";
@@ -81,7 +79,7 @@ public class Game {
         corr[28]=3;
         corr[29]=2;
 
-        do {
+        
             opc=Integer.parseInt(JOptionPane.showInputDialog("Bienvenido a la Trivia!\nEl tema actual es: Literatura moderna de Ciencia Ficcion y música.\n1. Instrucciones\n2. Jugar\n3. Ayuda\n4. Salir"));
             switch (opc){
                 case 1:
@@ -90,12 +88,18 @@ public class Game {
                 case 2:
                     acert= triv (quest, corr);
                     if (acert>7){
-                        JOptionPane.showMessageDialog(null, "Felicidades! Usted ha acertado "+acert+" y falló "+(10-acert)+" de 10 totales. Usted es humano? :v");}
+                        JOptionPane.showMessageDialog(null, "Felicidades! Usted ha acertado "+acert+" y falló "+(10-acert)+" de 10 totales. Usted es humano? :v");
+                        InicioTrivia.setPuntaje(acert);
+                    }
                     else{
                         if (acert<4){
-                            JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Me pregunto para que carajos hizo esta trivia >:|");}
+                            JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Me pregunto para que carajos hizo esta trivia >:|");
+                            InicioTrivia.setPuntaje(acert);
+                        }
                         else{
-                            JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Yo le diria que leyera un poco mas a menudo. :/");}}
+                            JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Yo le diria que leyera un poco mas a menudo. :/");
+                            InicioTrivia.setPuntaje(acert);
+                        }}
                 break;
                 case 3:
                     JOptionPane.showMessageDialog(null, "Para soporte tecnico, envie sus consultas al 8568-0466 o a hanselsol06.hh@gmail.com.\n                                                                   Gracias.");
@@ -107,12 +111,8 @@ public class Game {
                     JOptionPane.showMessageDialog(null, "Opcion no disponible.");
                 break;
             }
-        }
-        while (opc!=4);
-        System.exit(0);
     }
-
-    /**
+     /**
      *Manage the quiz process, the answers, questions and points.
      * @param quest List of questions
      * @param corr List of correct answers
@@ -151,3 +151,5 @@ public class Game {
         return acert;
     }
 }
+    
+
