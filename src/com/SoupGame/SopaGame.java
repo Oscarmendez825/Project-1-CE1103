@@ -8,11 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-
+/***
+ * JFrame SopaGame class
+ * @author Oscar Méndez
+ * @version 0.9
+ * @since 2020
+ */
 public class SopaGame extends javax.swing.JFrame{
-    
-    
-    
+    //Instancias y Atributos//
     public static int seg = 0;
     private String[] words;
     private int[] startx;
@@ -24,6 +27,11 @@ public class SopaGame extends javax.swing.JFrame{
     public static JFrame ventana;
     public static boolean iniciarHilo = true;
     public static int puntaje = 0;
+    
+    
+    /***
+     * Método Constructor
+     */
     public SopaGame() {
         initComponents();
         JOptionPane.showMessageDialog(null, "Usted cuenta con 1 minuto para encontrar la mayor cantidad de palabras.");
@@ -257,12 +265,19 @@ public class SopaGame extends javax.swing.JFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método iniciarCrono
+     * Inicializa el cronómetro
+     */
     private void iniciarCrono() {
             CronoSopa crono = new CronoSopa(labelC);
             crono.start();
     }
 
-    
+    /***
+     * Método putwords
+     * Se encarga de agregar las palabras en la matriz general
+     */
     private void putwords() {
         String[] word = {word1.getText(),word2.getText(),word3.getText(),word4.getText(),word5.getText(),
                          word6.getText(),word7.getText(),word8.getText(),word9.getText(),word10.getText()};
@@ -296,7 +311,10 @@ public class SopaGame extends javax.swing.JFrame{
             }
         }
     }
-    
+    /***
+     * Método letterspace 
+     * se encarga de darle formato a las letras en la matriz
+     */
     private void letterspace() {
         letters = new JLabel[10][14];
         for (int i = 0; i < 10; i++) {
@@ -304,7 +322,7 @@ public class SopaGame extends javax.swing.JFrame{
                 letters[i][j] = new JLabel("", javax.swing.SwingConstants.CENTER);
                 letters[i][j].setName("");
                 letters[i][j].setBackground(Color.LIGHT_GRAY);
-                letters[i][j].setFont(new java.awt.Font("arial", 1, 15)); 
+                letters[i][j].setFont(new java.awt.Font("Orbitron", 1, 15)); 
                 letters[i][j].setForeground(Color.BLACK);
                 letters[i][j].setOpaque(true);
                 letters[i][j].setBorder(new javax.swing.border.LineBorder(Color.RED, 3));
@@ -318,7 +336,11 @@ public class SopaGame extends javax.swing.JFrame{
             }
         }
     }
-    
+    /***
+     * Método clicked
+     * Se encarga de saber si un Label fue marcado y le cambia de color
+     * @param evt 
+     */
     private void clicked(java.awt.event.MouseEvent evt) {
         if (!iwin) {
             if (evt.getComponent().getBackground().equals(Color.LIGHT_GRAY)) {
@@ -331,7 +353,10 @@ public class SopaGame extends javax.swing.JFrame{
     }
     
     
-
+    /***
+     * Método emptyspaces
+     * Se encarga de rellenar los espacios vacíos
+     */
     private void emptyspaces() {
         
         String[] abecedary = {"A","B","C","D","E","F","G","H","I","J","K","L",
@@ -345,6 +370,14 @@ public class SopaGame extends javax.swing.JFrame{
             }
         }
     }
+    /***
+     * Método eliminate word
+     * @param x int
+     * @param y int 
+     * @param size int
+     * @param direction boolean
+     * @return boolean
+     */
     private boolean  eliminateword(int x,int y,int size,boolean direction) {
         boolean answer = true;
         if (direction) {
@@ -365,7 +398,12 @@ public class SopaGame extends javax.swing.JFrame{
         }
         return answer;
     }
-    
+    /***
+     * Método noRepetitions
+     * verifica que no haya repeticiones de palabras
+     * @param repetitions int
+     * @return 
+     */
     private int[] noRepetitions(int repetitions) {
         int[] numbers = new int[repetitions];
         for (int i = 0; i < repetitions; i++) {
@@ -390,7 +428,10 @@ public class SopaGame extends javax.swing.JFrame{
         }
         return numbers;
     }
-    
+    /***
+     * Método eliminate
+     * se encarga de eliminar una palabra una vez fue encontrada
+     */
     private void eliminate() {
         for (int i = 0; i < 10; i++) {
             if (!word[i].getBackground().equals(Color.black)) {
@@ -413,11 +454,16 @@ public class SopaGame extends javax.swing.JFrame{
         if (aux == true) {
             iwin=true;
             JOptionPane.showMessageDialog(null, "Lo lograste");
+            SoupScores.setPuntaje();
             this.dispose();
 
         }
         
     }
+    /***
+     * Método update 
+     * se encarga de inicializar elementos necesarios en el juego
+     */
     private void update(){
         direction = new boolean[10];
         iwin = false;

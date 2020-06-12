@@ -10,13 +10,15 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author oscar
+ * @author Hansel Hampton
  */
 public class Trivia {
     int opc, acert;
     String quest[]= new String[30];
     int corr[]= new int[30];
-
+    /***
+     * Método Constructor
+     */
     public Trivia() {
         quest[0]="En la saga Matched de Ally Condie, ¿cómo se llama la protagonista?\n1. Mare Barrow\n2. Cassia Reyes\n3. Sarah Hart";
         quest[1]="¿Còmo se titula la saga màs popular escrita por James Dashner?\n1. Maze Runner\n2. El Juego Infinito\n3. Endgame";
@@ -133,15 +135,15 @@ public class Trivia {
                 do{
                     resp[i]=Integer.parseInt(JOptionPane.showInputDialog(quest[aleat]));
                     if (resp[i]==corr[aleat]){
-                        JOptionPane.showMessageDialog(null, "El mae anda volando!");
+                        JOptionPane.showMessageDialog(null, "Estás volando!");
                         acert+=1;
                     }
                     else{
                         if (resp[i]!=1&resp[i]!=2&resp[i]!=3){
-                            JOptionPane.showMessageDialog(null, "Nu mames, esa no es una opcion :v");
+                            JOptionPane.showMessageDialog(null, "Respuesta equivocada compañero :v");
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Sias mamon XDXD");
+                            JOptionPane.showMessageDialog(null, "Suerte en la próxima XD XD");
                         }
                     }
                 }

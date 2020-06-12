@@ -14,11 +14,22 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
 
-
+/***
+ * Frame InicioTriivia class
+ * @author Oscar Méndez
+ * @author Hansel Hampton
+ * @version 1.1
+ * @since 2020
+ */
 public class InicioTrivia extends javax.swing.JFrame {
+    //Atributos e instancias//
     private int playersCant = 0;
     
     static int contador = 1;
+    
+    /***
+     * Método Constructor
+     */
     public InicioTrivia() {
         initComponents();
         
@@ -143,11 +154,19 @@ public class InicioTrivia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método newGame
+     * crea un Trivia nuevo
+     */
     private void newGame(){
         Trivia trivia = new Trivia();
 
     
     }
+    /***
+     * Metodo setPuntaje
+     * Despliega el puntaje en pantalla
+     */
     public static void setPuntaje(int puntuacion){
         switch (contador){
             case 1:
@@ -176,7 +195,10 @@ public class InicioTrivia extends javax.swing.JFrame {
                 break;
         }
     }
-
+    /***
+     * Método verificacion
+     * Se encarga de ver si ya todos los jugadores activos jugaron su turno
+     */
     private void verificacion(){
         if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
@@ -188,6 +210,10 @@ public class InicioTrivia extends javax.swing.JFrame {
     
     
     }
+    /***
+     * Activa el juego para el jugador1
+     * @param evt 
+     */
     private void butAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAActionPerformed
         newGame();
         butB.setEnabled(true);
@@ -196,7 +222,10 @@ public class InicioTrivia extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butAActionPerformed
-
+    /***
+     * Activa el juego para el jugador2
+     * @param evt 
+     */
     private void butBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBActionPerformed
 
         newGame();
@@ -205,7 +234,10 @@ public class InicioTrivia extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butBActionPerformed
-
+    /***
+     * Activa el juego para el jugador3
+     * @param evt 
+     */
     private void butCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCActionPerformed
 
         newGame();
@@ -214,7 +246,10 @@ public class InicioTrivia extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butCActionPerformed
-
+    /***
+     * Activa el juego para el jugador4
+     * @param evt 
+     */
     private void butDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDActionPerformed
 
         newGame();
@@ -223,7 +258,10 @@ public class InicioTrivia extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butDActionPerformed
-
+    /***
+     * Cierra la ventana y hace las comparaciones de cual jugador obtuvo más puntaje
+     * @param evt 
+     */
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         int valor1 = Integer.parseInt(puntA.getText());
         int valor2 = Integer.parseInt(puntB.getText());

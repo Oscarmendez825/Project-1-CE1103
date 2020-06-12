@@ -4,17 +4,26 @@ import javax.swing.JLabel;
 
 
 /**
- *
- * @author badstone
+ * CronoSopa class
+ * @author Oscar Méndez
+ * @since 2020
+ * @version 0.9
  */
 public class CronoSopa extends Thread {
-    
+    //ATRIBUTOS E INSTANCIAS//
     JLabel eti;
-    
+    /***
+     * Método Constructor
+     * @param label JLabel
+     */
     public CronoSopa(JLabel label){
         this.eti = label;
     
     }
+    /***
+     * Método Run
+     * Inicia el hilo que controla el cronometro
+     */
     @Override
     public void run(){
         try{
@@ -30,7 +39,10 @@ public class CronoSopa extends Thread {
         }
     
     }
-
+    /***
+     * Método ejecutarcrono
+     * Se encarga de hacer las iteraciones en el crono
+     */
     private void ejecutarcrono() {
        SopaGame.seg++;
        if (SopaGame.seg > 59){

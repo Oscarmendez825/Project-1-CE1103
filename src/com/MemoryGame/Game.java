@@ -144,7 +144,7 @@ public class Game extends JFrame implements ActionListener {
 
    
     private void verificar(){
-        if (errorCount == 10){
+        if (errorCount == 25){
             InicioJuego.setPuntaje(puntaje);
             puntaje = 0;
             this.setVisible(false);

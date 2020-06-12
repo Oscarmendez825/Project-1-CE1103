@@ -16,8 +16,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/***
+ * Frame PosicionesStart class
+ * @author Oscar Méndez
+ * @version 1.1
+ * @since 2020
+ */
 
 public class PosicionesStart extends javax.swing.JFrame {
+    //Instancias y atributos//
     private int playersCant = 0;
     static JLabel label;
     static int hora = 0;
@@ -27,6 +34,10 @@ public class PosicionesStart extends javax.swing.JFrame {
     boolean corriendo = false;
     static JFrame obj;
     static int contador = 1;
+    
+    /***
+     * Método Constructor
+     */
     public PosicionesStart() {
         initComponents();
         ImageIcon fondo = new ImageIcon("fondogamescore.jpg");
@@ -150,6 +161,10 @@ public class PosicionesStart extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método newGame
+     * crea un snakeGame nuevo
+     */
     private void newGame(){
         SnakeGame gameplay = new SnakeGame();
         obj = new JFrame();
@@ -167,6 +182,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         iniciarCrono();
     
     }
+    /***
+     * Metodo setPuntaje
+     * Despliega el puntaje en pantalla
+     */
     public static void setPuntaje(){
         switch (contador){
             case 1:
@@ -196,6 +215,10 @@ public class PosicionesStart extends javax.swing.JFrame {
                 break;
         }
     }
+    /***
+     * Método iniciarCrono
+     * inicia el cronómetro para el juego SnakeGame
+     */
     private static void iniciarCrono() {
         if (iniciarHilo == true){
             Crono crono = new Crono(label);
@@ -203,6 +226,10 @@ public class PosicionesStart extends javax.swing.JFrame {
             
         }
     }
+    /***
+     * Método verificacion
+     * Se encarga de ver si ya todos los jugadores activos jugaron su turno
+     */
     private void verificacion(){
         if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
@@ -214,6 +241,10 @@ public class PosicionesStart extends javax.swing.JFrame {
     
     
     }
+    /***
+     * Activa el juego para el jugador1
+     * @param evt 
+     */
     private void butAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAActionPerformed
         newGame();
         butB.setEnabled(true);
@@ -222,7 +253,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butAActionPerformed
-
+    /***
+     * Activa el juego para el jugador2
+     * @param evt 
+     */
     private void butBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBActionPerformed
         iniciarHilo = true;
         newGame();
@@ -231,7 +265,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butBActionPerformed
-
+    /***
+     * Activa el juego para el jugador3
+     * @param evt 
+     */
     private void butCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCActionPerformed
         iniciarHilo = true;
         newGame();
@@ -240,7 +277,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butCActionPerformed
-
+    /***
+     * Activa el juego para el jugador4
+     * @param evt 
+     */
     private void butDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDActionPerformed
         iniciarHilo = true;
         newGame();
@@ -249,7 +289,10 @@ public class PosicionesStart extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butDActionPerformed
-
+    /***
+     * Cierra la ventana y hace las comparaciones de cual jugador obtuvo más puntaje
+     * @param evt 
+     */
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         int valor1 = Integer.parseInt(puntA.getText());
         int valor2 = Integer.parseInt(puntB.getText());

@@ -54,6 +54,11 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener{
         
     }
     
+    /***
+     * Método paint
+     * Se encarga de agregar los elementos gráficos del juego
+     * @param pantalla Graphics
+     */
     @Override
     public void paint (Graphics pantalla){
         
@@ -119,7 +124,11 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener{
     }
 
 
-
+    /***
+     * Método keyPressed
+     * Se encarga del movimiento de la serpiente
+     * @param e KeyEvent
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         
@@ -186,7 +195,11 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener{
     }
 
 
-
+    /***
+     * Método actionPerformed
+     * @param e ActionEvent
+     * 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         timer.start();
@@ -293,15 +306,28 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener{
         }
         
     }
-
+    /***
+     * Método keyReleased
+     * @param e keyEvent
+     */
     @Override
     public void keyReleased(KeyEvent e) {
        
     }
+    /***
+     * Método keyTyped
+     * @param e keyTyped
+     */
     @Override
     public void keyTyped(KeyEvent e) {
         
     }
+    /***
+     * Método getNumberX
+     * crea una posicio aleatoria en X para colocar la comida
+     * @param num Integer
+     * @return Integer
+     */
     private int getNumberX(int num) {
 	Random r = new Random();
         int valor = r.nextInt(num);
@@ -310,6 +336,12 @@ public class SnakeGame extends JPanel implements KeyListener, ActionListener{
         }
 	return 25 * valor;
 }
+    /***
+     * Método getNumberY
+     * crea una posicio aleatoria en Y para colocar la comida
+     * @param num Integer
+     * @return Integer
+     */
     private int getNumberY(int num) {
 	Random r = new Random();
         int valor = r.nextInt(num);

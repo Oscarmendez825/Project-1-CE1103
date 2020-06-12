@@ -14,8 +14,17 @@ import javax.swing.JOptionPane;
 import com.TriviaGame.InicioTrivia;
 
 
-
+/***
+ * 
+ * @author Oscar Méndez
+ * @author Keyner Gómez
+ * @author Marco Picado
+ * @author Hansel Hampton
+ * @version 1.4
+ * @since 2020
+ */
 public class Evento{
+    //ATRIBUTOS E INTANCIAS//
     private static int cantidadDuelo = 10;
     private static int cantidadRobo = 10;
     private static int ganar2Estrellas = 3;
@@ -27,11 +36,19 @@ public class Evento{
     private static Stack stack = new Stack();
     private static Evento evento;
     
+    /***
+     * Método Constructor
+     * @param jugador Integer
+     */
     private Evento(int jugador) {
         Evento.jugador = jugador;
     }
 
-
+    /***
+     * Método del Patrón de Diseño Singleton
+     * @param jugador Integer
+     * @return Object
+     */
     public static Evento getInstance(int jugador){
         if (evento == null){
             evento = new Evento(jugador);
@@ -39,18 +56,31 @@ public class Evento{
         }
         return evento;
     }
-    
+    /***
+     * Método getNumero
+     * Devuelve un numero aleatorio en un limite de numeros definido
+     * @param num Integer
+     * @return Integer
+     */
     public static int getNumero(int num){
         Random random = new Random();
         int eventoNum = random.nextInt(num)+1;
         return eventoNum;
     
     }
-
+    /***
+     * Método getJugador
+     * Devuelve el número del jugador el cual está ejecutando un evento
+     * @return Integer
+     */
     public static int getJugador() {
         return jugador;
     }
-    
+    /***
+     * Método eventos
+     * Se encarga de ejecutar los eventos por medio del stack
+     * en dado caso que el stack esté vacío lo vuelve a llenar
+     */
     public void eventos(){
         if (stack.isEmpty() == true){
             cantidadDuelo = 10;
@@ -69,6 +99,10 @@ public class Evento{
 
         
     }
+    /***
+     * Método crearStack
+     * Se encarga de crear el stack
+     */
     private void crearStack(){
         stack = new Stack();
         while(cantidadDuelo!=0){
@@ -98,6 +132,10 @@ public class Evento{
             stack.push("perderEstrella");
         }
     }
+    /***
+     * Método ejecutarEvento
+     * Se encarga de sacar un elemento del stack y así saber que elemento ejecutar
+     */
     private void ejecutarEvento(){
 
         switch (stack.peek()) {
@@ -157,6 +195,11 @@ public class Evento{
                 break;
         }
     }
+    /***
+     * Métdodo darEstrella
+     * Se encarga de dar una estrella a un jugador aleatorio
+     * @param ganador Integer
+     */
     private void darEstrella(int ganador) {
         switch (ganador) {
                 case 1:
@@ -175,8 +218,11 @@ public class Evento{
                     break;
             }
     }
-    
-    
+   
+    /***
+     * Método duelo
+     * Se encarga de activar un duelo
+     */
     public void duelo(){
         int juego = getNumero(7)+1;
             JOptionPane.showMessageDialog(null, "ESTÁN APUNTO DE ENFRENTARSE EN UN DUELO!!!");
@@ -186,7 +232,6 @@ public class Evento{
                     break;
                 case 2:
                     new SoupScores().setVisible(true);
-                    
                     break;
                 case 3:
                     new InicioJuego().setVisible(true);
@@ -209,13 +254,19 @@ public class Evento{
     
     }
     
-    
+    /***
+     * Método roboMonedas
+     * Se encarga de llamar el Frame para ver a cual jugador robarle monedas
+     */
     public void roboMonedas(){
         new RoboMonedas().setVisible(true);
             cantidadRobo--;
     }
     
-    
+    /***
+     * Método perderMonedas
+     * Se encarga de quitarle monedas a al jugador y repartirlas equitativamente entre los otros
+     */
     public void perderMonedas(){
         JOptionPane.showMessageDialog(null, "LO SIENTO, ESTÁS PERO PERDERÁS ALGUNAS MONEDAS :C \n Y SERÁ REPARTIDAS ENTRE TUS AMIGOS");
         int cantidad = getNumero(10)+1;
@@ -270,7 +321,10 @@ public class Evento{
         }
     }
     
-    
+    /***
+     * Método perderEstrella
+     * Se encarga de quitarle la moneda a un jugador y darsela a otro
+     */
     public void perderEstrella(){
         JOptionPane.showMessageDialog(null, "LO SIENTO PERO LAMENTABLEMENTE PERDERÁS UNA ESTRELLA :C \n Y SE LA DAREMOS A OTRO");
         int robo = getNumero(GameUser.getCantidad());
@@ -303,7 +357,10 @@ public class Evento{
         }
     
     }
-    
+    /***
+     * Método ganar2Estrellas
+     * El jugador gana 2 estrellas
+     */
     public void ganar2Estrellas(){
         JOptionPane.showMessageDialog(null, "FELICIDADES ACABAS DE GANAR 2 ESTRELLAS \n DEBERÍAS SENTIRTE MUY COOL!!!!");
         switch (jugador) {
@@ -324,7 +381,10 @@ public class Evento{
         }
     }
     
-    
+    /***
+     * Método ganar5Estrellas
+     * El jugador gana 5 Estrellas
+     */
     public void ganar5Estrellas(){
         JOptionPane.showMessageDialog(null, "FELICIDADES ACABAS DE GANAR 5 ESTRELLAS Y SERÁS EL ÚNICO C: \n DEBERÍAS SENTIRTE DEMASIADO COOL!!!!");
         switch (jugador) {
@@ -344,6 +404,10 @@ public class Evento{
                 break;
         }
     }
+    /***
+     * Método roboEstrella
+     * El jugador ganará una estrella y un amigo perderá la de él
+     */
     public void roboEstrella(){
         JOptionPane.showMessageDialog(null, "GANARÁS UNA ESTRELLA Y UN COMPAÑERO TUYO PERDERÁ UNA SUYA!!!! ");
         robarEstrella--;

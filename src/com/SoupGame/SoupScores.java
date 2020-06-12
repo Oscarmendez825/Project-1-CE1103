@@ -12,10 +12,20 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
+/***
+ * Frame SoupScores class
+ * @author Oscar Méndez
+ * @version 1.1
+ * @since 2020
+ */
 public class SoupScores extends javax.swing.JFrame {
+    //Atributos e Instancias// 
     private int playersCant = 0;
     private static int contador = 1;
+    
+    /***
+     * Método Constructor
+     */
     public SoupScores() {
         initComponents();
         ImageIcon fondo = new ImageIcon("letrasfondo.jpg");
@@ -139,12 +149,20 @@ public class SoupScores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método newGame
+     * crea un SopaGame nuevo
+     */
     private void newGame(){
         SopaGame.iniciarHilo = true;
         SopaGame.puntaje = 0;
         new SopaGame().setVisible(true);
     
     }
+    /***
+     * Metodo setPuntaje
+     * Despliega el puntaje en pantalla
+     */
     public static void setPuntaje(){
         switch (contador){
             case 1:
@@ -171,7 +189,10 @@ public class SoupScores extends javax.swing.JFrame {
                 break;
         }
     }
-
+    /***
+     * Método verificacion
+     * Se encarga de ver si ya todos los jugadores activos jugaron su turno
+     */
     private void verificacion(){
         if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
@@ -183,6 +204,10 @@ public class SoupScores extends javax.swing.JFrame {
     
     
     }
+    /***
+     * Activa el juego para el jugador1
+     * @param evt 
+     */
     private void butAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAActionPerformed
         newGame();
         butB.setEnabled(true);
@@ -191,7 +216,10 @@ public class SoupScores extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butAActionPerformed
-
+    /***
+     * Activa el juego para el jugador2
+     * @param evt 
+     */
     private void butBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBActionPerformed
 
         newGame();
@@ -200,7 +228,10 @@ public class SoupScores extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butBActionPerformed
-
+    /***
+     * Activa el juego para el jugador3
+     * @param evt 
+     */
     private void butCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCActionPerformed
 
         newGame();
@@ -209,7 +240,10 @@ public class SoupScores extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butCActionPerformed
-
+    /***
+     * Activa el juego para el jugador4
+     * @param evt 
+     */
     private void butDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDActionPerformed
 
         newGame();
@@ -218,7 +252,10 @@ public class SoupScores extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butDActionPerformed
-
+    /***
+     * Cierra la ventana y hace las comparaciones de cual jugador obtuvo más puntaje
+     * @param evt 
+     */
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         int valor1 = Integer.parseInt(puntA.getText());
         int valor2 = Integer.parseInt(puntB.getText());

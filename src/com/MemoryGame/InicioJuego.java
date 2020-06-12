@@ -5,25 +5,31 @@
  */
 package com.MemoryGame;
 
-import com.SnakeGame.*;
+
 import com.Player.GameUser;
 import com.Player.Tablero;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
+
 import javax.swing.JOptionPane;
 
-
+/***
+ * Frame InicioJuego class
+ * @author Oscar Méndez
+ * @version 1.1
+ * @since 2020
+ */
 public class InicioJuego extends javax.swing.JFrame {
+    //Atributos e Instancias// 
     private int playersCant = 0;
     
     static int contador = 1;
+    
+    /***
+     * Método Constructor
+     */
     public InicioJuego() {
         initComponents();
         
@@ -148,6 +154,10 @@ public class InicioJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    /***
+     * Método newGame
+     * crea un SopaGame nuevo
+     */
     private void newGame(){
     Game game = new Game();
         game.addWindowListener(new WindowAdapter() {
@@ -159,6 +169,10 @@ public class InicioJuego extends javax.swing.JFrame {
 
     
     }
+    /***
+     * Metodo setPuntaje
+     * Despliega el puntaje en pantalla
+     */
     public static void setPuntaje(int puntuacion){
         switch (contador){
             case 1:
@@ -187,7 +201,10 @@ public class InicioJuego extends javax.swing.JFrame {
                 break;
         }
     }
-
+    /***
+     * Método verificacion
+     * Se encarga de ver si ya todos los jugadores activos jugaron su turno
+     */
     private void verificacion(){
         if (playersCant == GameUser.getCantidad()){
             continuar.setEnabled(true);
@@ -199,6 +216,10 @@ public class InicioJuego extends javax.swing.JFrame {
     
     
     }
+    /***
+     * Activa el juego para el jugador1
+     * @param evt 
+     */
     private void butAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAActionPerformed
         newGame();
         butB.setEnabled(true);
@@ -207,7 +228,10 @@ public class InicioJuego extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butAActionPerformed
-
+    /***
+     * Activa el juego para el jugador2
+     * @param evt 
+     */
     private void butBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBActionPerformed
 
         newGame();
@@ -216,7 +240,10 @@ public class InicioJuego extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butBActionPerformed
-
+    /***
+     * Activa el juego para el jugador3
+     * @param evt 
+     */
     private void butCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCActionPerformed
 
         newGame();
@@ -225,7 +252,10 @@ public class InicioJuego extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butCActionPerformed
-
+    /***
+     * Activa el juego para el jugador4
+     * @param evt 
+     */
     private void butDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDActionPerformed
 
         newGame();
@@ -234,7 +264,10 @@ public class InicioJuego extends javax.swing.JFrame {
         playersCant++;
         verificacion();
     }//GEN-LAST:event_butDActionPerformed
-
+    /***
+     * Cierra la ventana y hace las comparaciones de cual jugador obtuvo más puntaje
+     * @param evt 
+     */
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         int valor1 = Integer.parseInt(puntA.getText());
         int valor2 = Integer.parseInt(puntB.getText());

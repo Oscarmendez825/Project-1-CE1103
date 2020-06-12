@@ -1111,7 +1111,7 @@ public class Tablero extends javax.swing.JFrame {
      * Método ImageIcon
      * @return image
      */
-    public ImageIcon dadoGif(){
+    private ImageIcon dadoGif(){
         
         imageGif = new ImageIcon("dadogif.gif");
         return imageGif;
@@ -1121,7 +1121,7 @@ public class Tablero extends javax.swing.JFrame {
      * Método gennumero
      * @return Integer
      */
-    public int gennumero(){
+    private int gennumero(){
         Random random = new Random();
         valordado = random.nextInt(6);
         return valordado;
@@ -1132,7 +1132,7 @@ public class Tablero extends javax.swing.JFrame {
      * @param valor Integer
      * @return ImageIcon
      */
-    public ImageIcon setImage(int valor){
+    private ImageIcon setImage(int valor){
         switch (valor) {
             case 1:
                 imageValor = new ImageIcon("1.gif");
@@ -1166,7 +1166,7 @@ public class Tablero extends javax.swing.JFrame {
      * Método colocarEstrella 
      */
 
-    public void colocarEstrella(){
+    private void colocarEstrella(){
         int posicion = Evento.getNumero(33);
         estrellaLabel.setLocation(tablero.get(posicion).getLocation());
         posicionEstrella = posicion;
