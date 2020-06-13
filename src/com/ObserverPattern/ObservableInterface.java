@@ -11,6 +11,8 @@ public interface ObservableInterface {//ContentCreator
      * Notify Method
      * @param valor
      * @param duelo
+     * @param jug1
+     * @param jug2
      */
-    public void notifyObserver(int valor, boolean duelo);//Report that the ContentCreator post new video
+    public void notifyObserver(int valor, boolean duelo,int jug1, int jug2);//Report that the ContentCreator post new video
 }

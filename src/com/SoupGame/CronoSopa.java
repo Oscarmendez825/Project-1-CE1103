@@ -50,7 +50,7 @@ public class CronoSopa extends Thread {
            SoupScores.setPuntaje();
            
            SopaGame.iniciarHilo = false;
-           SopaGame.ventana.setVisible(false);
+           SopaGame.ventana.dispose();
          
        }
        String seg = "";

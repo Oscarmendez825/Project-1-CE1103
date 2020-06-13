@@ -337,7 +337,8 @@ public class PosicionesStart extends javax.swing.JFrame {
             default:
                 break;
         }
-        this.setVisible(false);
+        contador = 1;
+        this.dispose();
     }//GEN-LAST:event_continuarActionPerformed
     
     /**

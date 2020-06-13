@@ -22,9 +22,9 @@ public class ContentCreatorSubject implements ObservableInterface{
      * @param valor
      * @param duelo
      */
-    public void avisar(int valor, boolean duelo){
+    public void avisar(int valor, boolean duelo,int jug1, int jug2){
         //NewVideo
-        notifyObserver(valor,duelo);
+        notifyObserver(valor,duelo,jug1,jug2);
     }
     /***
      * Add new Observer
@@ -46,9 +46,9 @@ public class ContentCreatorSubject implements ObservableInterface{
      * @param duelo
      */
     @Override
-    public void notifyObserver(int valor, boolean duelo){
+    public void notifyObserver(int valor, boolean duelo, int jug1,int jug2){
         for (ObserverInterface o:observers){
-            o.update(valor,duelo);
+            o.update(valor,duelo,jug1,jug2);
         }
     }
 }

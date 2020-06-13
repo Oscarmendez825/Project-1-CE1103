@@ -300,7 +300,8 @@ public class SoupScores extends javax.swing.JFrame {
             default:
                 break;
         }
-        this.setVisible(false);
+        contador = 1;
+        this.dispose();
         
         
         

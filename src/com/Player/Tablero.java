@@ -1203,7 +1203,7 @@ public class Tablero extends javax.swing.JFrame {
                         vueltasGen++;
                         pasadas = 0;
                     }else if (vueltasGen == 4){
-                        controlObserver(vueltasGen,false);
+                        controlObserver(vueltasGen,false,0,0);
 
                     }else{
                         pasadas++;
@@ -1256,6 +1256,7 @@ public class Tablero extends javax.swing.JFrame {
                         verificar();
                         carta();
                         estrella();
+                        activarRonda();
                     }else{
                         JOptionPane.showMessageDialog(null, "USTED ESTÁ EN UNA FASE UTILICE EL OTRO DADO");
                     }
@@ -1308,6 +1309,7 @@ public class Tablero extends javax.swing.JFrame {
                         verificar();
                         carta();
                         estrella();
+                        activarRonda();
                     }else{
                         JOptionPane.showMessageDialog(null, "USTED ESTÁ EN UNA FASE UTILICE EL OTRO DADO");
                     }
@@ -1376,10 +1378,12 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         
+                        
                         crearFase(4, valorD);
                         verificar();
                         carta();
                         estrella();
+                        activarRonda();
                     }else{
                         JOptionPane.showMessageDialog(null, "USTED ESTÁ EN UNA FASE UTILICE EL OTRO DADO");
                     }
@@ -1420,6 +1424,15 @@ public class Tablero extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_moverFaseActionPerformed
+    /***
+     * Método activarRonda
+     * activa un minijuego una vez finalizada cada ronda
+     */
+    private void activarRonda(){
+        Evento evento = Evento.getInstance(1);
+        evento.duelo();
+    
+    }
     /***
      * Método crearFase
      * @param jugador Integer
@@ -1621,6 +1634,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion2 = -1;
                         FaseJug2 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L2.setLocation(faseA.get(posicion2).getLocation());
@@ -1630,6 +1644,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -1695,6 +1710,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion3 = -1;
                         FaseJug3 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L3.setLocation(faseA.get(posicion3).getLocation());
@@ -1704,6 +1720,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }break;
             case 4:
@@ -1793,6 +1810,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion4 = -1;
                         FaseJug4 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L4.setLocation(faseA.get(posicion4).getLocation());
@@ -1802,6 +1820,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }
                 break;
@@ -1855,6 +1874,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion2 = -1;
                         FaseJug2 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L2.setLocation(faseB.get(posicion2).getLocation());
@@ -1864,6 +1884,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -1929,6 +1950,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion3 = -1;
                         FaseJug3 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L3.setLocation(faseB.get(posicion3).getLocation());
@@ -1938,6 +1960,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }break;
             case 4:
@@ -2027,6 +2050,8 @@ public class Tablero extends javax.swing.JFrame {
                         posicion4 = -1;
                         FaseJug4 = false;
                         valor = valorA;
+                        activarRonda();
+                        
                     }else{
                         
                         L4.setLocation(faseB.get(posicion4).getLocation());
@@ -2036,6 +2061,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }
                 break;
@@ -2091,6 +2117,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion2 = -1;
                         FaseJug2 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L2.setLocation(faseC.get(posicion2).getLocation());
@@ -2100,6 +2127,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -2126,6 +2154,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
+                        
                     }
                 }else if (turnoB == true){
                     posicion2 += valorFase;
@@ -2141,6 +2170,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion2 = -1;
                         FaseJug2 = false;
                         valor = valorC;
+                        
                     }else{
                         
                         L2.setLocation(faseC.get(posicion2).getLocation());
@@ -2150,6 +2180,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoC = true;
                         tiro = false;
                         valor = valorC;
+                        
                     }
                 }else if(turnoC == true){
                     posicion3 += valorFase;
@@ -2165,6 +2196,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion3 = -1;
                         FaseJug3 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L3.setLocation(faseC.get(posicion3).getLocation());
@@ -2174,6 +2206,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }break;
             case 4:
@@ -2263,6 +2296,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion4 = -1;
                         FaseJug4 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L4.setLocation(faseC.get(posicion4).getLocation());
@@ -2272,6 +2306,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }
                 break;
@@ -2312,6 +2347,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoB = true;
                         tiro = false;
                         valor = valorB;
+                        
                     }
 
                 }else if (turnoB == true){
@@ -2328,6 +2364,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion2 = -1;
                         FaseJug2 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L2.setLocation(faseC.get(posicion2).getLocation());
@@ -2337,6 +2374,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -2403,6 +2441,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion3 = -1;
                         FaseJug3 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L3.setLocation(faseC.get(posicion3).getLocation());
@@ -2412,6 +2451,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }break;
             case 4:
@@ -2502,6 +2542,7 @@ public class Tablero extends javax.swing.JFrame {
                         posicion4 = -1;
                         FaseJug4 = false;
                         valor = valorA;
+                        activarRonda();
                     }else{
                         
                         L4.setLocation(faseC.get(posicion4).getLocation());
@@ -2511,6 +2552,7 @@ public class Tablero extends javax.swing.JFrame {
                         turnoA = true;
                         tiro = false;
                         valor = valorA;
+                        activarRonda();
                     }
                 }break;
         }
@@ -2568,6 +2610,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(2,posicion2);
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -2639,6 +2682,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(3,posicion3);
+                        activarRonda();
                     }
                 }   break;
             case 4:
@@ -2733,6 +2777,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(4,posicion4);
+                        activarRonda();
                     }
                 }   break;
             default:
@@ -2783,6 +2828,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(2,posicion2);
+                        activarRonda();
                         
                     }else{
                         L2.setLocation(faseD.get(posicion2).getLocation());
@@ -2793,6 +2839,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(2,posicion2);
+                        activarRonda();
                     }
                 }   break;
             case 3:
@@ -2854,6 +2901,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(3,posicion3);
+                        activarRonda();
                         
                     }else{
                         L3.setLocation(faseD.get(posicion3).getLocation());
@@ -2864,6 +2912,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(3,posicion3);
+                        activarRonda();
                     }
                 }   break;
             case 4:
@@ -2948,6 +2997,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(4,posicion4);
+                        activarRonda();
                         
                     }else{
                         L4.setLocation(faseD.get(posicion4).getLocation());
@@ -2958,6 +3008,7 @@ public class Tablero extends javax.swing.JFrame {
                         tiro = false;
                         valor = valorA;
                         salirFaseD(4,posicion4);
+                        activarRonda();
                     }
                 }   break;
             default:
@@ -3182,27 +3233,27 @@ public class Tablero extends javax.swing.JFrame {
     private void verificar(){
         if ((valorA==valorB)&&(valorA!=0&&valorB!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,1,2);
             hayDuelo = false;
         }else if ((valorA==valorC)&&(valorA!=0&&valorC!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,1,3);
             hayDuelo = false;
         }else if ((valorA==valorD)&&(valorA!=0&&valorD!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,1,4);
             hayDuelo = false;
         }else if ((valorC==valorB)&&(valorC!=0&&valorB!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,2,3);
             hayDuelo = false;
         }else if ((valorD==valorB)&&(valorD!=0&&valorB!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,2,4);
             hayDuelo = false;
         }else if ((valorC==valorD)&&(valorC!=0&&valorD!=0)){
             hayDuelo = true;
-            controlObserver(vueltasGen,hayDuelo);
+            controlObserver(vueltasGen,hayDuelo,3,4);
             hayDuelo = false;
         }
         
@@ -3213,8 +3264,8 @@ public class Tablero extends javax.swing.JFrame {
      * @param vueltasT Integer
      * @param dueloActivator Integer
      */
-    private void controlObserver(int vueltasT, boolean dueloActivator){
-        contentcreator.avisar(vueltasGen,hayDuelo);
+    private void controlObserver(int vueltasT, boolean dueloActivator,int jug1, int jug2){
+        contentcreator.avisar(vueltasGen,hayDuelo, jug1,jug2);
     }
     /***
      * Método colocarCarta 

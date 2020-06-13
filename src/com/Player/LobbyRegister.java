@@ -43,7 +43,7 @@ public class LobbyRegister extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/com/ImagesSelec/gamelogo.png")).getImage());
         this.setTitle("DATOS PARTY");
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/com/Songs/startsong.wav"));
-        sonido.loop();
+//        sonido.loop();
         
     }
 

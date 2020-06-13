@@ -51,7 +51,7 @@ public class Crono extends Thread {
           
           PosicionesStart.setPuntaje();
           PosicionesStart.iniciarHilo = false;
-          PosicionesStart.obj.setVisible(false);
+          PosicionesStart.obj.dispose();
           this.stop();
           
        }

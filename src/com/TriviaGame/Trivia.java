@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author Hansel Hampton
  */
 public class Trivia {
+    boolean termino = false;
     int opc, acert;
     String quest[]= new String[30];
     int corr[]= new int[30];
@@ -20,6 +21,7 @@ public class Trivia {
      * Método Constructor
      */
     public Trivia() {
+        do{
         quest[0]="En la saga Matched de Ally Condie, ¿cómo se llama la protagonista?\n1. Mare Barrow\n2. Cassia Reyes\n3. Sarah Hart";
         quest[1]="¿Còmo se titula la saga màs popular escrita por James Dashner?\n1. Maze Runner\n2. El Juego Infinito\n3. Endgame";
         quest[2]="¿Cuál es el nombre del segundo libro de la saga Shatter Me de Tehereh Mafi?\n1. Restore Me\n2. Destroy Me\n3. Unravel Me";
@@ -86,21 +88,26 @@ public class Trivia {
             switch (opc){
                 case 1:
                     JOptionPane.showMessageDialog(null, ">>La presente trivia consta de 30 preguntas, de las cuales se le mostrara al jugador 10, totalmente aleatorias.\n>>Usted debe respoder con la opcion que crea correcta.\n>>Cada pregunta le indica si su respuesta es correcta.\n>>Al terminar, se le mostrara un puntaje, que depende de la respuestas acertadas.\n>>Las preguntas se pueden repetir a lo largo de la misma ronda.");
-                break;
+                    
+                    break;
                 case 2:
                     acert= triv (quest, corr);
                     if (acert>7){
                         JOptionPane.showMessageDialog(null, "Felicidades! Usted ha acertado "+acert+" y falló "+(10-acert)+" de 10 totales. Usted es humano? :v");
                         InicioTrivia.setPuntaje(acert);
+                        termino = true;
                     }
                     else{
                         if (acert<4){
                             JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Me pregunto para que carajos hizo esta trivia >:|");
                             InicioTrivia.setPuntaje(acert);
+                            termino = true;
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Usted ha acertado "+acert+" de 10 totales. Yo le diria que leyera un poco mas a menudo. :/");
                             InicioTrivia.setPuntaje(acert);
+                            termino = true;
+                            
                         }}
                 break;
                 case 3:
@@ -113,6 +120,7 @@ public class Trivia {
                     JOptionPane.showMessageDialog(null, "Opcion no disponible.");
                 break;
             }
+        }while(termino!=true);
     }
      /**
      *Manage the quiz process, the answers, questions and points.

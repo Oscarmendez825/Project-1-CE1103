@@ -24,9 +24,10 @@ import javax.swing.JOptionPane;
 public class InicioTrivia extends javax.swing.JFrame {
     //Atributos e instancias//
     private int playersCant = 0;
-    
+    private int jug1;
+    private int jug2;
     static int contador = 1;
-    
+    private boolean duelo = false;
     /***
      * Método Constructor
      */
@@ -45,6 +46,16 @@ public class InicioTrivia extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         
         
+    }
+    public InicioTrivia(int jug1, int jug2){
+        initComponents();
+        this.jug1 = jug1;
+        this.jug2 = jug2;
+        butC.setEnabled(false);
+        butD.setEnabled(false);
+        continuar.setEnabled(false);
+        duelo = true;
+        iniciarJuego();
     }
 
     
@@ -154,6 +165,29 @@ public class InicioTrivia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void iniciarJuego(){
+        if (jug1 == 1 && jug2 == 2){
+            jugA.setText(GameUser.getName1());
+            jugB.setText(GameUser.getName2());
+        }else if (jug1 == 1 && jug2 == 3){
+            jugA.setText(GameUser.getName1());
+            jugB.setText(GameUser.getName3());
+        }else if (jug1 == 1 && jug2 == 4){
+            jugA.setText(GameUser.getName1());
+            jugB.setText(GameUser.getName4());
+        }else if (jug1 == 2 && jug2 == 3){
+            jugA.setText(GameUser.getName2());
+            jugB.setText(GameUser.getName3());
+        }else if (jug1 == 2 && jug2 == 4){
+            jugA.setText(GameUser.getName2());
+            jugB.setText(GameUser.getName4());
+        }else if (jug1 == 3 && jug2 == 4){
+            jugA.setText(GameUser.getName3());
+            jugB.setText(GameUser.getName4());
+        }
+    }
+    
+    
     /***
      * Método newGame
      * crea un Trivia nuevo
@@ -166,15 +200,14 @@ public class InicioTrivia extends javax.swing.JFrame {
     /***
      * Metodo setPuntaje
      * Despliega el puntaje en pantalla
+     * @param puntuacion
      */
     public static void setPuntaje(int puntuacion){
         switch (contador){
             case 1:
                 puntA.setText(""+puntuacion);
                 contador++;
-                
-                
-                
+
                 break;
             case 2:
                 puntB.setText(""+puntuacion);
@@ -215,24 +248,34 @@ public class InicioTrivia extends javax.swing.JFrame {
      * @param evt 
      */
     private void butAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAActionPerformed
-        newGame();
-        butB.setEnabled(true);
-        butA.setEnabled(false);
-        
-        playersCant++;
-        verificacion();
+        if (duelo == true){
+            newGame();
+            butB.setEnabled(true);
+            butA.setEnabled(false);
+        }else{
+            newGame();
+            butB.setEnabled(true);
+            butA.setEnabled(false);
+            playersCant++;
+            verificacion();
+        }
     }//GEN-LAST:event_butAActionPerformed
     /***
      * Activa el juego para el jugador2
      * @param evt 
      */
     private void butBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBActionPerformed
-
-        newGame();
-        butC.setEnabled(true);
-        butB.setEnabled(false);
-        playersCant++;
-        verificacion();
+        if (duelo == true){
+            newGame();
+            butB.setEnabled(false);
+            continuar.setEnabled(true);
+        }else{
+            newGame();
+            butC.setEnabled(true);
+            butB.setEnabled(false);
+            playersCant++;
+            verificacion();
+        }
     }//GEN-LAST:event_butBActionPerformed
     /***
      * Activa el juego para el jugador3
@@ -251,7 +294,6 @@ public class InicioTrivia extends javax.swing.JFrame {
      * @param evt 
      */
     private void butDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDActionPerformed
-
         newGame();
         continuar.setEnabled(true);
         butD.setEnabled(false);
@@ -263,50 +305,67 @@ public class InicioTrivia extends javax.swing.JFrame {
      * @param evt 
      */
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        int valor1 = Integer.parseInt(puntA.getText());
-        int valor2 = Integer.parseInt(puntB.getText());
-        int valor3 = Integer.parseInt(puntC.getText());
-        int valor4 = Integer.parseInt(puntD.getText());
-        switch (GameUser.getCantidad()) {
-            case 2:
-                if (valor1>valor2){
+        if (duelo == true){
+            int valor1 = Integer.parseInt(puntA.getText());
+            int valor2 = Integer.parseInt(puntB.getText());
+            if (valor1>valor2){
                     JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
                     Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
                     
                 }else{
                     JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
                     Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
-                    
-                }   break;
-            case 3:
-                if (valor1 > valor2 && valor1 > valor3){
-                    JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
-                    Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
-                }else if(valor2 > valor1 && valor2 > valor3){
-                    JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
-                    Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
-                }else if(valor3 > valor2 && valor3 > valor1){
-                    JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
-                    Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
-                }   break;
-            case 4:
-                if (valor1 > valor2 && valor1 > valor3 && valor1 > valor4){
-                    JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
-                    Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
-                }else if(valor2 > valor1 && valor2 > valor3 && valor2 > valor4){
-                    JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
-                    Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
-                }else if(valor3 > valor2 && valor3 > valor1 && valor3 > valor4){
-                    JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
-                    Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
-                }else if(valor4 > valor2 && valor4 > valor1 && valor4 > valor3){
-                    JOptionPane.showMessageDialog(null,GameUser.getName4()+" GANA!!!");
-                    Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+3));
-                }   break;
-            default:
-                break;
+              this.dispose();      
+            }
+            
+        }else{
+        
+            int valor1 = Integer.parseInt(puntA.getText());
+            int valor2 = Integer.parseInt(puntB.getText());
+            int valor3 = Integer.parseInt(puntC.getText());
+            int valor4 = Integer.parseInt(puntD.getText());
+            switch (GameUser.getCantidad()) {
+                case 2:
+                    if (valor1>valor2){
+                        JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                        Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+
+                    }else{
+                        JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                        Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+
+                    }   break;
+                case 3:
+                    if (valor1 > valor2 && valor1 > valor3){
+                        JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                        Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+                    }else if(valor2 > valor1 && valor2 > valor3){
+                        JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                        Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+                    }else if(valor3 > valor2 && valor3 > valor1){
+                        JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
+                        Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
+                    }   break;
+                case 4:
+                    if (valor1 > valor2 && valor1 > valor3 && valor1 > valor4){
+                        JOptionPane.showMessageDialog(null,GameUser.getName1()+" GANA!!!");
+                        Tablero.getEstrella1().setText(""+(Integer.parseInt(Tablero.getEstrella1().getText())+3));
+                    }else if(valor2 > valor1 && valor2 > valor3 && valor2 > valor4){
+                        JOptionPane.showMessageDialog(null,GameUser.getName2()+" GANA!!!");
+                        Tablero.getEstrella2().setText(""+(Integer.parseInt(Tablero.getEstrella2().getText())+3));
+                    }else if(valor3 > valor2 && valor3 > valor1 && valor3 > valor4){
+                        JOptionPane.showMessageDialog(null,GameUser.getName3()+" GANA!!!");
+                        Tablero.getEstrella3().setText(""+(Integer.parseInt(Tablero.getEstrella3().getText())+3));
+                    }else if(valor4 > valor2 && valor4 > valor1 && valor4 > valor3){
+                        JOptionPane.showMessageDialog(null,GameUser.getName4()+" GANA!!!");
+                        Tablero.getEstrella4().setText(""+(Integer.parseInt(Tablero.getEstrella4().getText())+3));
+                    }   break;
+                default:
+                    break;
+            }
         }
-        this.setVisible(false);
+        contador = 1;
+        this.dispose();
     }//GEN-LAST:event_continuarActionPerformed
     
     /**
