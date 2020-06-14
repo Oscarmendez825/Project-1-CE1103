@@ -12,6 +12,7 @@ import com.StackPackage.Stack;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import com.TriviaGame.InicioTrivia;
+import com.littletennis.InicioTennis;
 
 
 /***
@@ -240,7 +241,7 @@ public class Evento{
                     new InicioTrivia().setVisible(true);
                     break;
                 case 5:
-                    
+                    new InicioTennis().setVisible(true);
                     break;
                 case 6:
                     

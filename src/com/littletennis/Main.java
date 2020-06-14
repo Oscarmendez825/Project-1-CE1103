@@ -24,7 +24,7 @@ import javax.swing.ImageIcon;
  * @version: 0.8 : 06/06/2020
  */ 
 @SuppressWarnings("serial")
-public class Main extends JPanel{
+public class Main extends JPanel implements Runnable{
 	
 	//declaration of variables:
 	ImageIcon wall = new ImageIcon("Wall2.jpg");
@@ -109,11 +109,29 @@ public void paint(Graphics g) {
 	JOptionPane.showMessageDialog(this, "Mini Juego Finalizado", "GAME OVER", JOptionPane.YES_NO_OPTION);
         WinGame.setVisible(false);
         valor = false;
-        
-//	System.exit(ABORT);
+        InicioTennis.setPuntaje(getScore());
+
     }
     public static void iniciarJuego() throws InterruptedException{
-        WinGame = new JFrame("Little Tennis!");
+        
+    }
+    
+/**m�todo main de inicializaci�n
+     * @param args
+ * @param puede usar atributos de todas las clases
+ * @return un ciclo infinito con la inicializaci�n del juego
+ * @exception nula
+     * @throws java.lang.InterruptedException
+ *  */
+@SuppressWarnings("deprecation")
+public static void main(String[] args) throws InterruptedException{
+
+
+	}
+
+    @Override
+    public void run() {
+       WinGame = new JFrame("Little Tennis!");
 	ImagenWall Wall = new ImagenWall();
         //Wall.setComponentOrientation(o);
 	WinGame.setCursor(Cursor.HAND_CURSOR);
@@ -127,39 +145,13 @@ public void paint(Graphics g) {
 	
 	
 	while(valor!=false) {
-            game.move();
-            game.repaint();
-            Thread.sleep(10);
+           try {
+               game.move();
+               game.repaint();
+               Thread.sleep(10);
+           } catch (InterruptedException ex) {
+               ex.printStackTrace();
+           }
         }
     }
-    
-/**m�todo main de inicializaci�n
-     * @param args
- * @param puede usar atributos de todas las clases
- * @return un ciclo infinito con la inicializaci�n del juego
- * @exception nula
-     * @throws java.lang.InterruptedException
- *  */
-@SuppressWarnings("deprecation")
-public static void main(String[] args) throws InterruptedException{
-//	WinGame = new JFrame("Little Tennis!");
-//	ImagenWall Wall = new ImagenWall();
-//        //Wall.setComponentOrientation(o);
-//	WinGame.setCursor(Cursor.HAND_CURSOR);
-//	
-//	Main game = new Main();
-//	WinGame.add(Wall);
-//	WinGame.add(game);
-//	WinGame.setSize(600,450);
-//	WinGame.setVisible(true);
-//	WinGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	
-//	
-//	while(valor!=false) {
-//            game.move();
-//            game.repaint();
-//            Thread.sleep(10);
-//        }
-    iniciarJuego();
-	}
 }
