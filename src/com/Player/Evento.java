@@ -5,7 +5,9 @@
  */
 package com.Player;
 
+import com.BirdGame.MenuBirdGame;
 import com.MemoryGame.InicioJuego;
+import com.PuzzleGame.MenuPuzzleGame;
 import com.SnakeGame.PosicionesStart;
 import com.SoupGame.SoupScores;
 import com.StackPackage.Stack;
@@ -244,10 +246,10 @@ public class Evento{
                     new InicioTennis().setVisible(true);
                     break;
                 case 6:
-                    
+                    new MenuPuzzleGame().setVisible(true);
                     break;
                 case 7:
-                    
+                    new MenuBirdGame().setVisible(true);
                     break;
                 default:
                     break;
