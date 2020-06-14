@@ -160,6 +160,7 @@ public class InicioTennis extends javax.swing.JFrame {
      * crea un SopaGame nuevo
      */
     private void newGame(){
+        Main.valor = true;
         main = new Main();
         Thread thread = new Thread(main);
         thread.start();
