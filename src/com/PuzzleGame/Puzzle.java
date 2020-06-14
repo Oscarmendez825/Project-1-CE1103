@@ -19,6 +19,9 @@ public class Puzzle extends JFrame implements ActionListener{
     ImageIcon Ib7 = new ImageIcon("fila-3-col-1.png");
     ImageIcon Ib8 = new ImageIcon("fila-3-col-2.png");
     ImageIcon Ib9 = new ImageIcon("fila-3-col-3.png");
+    
+    int points = 0;
+    int moves = 0;
 
     Puzzle(){
         super("Puzzle Game - JavaTpoint");
@@ -85,8 +88,11 @@ public class Puzzle extends JFrame implements ActionListener{
             b9.setIcon(b2.getIcon());
             b2.setIcon(b7.getIcon());
             b7.setIcon(temp);
+            moves = 0;
+            points = 0;
         }
         if(e.getSource()==b1){
+            moves++;
             Icon s=b1.getIcon();
             if(b2.getIcon().equals(Ib1)){b2.setIcon(s); b1.setIcon(Ib1);}
             else if(b4.getIcon().equals(Ib1)){ b4.setIcon(s); b1.setIcon(Ib1);}
@@ -96,17 +102,22 @@ public class Puzzle extends JFrame implements ActionListener{
                     &&b6.getIcon().equals(Ib6)&&b7.getIcon().equals(Ib7)&&b8.getIcon()
                     .equals(Ib8)&&b9.getIcon().equals(Ib9)){
                 JOptionPane.showMessageDialog(Puzzle.this,"!!!you won!!!");
+                this.dispose();
+                MenuPuzzleGame.setPuntaje(moves);
+                
             }
 
         }//end of if
 
         if(e.getSource()==b3){
+            moves++;
             Icon s=b3.getIcon();
             if(b2.getIcon().equals(Ib1)){ b2.setIcon(s); b3.setIcon(Ib1);}
             else if(b6.getIcon().equals(Ib1)){ b6.setIcon(s); b3.setIcon(Ib1);}
         }//end of if
 
         if(e.getSource()==b2){
+            moves++;
             Icon s=b2.getIcon();
             if(b1.getIcon().equals(Ib1)){ b1.setIcon(s); b2.setIcon(Ib1);}
             else if(b3.getIcon().equals(Ib1)){ b3.setIcon(s); b2.setIcon(Ib1);}
@@ -114,6 +125,7 @@ public class Puzzle extends JFrame implements ActionListener{
         }//end of if
 
         if(e.getSource()==b4){
+            moves++;
             Icon s=b4.getIcon();
             if(b1.getIcon().equals(Ib1)){ b1.setIcon(s); b4.setIcon(Ib1);}
             else if(b7.getIcon().equals(Ib1)){ b7.setIcon(s); b4.setIcon(Ib1);}
@@ -121,6 +133,7 @@ public class Puzzle extends JFrame implements ActionListener{
         }//end of if
 
         if(e.getSource()==b5){
+            moves++;
             Icon s=b5.getIcon();
             if(b2.getIcon().equals(Ib1)){ b2.setIcon(s); b5.setIcon(Ib1);}
             else if(b4.getIcon().equals(Ib1)){ b4.setIcon(s); b5.setIcon(Ib1);}
@@ -129,6 +142,7 @@ public class Puzzle extends JFrame implements ActionListener{
         }//end of if
 
         if(e.getSource()==b6){
+            moves++;
             Icon s=b6.getIcon();
             if(b9.getIcon().equals(Ib1)){ b9.setIcon(s); b6.setIcon(Ib1);}
             else if(b3.getIcon().equals(Ib1)){ b3.setIcon(s); b6.setIcon(Ib1);}
@@ -136,12 +150,14 @@ public class Puzzle extends JFrame implements ActionListener{
         }//end of if
 
         if(e.getSource()==b7){
+            moves++;
             Icon s=b7.getIcon();
             if(b4.getIcon().equals(Ib1)){ b4.setIcon(s); b7.setIcon(Ib1);}
             else if(b8.getIcon().equals(Ib1)){ b8.setIcon(s); b7.setIcon(Ib1);}
         }//end of if
 
         if(e.getSource()==b8){
+            moves++;
             Icon s=b8.getIcon();
             if(b7.getIcon().equals(Ib1)){ b7.setIcon(s); b8.setIcon(Ib1);}
             else if(b9.getIcon().equals(Ib1)){ b9.setIcon(s); b8.setIcon(Ib1);}
@@ -149,6 +165,7 @@ public class Puzzle extends JFrame implements ActionListener{
         }//end of if
 
         if(e.getSource()==b9){
+            moves++;
             Icon s=b9.getIcon();
             if(b6.getIcon().equals(Ib1)){ b6.setIcon(s); b9.setIcon(Ib1);}
             else if(b8.getIcon().equals(Ib1)){ b8.setIcon(s); b9.setIcon(Ib1);}
@@ -157,9 +174,5 @@ public class Puzzle extends JFrame implements ActionListener{
 
     }//end of actionPerformed
 
-
-    public static void main(String[] args){
-        new Puzzle();
-    }//end of main
 
 }//end of class

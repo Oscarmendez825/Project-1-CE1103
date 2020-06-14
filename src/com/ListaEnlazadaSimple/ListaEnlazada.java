@@ -134,7 +134,7 @@ public class ListaEnlazada<Type> {
         size--;
     
     }
-    public Nodo removebyValue(Type data){
+    public Nodo removeByValue(Type data){
         Nodo temp = this.first;
         Nodo previous = this.first;
         while(temp!=null){

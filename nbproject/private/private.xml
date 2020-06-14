@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/oscar/Downloads/NO%20USAR%20PARA%20OTRA%20COSA/CORRECTO/Project-1-CE1103-master/Project-1-CE1103-master/src/com/TriviaGame/InicioTrivia.java</file>
+=======
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/Player/Evento.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/BirdGame/Renderer.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/BirdGame/MenuBirdGame.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/PuzzleGame/MenuPuzzleGame.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/BirdGame/FlappyBird.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/PuzzleGame/Puzzle.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/Project-1-CE1103/src/com/SnakeGame/PosicionesStart.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
